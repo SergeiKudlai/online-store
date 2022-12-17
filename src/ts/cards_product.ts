@@ -28,8 +28,8 @@ export class Product {
   
       <div class="products__container">
 
-        <span class="products__price">
-          <span>${price}</span>$
+        <span class="products__price-box">
+          <span class="products__price">${price}</span>$
         </span>
   
         <ul class="products__amount amount">

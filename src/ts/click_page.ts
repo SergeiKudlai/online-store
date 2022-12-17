@@ -1,3 +1,5 @@
+import { IDATA } from './interface';
+
 export function getClickCounter() {
   document.addEventListener('click', (e: Event): void => {
     if (e.target) {
@@ -5,9 +7,11 @@ export function getClickCounter() {
 
       ELEM.hasAttribute('data-minus') && setMinusCounter(ELEM);
       ELEM.hasAttribute('data-plus') && setPlusCounter(ELEM);
+      ELEM.hasAttribute('data-card') && createObjectCard(ELEM);
     }
   });
 
+  /* count+ */
   function setPlusCounter(data: HTMLButtonElement): void {
     const BOX_ELEMENT = data.closest('.amount');
 
@@ -22,6 +26,7 @@ export function getClickCounter() {
     }
   }
 
+  /* count- */
   function setMinusCounter(data: HTMLButtonElement): void {
     const BOX_ELEMENT = data.closest('.amount');
 
@@ -36,5 +41,48 @@ export function getClickCounter() {
         CURRENT_NUMBER.innerHTML = String(dataNum);
       }
     }
+  }
+
+  /* create card element */
+  function createObjectCard(data: HTMLButtonElement): void {
+    const BOX_ELEMENT = data.closest('.products__box');
+
+    if (BOX_ELEMENT) {
+      const NAME = BOX_ELEMENT.querySelector('.products__title-link')?.textContent;
+      const ID = Number((BOX_ELEMENT as HTMLElement).dataset.id);
+      const IMG = BOX_ELEMENT.querySelector('.products__img')?.getAttribute('src');
+      const PRICE = Number(BOX_ELEMENT.querySelector('.products__price')?.textContent);
+      const AMOUNT = BOX_ELEMENT.querySelector('[data-num]')?.textContent;
+
+      if (NAME && ID && IMG && PRICE && AMOUNT) {
+        const CARD: IDATA = {
+          id: ID,
+          name: NAME,
+          img: IMG,
+          price: PRICE,
+          amount: AMOUNT,
+        };
+        setAddCardLocalStorage(CARD);
+      }
+    }
+  }
+
+  function setAddCardLocalStorage(data: IDATA): void {
+    let result;
+
+    const VALID_STORAGE = localStorage.getItem('card');
+
+    VALID_STORAGE ? (result = JSON.parse(VALID_STORAGE)) : (result = []);
+
+    result.forEach((value: IDATA, index: number, arr: IDATA[]): void => {
+      value.name === data.name && arr.splice(index, 1);
+    });
+
+    result.push(data);
+    localStorage.setItem('card', JSON.stringify(result));
+
+    const CARD_INDEX = document.querySelector('.basket-set');
+
+    if (CARD_INDEX) CARD_INDEX.textContent = String(result.length);
   }
 }
