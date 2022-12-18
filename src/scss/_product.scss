@@ -1,11 +1,10 @@
 .products {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(auto, 30rem));
+  grid-template-columns: repeat(auto-fit, minmax(auto, 29rem));
   gap: 1rem;
-  justify-content: center;
 
   &.products--active {
-    grid-template-columns: repeat(auto-fit, minmax(auto, 50rem));
+    grid-template-columns: repeat(auto-fit, minmax(auto, 44rem));
 
     .products {
       &__box {
