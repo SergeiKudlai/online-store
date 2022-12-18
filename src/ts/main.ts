@@ -1,9 +1,11 @@
 import { DATA } from './data';
+import { clickAside } from './asidemenu';
 import { Product } from './cards_product';
 import { getClickCounter } from './click_page';
 import { clickedFilters } from './click_filter';
 
 getClickCounter();
+clickAside();
 clickedFilters();
 
 const product = new Product(DATA);

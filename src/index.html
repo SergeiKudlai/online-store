@@ -30,8 +30,69 @@
     </header>
 
     <main class="main">
-      <section class="section-products">
-        <aside class="aside"></aside>
+      <div class="container">
+        <div class="main-tittle">Каталог товаров</div>
+        <section class="section-products">
+        <aside class="aside">
+          <div class="categoty">
+            <div class="aside__category">
+              <p class="aside__category-text">Категории</p>
+              <div class="dropdown">
+                <img src="./assets/html_img/chevron.png" alt="chevron" class="dropbtn-style dropbtn-cat"></img>
+              </div>
+            </div>
+            <div class="dropdown-content dropdown-active">
+              <a href="#drink">Напитки</a>
+              <a href="#fruits">Фрукты</a>
+              <a href="#vegetables">Овощи</a>
+              <a href="#berry">Ягода</a>
+              <a href="#other">Разное</a>
+            </div>
+          </div>
+          <div class="categoty recomend">
+            <div class="aside__category">
+              <p class="aside__category-text">Бренд</p>
+              <div class="dropdown">
+                <img src="./assets/html_img/chevron.png" alt="chevron" class="dropbtn-style dropbtn-recomend"></img>
+              </div>
+            </div>
+            <div class="dropdown-content dropdown-active-rec">
+              <a href="#drink">Pepsi</a>
+              <a href="#fruits">CocaCola</a>
+              <a href="#vegetables">Sprite</a>
+              <a href="#berry">Fanta</a>
+              <a href="#other">Dr Pepper</a>
+            </div>
+          </div>
+          <div class="categoty price">
+            <div class="aside__category">
+              <p class="aside__category-text">Цена</p>
+              <div class="dropdown">
+                <img src="./assets/html_img/chevron.png" alt="chevron" class="dropbtn-style dropbtn-price"></img>
+              </div>
+            </div>
+            <div class="dropdown-content dropdown-active-price">
+              <div class="price-input">
+                <div class="field">
+                  <span>Min</span>
+                  <input type="number" class="input-min" value="2500">
+                </div>
+                <div class="separator">-</div>
+                <div class="field">
+                  <span>Max</span>
+                  <input type="number" class="input-max" value="7500">
+                </div>
+              </div>
+              <div class="slider">
+                <div class="progress"></div>
+              </div>
+              <div class="range-input">
+                <input type="range" class="range-min" min="0" max="10000" value="2500" step="100">
+                <input type="range" class="range-max" min="0" max="10000" value="7500" step="100">
+              </div>
+            </div>
+          </div>
+        </aside>
 
         <div class="products-inner container">
 
@@ -63,6 +124,7 @@
           <div class="products"></div>
         </div>
       </section>
+      </div>
     </main>
 
     <footer class="footer">
