@@ -68,7 +68,7 @@ export function getClickCounter() {
   }
 
   function setAddCardLocalStorage(data: IDATA): void {
-    let result;
+    let result: IDATA[];
 
     const VALID_STORAGE = localStorage.getItem('card');
 
@@ -82,7 +82,12 @@ export function getClickCounter() {
     localStorage.setItem('card', JSON.stringify(result));
 
     const CARD_INDEX = document.querySelector('.basket-set');
+    const RESULT = localStorage.getItem('card');
 
-    if (CARD_INDEX) CARD_INDEX.textContent = String(result.length);
+    if (RESULT) {
+      if (CARD_INDEX) {
+        CARD_INDEX.textContent = String(JSON.parse(RESULT).length);
+      }
+    }
   }
 }

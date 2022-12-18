@@ -11,7 +11,9 @@ export class Product {
 
   render(): void {
     this.data.forEach((value): void => {
-      const { img, name, price, id } = value;
+      const { img, name, price, id, availability } = value;
+
+      const CHECKED: string = availability ? 'в наличии' : 'нет в наличии';
 
       const ELEMENTS = `
       <article class="products__box" data-id="${id}">
@@ -20,11 +22,13 @@ export class Product {
         <img class="products__img" src="${img}" alt="${name}">
       </a>
 
-      <span class="products__availability">в наличии</span>
+      <div class="products__box-text">
+        <span class="products__availability" data-availability="${availability}">${CHECKED}</span>
   
-      <h3 class="products__title">
-        <a class="products__title-link" href="#">${name}</a>
-      </h3>
+        <h3 class="products__title">
+          <a class="products__title-link" href="#">${name}</a>
+        </h3>
+      </div>
   
       <div class="products__container">
 

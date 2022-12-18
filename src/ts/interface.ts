@@ -3,5 +3,6 @@ export interface IDATA {
   name: string;
   img: string;
   price: number;
+  availability?: boolean;
   amount?: string;
 }
