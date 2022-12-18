@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Freshok</title>
 </head>
 
 <body>
@@ -17,15 +17,18 @@
           <div class="cotainer_search">
             <div class="search-svg"><img src="./assets/html_img/search.png" alt="search"></div>
             <input class="input-search" type="text" placeholder="Найти в магазине ...">
-            <button class="cotainer_search__button"><p>Поиск</p></button>
+            <button class="cotainer_search__button">
+              <p>Поиск</p>
+            </button>
           </div>
         </div>
         <div class="container_basket">
-          <div class="basket-set">10</div>
+          <div class="basket-set">0</div>
           <span class="basket"><a href="#"><img src="./assets/html_img/basket.png" alt="shop basket"></a></span>
         </div>
       </div>
     </header>
+
     <main class="main">
       <div class="container">
         <div class="main-tittle">Каталог товаров</div>
@@ -90,13 +93,40 @@
             </div>
           </div>
         </aside>
-        <div class="products-inner">
-          <div class="products-filter"></div>
+
+        <div class="products-inner container">
+
+          <div class="products-filter">
+            <div class="products-filter__inner">
+
+              <button class="products-filter__btn" type="button">Фильтрация</button>
+
+              <ul class="products-filter__menu menu-filter">
+                <li class="menu-filter__item" data-price-min>Цена мин.</li>
+                <li class="menu-filter__item" data-price-max>Цена мaк.</li>
+                <li class="menu-filter__item" data-availability>В наличие</li>
+              </ul>
+
+            </div>
+
+            <ul class="products-filter__box box-filter">
+              <li class="box-filter__item">
+                <button class="box-filter__btn box-filter__btn--pos-one active" type="button"></button>
+              </li>
+
+              <li class="box-filter__item">
+                <button class="box-filter__btn box-filter__btn--pos-two" type="button"></button>
+              </li>
+            </ul>
+
+          </div>
+
           <div class="products"></div>
         </div>
       </section>
       </div>
     </main>
+
     <footer class="footer">
       <div class="footer__container container">
         <a class="footer__logo-link" href="#wrapper">
