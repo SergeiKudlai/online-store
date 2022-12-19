@@ -1,11 +1,11 @@
 export function clickAside () {
-const myDropdownCategory = document.querySelector('.dropbtn-cat');
+const myDropdownCategory = document.querySelector('.aside__category');
 const dropdownContent = document.querySelector('.dropdown-active');
 
-const myDropdownRecoment = document.querySelector('.dropbtn-recomend');
+const myDropdownRecoment = document.querySelector('.aside__category-show');
 const dropdownRecomend = document.querySelector('.dropdown-active-rec');
 
-const myDropdownPrice = document.querySelector('.dropbtn-price');
+const myDropdownPrice = document.querySelector('.aside__category-price');
 const dropdownPrice = document.querySelector('.dropdown-active-price');
 
 if (myDropdownCategory && dropdownContent) {
@@ -29,7 +29,7 @@ if (myDropdownPrice && dropdownPrice) {
 const rangeInput = document.querySelectorAll('.range-input input'); //as NodeListOf<Element>;
 const priceInput = document.querySelectorAll('.price-input input');
 const range = document.querySelector('.slider .progress') as HTMLElement;
-const priceGap = 1000;
+const priceGap = 100;
 
 priceInput.forEach((input) => {
   input.addEventListener('input', (e: Event): void => {

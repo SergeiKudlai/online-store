@@ -7,7 +7,9 @@
 .categoty:not(:last-child) {
   margin-bottom: 2rem;
 }
-
+.category {
+  position: relative;
+}
 .aside__category {
   width: 30rem;
   height: 6.5rem;
@@ -20,6 +22,8 @@
   justify-content: space-between;
   padding: 0 2rem 0 2rem;
   font-weight: 400;
+  cursor: pointer;
+  
 }
 
 .main-tittle {
@@ -32,11 +36,13 @@
 }
 
 .dropdown-content {
-  display: none;
+  display: block;
   width: 30rem;
   overflow: auto;
   border: 1px solid #c1c1c1;
   border-radius: 0 0 6px 6px;
+  transition:  0.5s ease-in-out;
+  opacity: 1;
 }
 
 .dropdown-content a {
@@ -49,11 +55,11 @@
 }
 
 .show {
-  display: block;
+  opacity: 0;
+  display: none;
 }
 
 // price style
-
 .dropdown-active-price {
   height: 100%;
   padding: 1rem;
@@ -99,8 +105,8 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 .slider .progress {
   height: 100%;
-  left: 25%;
-  right: 25%;
+  left: 0%;
+  right: 0%;
   position: absolute;
   border-radius: 5px;
   background: var(--green);
