@@ -7,7 +7,9 @@
 .categoty:not(:last-child) {
   margin-bottom: 2rem;
 }
-
+.category {
+  position: relative;
+}
 .aside__category {
   width: 30rem;
   height: 6.5rem;
@@ -20,6 +22,8 @@
   justify-content: space-between;
   padding: 0 2rem 0 2rem;
   font-weight: 400;
+  cursor: pointer;
+  
 }
 
 .main-tittle {
@@ -32,7 +36,7 @@
 }
 
 .dropdown-content {
-  display: none;
+  display: block;
   width: 30rem;
   overflow: auto;
   border: 1px solid #c1c1c1;
@@ -49,11 +53,14 @@
 }
 
 .show {
-  display: block;
+  display: none;
+  
 }
 
 // price style
-
+.dropdown-active {
+  transition: top 0.5s ease-in-out;
+}
 .dropdown-active-price {
   height: 100%;
   padding: 1rem;
