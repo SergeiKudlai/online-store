@@ -5,4 +5,5 @@ export interface IDATA {
   price: number;
   availability?: boolean;
   amount?: string;
+  brand?: string;
 }
