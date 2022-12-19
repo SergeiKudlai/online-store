@@ -1,5 +1,4 @@
 import { IDATA } from './interface';
-
 export class Product {
   public data: IDATA[];
   public box: HTMLElement | null;
@@ -11,7 +10,7 @@ export class Product {
 
   render(): void {
     this.data.forEach((value): void => {
-      const { img, name, price, id, availability } = value;
+      const { img, name, price, id, availability, raiting } = value;
 
       const CHECKED: string = availability ? 'в наличии' : 'нет в наличии';
 
@@ -23,7 +22,14 @@ export class Product {
       </a>
 
       <div class="products__box-text">
-        <span class="products__availability" data-availability="${availability}">${CHECKED}</span>
+        <div class="products__box-availability">
+          <span class="products__availability" data-availability="${availability}">${CHECKED}</span>
+
+          <div class="products__box-rating raiting">
+            <span class="raiting__num">${raiting}</span>
+            <span class="raiting__img"></span>
+          </div>
+        </div>
   
         <h3 class="products__title">
           <a class="products__title-link" href="#">${name}</a>

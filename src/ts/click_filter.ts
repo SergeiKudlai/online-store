@@ -5,6 +5,8 @@ export function clickedFilters(): void {
   const BTN_FILTER = document.querySelector('[data-availability]');
   const START_FILTER = document.querySelector('.products-filter__btn');
   const BTN_PRICE_MAX = document.querySelector('[data-price-max]');
+  const BTN_RAITING_MAX = document.querySelector('[data-raiting-max]');
+  const BTN_RAITING_MIN = document.querySelector('[data-raiting-min]');
   const BTN_PRICE_MIN = document.querySelector('[data-price-min]');
   const BOX_FILTER_BTN = document.querySelectorAll('.box-filter__btn');
   const BOX_PRODUCT = document.querySelector('.products');
@@ -133,24 +135,26 @@ export function clickedFilters(): void {
 
   //btn
   BTN_FILTER?.addEventListener('click', (): void => setAvailability());
-  BTN_PRICE_MIN?.addEventListener('click', (): void => setSortMin());
-  BTN_PRICE_MAX?.addEventListener('click', (): void => setSortMax());
+  BTN_PRICE_MIN?.addEventListener('click', (): void => setSortMin('.products__price'));
+  BTN_PRICE_MAX?.addEventListener('click', (): void => setSortMax('.products__price'));
+  BTN_RAITING_MAX?.addEventListener('click', (): void => setSortMax('.raiting__num'));
+  BTN_RAITING_MIN?.addEventListener('click', (): void => setSortMin('.raiting__num'));
 
   function setAvailability(): void {
     if (BOX_PRODUCT) {
-      Array(...BOX_PRODUCT.children).forEach((value) => {
+      Array(...BOX_PRODUCT.children).forEach((value): void => {
         const AVAILABILITY = (value.querySelector('.products__availability') as HTMLElement).dataset.availability;
         AVAILABILITY === 'false' && value.remove();
       });
     }
   }
 
-  function setSortMin(): void {
+  function setSortMin(value: string): void {
     if (BOX_PRODUCT) {
       for (let i = 0; i < BOX_PRODUCT.children.length; i++) {
         for (let j = i; j < BOX_PRODUCT.children.length; j++) {
-          const PRICE = Number(BOX_PRODUCT.children[i].querySelector('.products__price')?.textContent);
-          const PRICE_2 = Number(BOX_PRODUCT.children[j].querySelector('.products__price')?.textContent);
+          const PRICE = Number(BOX_PRODUCT.children[i].querySelector(value)?.textContent);
+          const PRICE_2 = Number(BOX_PRODUCT.children[j].querySelector(value)?.textContent);
           if (PRICE > PRICE_2) {
             const REPLACE_NODE = BOX_PRODUCT.replaceChild(BOX_PRODUCT.children[j], BOX_PRODUCT.children[i]);
             instertAfter(REPLACE_NODE, BOX_PRODUCT.children[i]);
@@ -160,12 +164,12 @@ export function clickedFilters(): void {
     }
   }
 
-  function setSortMax(): void {
+  function setSortMax(value: string): void {
     if (BOX_PRODUCT) {
       for (let i = 0; i < BOX_PRODUCT.children.length; i++) {
         for (let j = i; j < BOX_PRODUCT.children.length; j++) {
-          const PRICE = Number(BOX_PRODUCT.children[i].querySelector('.products__price')?.textContent);
-          const PRICE_2 = Number(BOX_PRODUCT.children[j].querySelector('.products__price')?.textContent);
+          const PRICE = Number(BOX_PRODUCT.children[i].querySelector(value)?.textContent);
+          const PRICE_2 = Number(BOX_PRODUCT.children[j].querySelector(value)?.textContent);
           if (PRICE < PRICE_2) {
             const REPLACE_NODE = BOX_PRODUCT.replaceChild(BOX_PRODUCT.children[j], BOX_PRODUCT.children[i]);
             instertAfter(REPLACE_NODE, BOX_PRODUCT.children[i]);

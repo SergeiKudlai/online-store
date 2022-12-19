@@ -40,8 +40,17 @@ export const DATA: IDATA[] = [
     price: 30,
     availability: true,
     brand: 'Бабушкина грядка',
+    raiting: 4.0,
   },
-  { id: 4, name: 'Лимон, 1кг', img: lemon, price: 100, availability: true, brand: 'Мадагаскар' },
+  {
+    id: 4,
+    name: 'Лимон, 1кг',
+    img: lemon,
+    price: 100,
+    availability: true,
+    brand: 'Мадагаскар',
+    raiting: 3.0,
+  },
   {
     id: 1,
     name: 'Кофе с коноплей органический Caffe Salomoni 250г',
@@ -49,6 +58,7 @@ export const DATA: IDATA[] = [
     price: 200,
     availability: true,
     brand: 'Caffe Salomoni',
+    raiting: 4.5,
   },
   {
     id: 5,
@@ -57,9 +67,26 @@ export const DATA: IDATA[] = [
     price: 70,
     availability: true,
     brand: 'Дед Мороз у камина',
+    raiting: 3.0,
   },
-  { id: 2, name: 'Бананы, 1 кг, фасовка 1 - 1,2 кг', img: banana, price: 140, availability: true, brand: 'Мадагаскар' },
-  { id: 1, name: 'Напиток газированный «Pepsi» 1 л', img: pepsi, price: 70, availability: true, brand: 'pepsi-cola' },
+  {
+    id: 2,
+    name: 'Бананы, 1 кг, фасовка 1 - 1,2 кг',
+    img: banana,
+    price: 140,
+    availability: true,
+    brand: 'Мадагаскар',
+    raiting: 4.2,
+  },
+  {
+    id: 1,
+    name: 'Напиток газированный «Pepsi» 1 л',
+    img: pepsi,
+    price: 70,
+    availability: true,
+    brand: 'pepsi-cola',
+    raiting: 3.1,
+  },
   {
     id: 3,
     name: 'Перец красный, 1 кг, фасовка 0,6 -0,8 кг',
@@ -67,8 +94,17 @@ export const DATA: IDATA[] = [
     price: 70,
     availability: true,
     brand: 'Бабушкина грядка',
+    raiting: 5.0,
   },
-  { id: 1, name: 'Напиток газированный Coca-Cola 1 л', img: cola, price: 70, availability: true, brand: 'pepsi-cola' },
+  {
+    id: 1,
+    name: 'Напиток газированный Coca-Cola 1 л',
+    img: cola,
+    price: 70,
+    availability: true,
+    brand: 'pepsi-cola',
+    raiting: 3.3,
+  },
   {
     id: 2,
     name: 'Мандарин, 1 кг, фасовка 1 - 1,2 кг',
@@ -76,6 +112,7 @@ export const DATA: IDATA[] = [
     price: 135,
     availability: true,
     brand: 'Мадагаскар',
+    raiting: 4.8,
   },
   {
     id: 1,
@@ -84,6 +121,7 @@ export const DATA: IDATA[] = [
     price: 50,
     availability: true,
     brand: 'Bonaqua',
+    raiting: 4.9,
   },
   {
     id: 4,
@@ -92,6 +130,7 @@ export const DATA: IDATA[] = [
     price: 35,
     availability: true,
     brand: 'Свой огород',
+    raiting: 2.1,
   },
   {
     id: 5,
@@ -100,6 +139,7 @@ export const DATA: IDATA[] = [
     price: 400,
     availability: true,
     brand: 'Волшебная страна',
+    raiting: 5.0,
   },
   {
     id: 3,
@@ -108,6 +148,7 @@ export const DATA: IDATA[] = [
     price: 70,
     availability: true,
     brand: 'Свой огород',
+    raiting: 3.4,
   },
   {
     id: 1,
@@ -116,6 +157,7 @@ export const DATA: IDATA[] = [
     price: 50,
     availability: true,
     brand: 'Bonaqua',
+    raiting: 4.7,
   },
   {
     id: 3,
@@ -124,6 +166,7 @@ export const DATA: IDATA[] = [
     price: 300,
     availability: false,
     brand: 'Свой огород',
+    raiting: 4.6,
   },
   {
     id: 2,
@@ -132,6 +175,7 @@ export const DATA: IDATA[] = [
     price: 400,
     availability: true,
     brand: 'Жаркая страна',
+    raiting: 3.9,
   },
   {
     id: 2,
@@ -140,6 +184,7 @@ export const DATA: IDATA[] = [
     price: 155,
     availability: true,
     brand: 'Жаркая страна',
+    raiting: 4.1,
   },
   {
     id: 1,
@@ -148,8 +193,17 @@ export const DATA: IDATA[] = [
     price: 500,
     availability: false,
     brand: 'Sanpellegrino Aranciata',
+    raiting: 4.8,
   },
-  { id: 4, name: 'Клюква лесная, 180 г', img: сranberry, price: 35, availability: true, brand: 'Бабушкина грядка' },
+  {
+    id: 4,
+    name: 'Клюква лесная, 180 г',
+    img: сranberry,
+    price: 35,
+    availability: true,
+    brand: 'Бабушкина грядка',
+    raiting: 4.4,
+  },
   {
     id: 5,
     name: 'Зубная паста «R.O.C.S.» максимальная свежесть, 94 г г',
@@ -157,9 +211,18 @@ export const DATA: IDATA[] = [
     price: 150,
     availability: true,
     brand: 'R.O.C.S.',
+    raiting: 5.0,
   },
-  { id: 3, name: 'Перец оранжевый, 1кг', img: paprik, price: 150, availability: true, brand: 'Бабушкина грядка' },
-  { id: 2, name: 'Ананас, 1кг', img: pineapple, price: 560, availability: true, brand: 'Мадагаскар' },
+  {
+    id: 3,
+    name: 'Перец оранжевый, 1кг',
+    img: paprik,
+    price: 150,
+    availability: true,
+    brand: 'Бабушкина грядка',
+    raiting: 4.3,
+  },
+  { id: 2, name: 'Ананас, 1кг', img: pineapple, price: 560, availability: true, brand: 'Мадагаскар', raiting: 4.0 },
   {
     id: 1,
     name: 'Напиток LIFELINE Intellectual со вкусом арбуза и яблока Фонте Аква 0.5 л',
@@ -167,5 +230,6 @@ export const DATA: IDATA[] = [
     price: 70,
     availability: false,
     brand: 'LIFELINE Intellectual',
+    raiting: 2.5,
   },
 ];
