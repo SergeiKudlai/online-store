@@ -23,6 +23,9 @@ export function clickedFilters(): void {
   const bonaqua = document.querySelector('.bonaqua');
   const sanpellegrinoAranciata = document.querySelector('.sanpellegrinoAranciata');
   const rocs = document.querySelector('.rocs');
+
+  const BTNMIN = document.querySelector('.range-min');
+  const BTNMAX = document.querySelector('.range-max');
   
   START_FILTER?.addEventListener('click', (): void => {
     const PRODUCT = new Product(DATA);
@@ -183,4 +186,12 @@ export function clickedFilters(): void {
   });
 
 
+console.log(BTNMIN);
+
+  BTNMIN?.addEventListener('inpute', (e: Event): void => {
+    console.log('hi');
+    
+    console.dir((document.querySelector('.input-min') as HTMLInputElement).value);
+    
+  })
 }

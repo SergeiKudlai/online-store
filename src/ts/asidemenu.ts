@@ -29,7 +29,7 @@ if (myDropdownPrice && dropdownPrice) {
 const rangeInput = document.querySelectorAll('.range-input input'); //as NodeListOf<Element>;
 const priceInput = document.querySelectorAll('.price-input input');
 const range = document.querySelector('.slider .progress') as HTMLElement;
-const priceGap = 1000;
+const priceGap = 100;
 
 priceInput.forEach((input) => {
   input.addEventListener('input', (e: Event): void => {
