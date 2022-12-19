@@ -15,6 +15,15 @@ export function clickedFilters(): void {
   const BERRY = document.querySelector('.berry');
   const OTHER = document.querySelector('.other');
 
+  const babGryadka = document.querySelector('.babGryadka');
+  const magagaskar = document.querySelector('.magagaskar');
+  const CaffeSalomoni = document.querySelector('.CaffeSalomoni');
+  const candy = document.querySelector('.candy');
+  const pepsiCola = document.querySelector('.pepsicola');
+  const bonaqua = document.querySelector('.bonaqua');
+  const sanpellegrinoAranciata = document.querySelector('.sanpellegrinoAranciata');
+  const rocs = document.querySelector('.rocs');
+  
   START_FILTER?.addEventListener('click', (): void => {
     const PRODUCT = new Product(DATA);
     if (PRODUCT.box) PRODUCT.box.innerHTML = '';
@@ -57,10 +66,66 @@ export function clickedFilters(): void {
     if (PRODUCT.box) PRODUCT.box.innerHTML = '';
     PRODUCT.render();
   })
-
-  //filter: brands
   
+  //filter: brands
+  babGryadka?.addEventListener('click', (): void => {
+    const RESULT = DATA.filter((value) => value.brand == 'Бабушкина грядка');
+    const PRODUCT = new Product(RESULT);
 
+    if (PRODUCT.box) PRODUCT.box.innerHTML = '';
+    PRODUCT.render();
+  })
+  magagaskar?.addEventListener('click', (): void => {
+    const RESULT = DATA.filter((value) => value.brand == 'Мадагаскар');
+    const PRODUCT = new Product(RESULT);
+
+    if (PRODUCT.box) PRODUCT.box.innerHTML = '';
+    PRODUCT.render();
+  })
+  CaffeSalomoni?.addEventListener('click', (): void => {
+    const RESULT = DATA.filter((value) => value.brand == 'Caffe Salomoni');
+    const PRODUCT = new Product(RESULT);
+
+    if (PRODUCT.box) PRODUCT.box.innerHTML = '';
+    PRODUCT.render();
+  })
+  candy?.addEventListener('click', (): void => {
+    const RESULT = DATA.filter((value) => value.brand == 'Дед Мороз у камина');
+    const PRODUCT = new Product(RESULT);
+
+    if (PRODUCT.box) PRODUCT.box.innerHTML = '';
+    PRODUCT.render();
+  })
+  pepsiCola?.addEventListener('click', (): void => {
+    const RESULT = DATA.filter((value) => value.brand == 'pepsi-cola');
+    const PRODUCT = new Product(RESULT);
+
+    if (PRODUCT.box) PRODUCT.box.innerHTML = '';
+    PRODUCT.render();
+  })
+  bonaqua?.addEventListener('click', (): void => {
+    const RESULT = DATA.filter((value) => value.brand == 'Bonaqua');
+    const PRODUCT = new Product(RESULT);
+
+    if (PRODUCT.box) PRODUCT.box.innerHTML = '';
+    PRODUCT.render();
+  })
+  sanpellegrinoAranciata?.addEventListener('click', (): void => {
+    const RESULT = DATA.filter((value) => value.brand == 'Sanpellegrino Aranciata');
+    const PRODUCT = new Product(RESULT);
+
+    if (PRODUCT.box) PRODUCT.box.innerHTML = '';
+    PRODUCT.render();
+  })
+  rocs?.addEventListener('click', (): void => {
+    const RESULT = DATA.filter((value) => value.brand == 'R.O.C.S.');
+    const PRODUCT = new Product(RESULT);
+
+    if (PRODUCT.box) PRODUCT.box.innerHTML = '';
+    PRODUCT.render();
+  })
+
+  //btn
   BTN_FILTER?.addEventListener('click', (): void => {
     const RESULT = DATA.filter((value) => value.availability !== false);
     const PRODUCT = new Product(RESULT);
