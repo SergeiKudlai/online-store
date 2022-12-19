@@ -6,4 +6,5 @@ export interface IDATA {
   availability?: boolean;
   amount?: string;
   brand?: string;
+  raiting?: number;
 }
