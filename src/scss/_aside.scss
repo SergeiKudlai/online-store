@@ -41,6 +41,8 @@
   overflow: auto;
   border: 1px solid #c1c1c1;
   border-radius: 0 0 6px 6px;
+  transition:  0.5s ease-in-out;
+  opacity: 1;
 }
 
 .dropdown-content a {
@@ -53,14 +55,11 @@
 }
 
 .show {
+  opacity: 0;
   display: none;
-  
 }
 
 // price style
-.dropdown-active {
-  transition: top 0.5s ease-in-out;
-}
 .dropdown-active-price {
   height: 100%;
   padding: 1rem;
