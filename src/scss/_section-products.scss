@@ -1,3 +1,10 @@
 .section-products {
-  padding: 5rem 0;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  display: flex;
+  column-gap: 1rem;
+
+  &__box {
+    flex: 1 1 auto;
+  }
 }

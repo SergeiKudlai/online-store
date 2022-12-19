@@ -52,7 +52,7 @@ export class Product {
           </li>
         </ul>
   
-        <button class="products__card" type="button" data-card>
+        <button class="products__card" type="button" ${availability} data-card>
           <span class="sr-only">Корзина</span>
         </button>
       </div>
