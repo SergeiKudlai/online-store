@@ -9,11 +9,57 @@ export function clickedFilters(): void {
   const BOX_FILTER_BTN = document.querySelectorAll('.box-filter__btn');
   const BOX_PRODUCT = document.querySelector('.products');
 
+  const DRINKS = document.querySelector('.drinks');
+  const FRUITS = document.querySelector('.fruits');
+  const VEGETABLES = document.querySelector('.vegetables');
+  const BERRY = document.querySelector('.berry');
+  const OTHER = document.querySelector('.other');
+
   START_FILTER?.addEventListener('click', (): void => {
     const PRODUCT = new Product(DATA);
     if (PRODUCT.box) PRODUCT.box.innerHTML = '';
     PRODUCT.render();
   });
+
+  // filter: category
+  DRINKS?.addEventListener('click', (): void => {
+    const RESULT = DATA.filter((value) => value.id == 1);
+    const PRODUCT = new Product(RESULT);
+
+    if (PRODUCT.box) PRODUCT.box.innerHTML = '';
+    PRODUCT.render();
+  })
+  FRUITS?.addEventListener('click', (): void => {
+    const RESULT = DATA.filter((value) => value.id == 2);
+    const PRODUCT = new Product(RESULT);
+
+    if (PRODUCT.box) PRODUCT.box.innerHTML = '';
+    PRODUCT.render();
+  })
+  VEGETABLES?.addEventListener('click', (): void => {
+    const RESULT = DATA.filter((value) => value.id == 3);
+    const PRODUCT = new Product(RESULT);
+
+    if (PRODUCT.box) PRODUCT.box.innerHTML = '';
+    PRODUCT.render();
+  })
+  BERRY?.addEventListener('click', (): void => {
+    const RESULT = DATA.filter((value) => value.id == 4);
+    const PRODUCT = new Product(RESULT);
+
+    if (PRODUCT.box) PRODUCT.box.innerHTML = '';
+    PRODUCT.render();
+  })
+  OTHER?.addEventListener('click', (): void => {
+    const RESULT = DATA.filter((value) => value.id == 5);
+    const PRODUCT = new Product(RESULT);
+
+    if (PRODUCT.box) PRODUCT.box.innerHTML = '';
+    PRODUCT.render();
+  })
+
+  //filter: brands
+  
 
   BTN_FILTER?.addEventListener('click', (): void => {
     const RESULT = DATA.filter((value) => value.availability !== false);
@@ -70,4 +116,6 @@ export function clickedFilters(): void {
     BOX_FILTER_BTN[0].classList.add('active');
     BOX_PRODUCT?.classList.remove('products--active');
   });
+
+
 }
