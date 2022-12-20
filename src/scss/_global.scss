@@ -45,3 +45,23 @@ body {
 	padding: 0 1.5rem;
 }
 
+.breadcrumb {
+	display: flex;
+	align-items: center;
+
+	&__item {
+		color: var(--green-100);
+
+		+ .breadcrumb {
+			&__item {
+				color: var(--green-100);
+
+				&::before {
+					content: "/\00a0";
+					padding: 8px;
+					color: black;
+				}
+			}
+		}
+	}
+}

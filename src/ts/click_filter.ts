@@ -25,7 +25,7 @@ export function clickedFilters(): void {
   const bonaqua = document.querySelector('.bonaqua');
   const sanpellegrinoAranciata = document.querySelector('.sanpellegrinoAranciata');
   const rocs = document.querySelector('.rocs');
-  
+
   START_FILTER?.addEventListener('click', (): void => {
     const PRODUCT = new Product(DATA);
     if (PRODUCT.box) PRODUCT.box.innerHTML = '';
@@ -196,6 +196,4 @@ export function clickedFilters(): void {
     BOX_FILTER_BTN[0].classList.add('active');
     BOX_PRODUCT?.classList.remove('products--active');
   });
-
-
 }
