@@ -26,6 +26,9 @@ export function clickedFilters(): void {
   const sanpellegrinoAranciata = document.querySelector('.sanpellegrinoAranciata');
   const rocs = document.querySelector('.rocs');
 
+  const RANGEMIN = document.querySelector('.range-min');
+  const RANGEMAX = document.querySelector('.range-max');
+
   START_FILTER?.addEventListener('click', (): void => {
     const PRODUCT = new Product(DATA);
     if (PRODUCT.box) PRODUCT.box.innerHTML = '';
@@ -198,4 +201,29 @@ export function clickedFilters(): void {
       BOX_PRODUCT?.classList.remove('products--active');
     });
   }
+
+  RANGEMIN?.addEventListener('input', () => {
+    const INPUTMIN = document.querySelector('.input-min') as HTMLInputElement
+    const INPUTMAX = document.querySelector('.input-max') as HTMLInputElement
+     // INPUTMIN.value выводит мин
+     // INPUTMAX.value выводит макс
+    
+    const RESULT = DATA.filter((value) => Number(value.price) <= Number(INPUTMAX.value) && Number(value.price) >= Number(INPUTMIN.value));
+    const PRODUCT = new Product(RESULT);
+
+    if (PRODUCT.box) PRODUCT.box.innerHTML = '';
+    PRODUCT.render();
+  })
+  RANGEMAX?.addEventListener('input', () => {
+    const INPUTMIN = document.querySelector('.input-min') as HTMLInputElement
+    const INPUTMAX = document.querySelector('.input-max') as HTMLInputElement
+     // INPUTMIN.value выводит мин
+     // INPUTMAX.value выводит макс
+    
+    const RESULT = DATA.filter((value) => Number(value.price) <= Number(INPUTMAX.value) && Number(value.price) >= Number(INPUTMIN.value));
+    const PRODUCT = new Product(RESULT);
+
+    if (PRODUCT.box) PRODUCT.box.innerHTML = '';
+    PRODUCT.render();
+  })
 }
