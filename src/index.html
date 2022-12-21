@@ -12,7 +12,9 @@
   <div class="wrapper">
     <header class="header">
       <div class="container container-block">
-        <div class="container_logo"><img src="./assets/html_img/logo.png" alt="logo"></div>
+        <a class="container_logo" href="./index.html" width="150" height="50">
+          <img src="./assets/html_img/logo.png" alt="logo">
+        </a>
         <div class="search_wrapper">
           <div class="cotainer_search">
             <div class="search-svg"><img src="./assets/html_img/search.png" alt="search"></div>
@@ -24,111 +26,127 @@
         </div>
         <div class="container_basket">
           <div class="basket-set">0</div>
-          <span class="basket"><a href="#"><img src="./assets/html_img/basket.png" alt="shop basket"></a></span>
+          <span class="basket">
+            <a class="basket__link" href="./cart.html">
+              <img class="basket__img" src="./assets/html_img/basket.png" alt="shop basket">
+            </a>
+          </span>
         </div>
       </div>
     </header>
 
     <main class="main">
 
-      <div class="main-tittle container">Каталог товаров</div>
+      <ul class="breadcrumb container">
+        <li class="breadcrumb__item">
+          <a class="breadcrumb__link breadcrumb__link" href="#section-products">Главная</a>
+        </li>
+      </ul>
 
-      <section class="section-products container">
-        <aside class="aside">
-          <div class="categoty">
-            <div class="aside__category">
-              <p class="aside__category-text">Категории</p>
-              <div class="dropdown">
-                <img src="./assets/html_img/chevron.png" alt="chevron" class="dropbtn-style dropbtn-cat"></img>
-              </div>
-            </div>
-            <div class="dropdown-content dropdown-active">
-              <a class="drinks" href="#drink">Напитки</a>
-              <a class="fruits" href="#fruits">Фрукты</a>
-              <a class="vegetables" href="#vegetables">Овощи</a>
-              <a class="berry" href="#berry">Ягода</a>
-              <a class="other" href="#other">Разное</a>
-            </div>
-          </div>
-          <div class="categoty recomend">
-            <div class="aside__category aside__category-show">
-              <p class="aside__category-text">Бренд</p>
-              <div class="dropdown">
-                <img src="./assets/html_img/chevron.png" alt="chevron" class="dropbtn-style dropbtn-recomend"></img>
-              </div>
-            </div>
-            <div class="dropdown-content dropdown-active-rec">
-              <a class="babGryadka" href="#Бабушкина-грядка">Бабушкина грядка</a>
-              <a class="magagaskar" href="#Мадагаскар">Мадагаскар</a>
-              <a class="CaffeSalomoni" href="#Caffe-Salomoni">Caffe Salomoni</a>
-              <a class="candy" href="#candy">Дед Мороз у камина</a>
-              <a class="pepsicola" href="#pepsi-cola">Pepsi-cola</a>
-              <a class="bonaqua" href="#Bonaqua">Bonaqua</a>
-              <a class="sanpellegrinoAranciata" href="#Sanpellegrino-Aranciata">Sanpellegrino Aranciata</a>
-              <a class="rocs" href="#rocs">R.O.C.S.</a>
-            </div>
-          </div>
-          <div class="categoty price">
-            <div class="aside__category aside__category-price">
-              <p class="aside__category-text">Цена</p>
-              <div class="dropdown">
-                <img src="./assets/html_img/chevron.png" alt="chevron" class="dropbtn-style dropbtn-price"></img>
-              </div>
-            </div>
-            <div class="dropdown-content dropdown-active-price">
-              <div class="price-input">
-                <div class="field">
-                  <span>Min</span>
-                  <input type="number" class="input-min" value="0">
-                </div>
-                <div class="separator">-</div>
-                <div class="field">
-                  <span>Max</span>
-                  <input type="number" class="input-max" value="500">
+      <section class="container" id="section-products">
+
+        <div class="main-tittle">Каталог товаров</div>
+
+        <div class="section-products">
+
+          <aside class="aside">
+            <div class="categoty">
+              <div class="aside__category">
+                <p class="aside__category-text">Категории</p>
+                <div class="dropdown">
+                  <img class="dropbtn-style dropbtn-cat" src="./assets/html_img/chevron.png" alt="chevron"></img>
                 </div>
               </div>
-              <div class="slider">
-                <div class="progress"></div>
-              </div>
-              <div class="range-input">
-                <input type="range" class="range-min" min="0" max="500" value="0" step="10">
-                <input type="range" class="range-max" min="0" max="500" value="500" step="10">
+              <div class="dropdown-content">
+                <a class="dropdown-content__link drinks" href="#drink">Напитки</a>
+                <a class="dropdown-content__link fruits" href="#fruits">Фрукты</a>
+                <a class="dropdown-content__link vegetables" href="#vegetables">Овощи</a>
+                <a class="dropdown-content__link berry" href="#berry">Ягода</a>
+                <a class="dropdown-content__link other" href="#other">Разное</a>
               </div>
             </div>
-          </div>
-        </aside>
 
-        <div class="section-products__box">
+            <div class="categoty recomend">
+              <div class="aside__category aside__category-show">
+                <p class="aside__category-text">Бренд</p>
+                <div class="dropdown">
+                  <img class="dropbtn-style dropbtn-recomend" src="./assets/html_img/chevron.png" alt="chevron"></img>
+                </div>
+              </div>
+              <div class="dropdown-content">
+                <a class="dropdown-content__link-brend babGryadka" href="#Бабушкина-грядка">Бабушкина грядка</a>
+                <a class="dropdown-content__link-brend magagaskar" href="#Мадагаскар">Мадагаскар</a>
+                <a class="dropdown-content__link-brend CaffeSalomoni" href="#Caffe-Salomoni">Caffe Salomoni</a>
+                <a class="dropdown-content__link-brend candy" href="#candy">Дед Мороз у камина</a>
+                <a class="dropdown-content__link-brend pepsicola" href="#pepsi-cola">Pepsi-cola</a>
+                <a class="dropdown-content__link-brend bonaqua" href="#Bonaqua">Bonaqua</a>
+                <a class="dropdown-content__link-brend sanpellegrinoAranciata"
+                  href="#Sanpellegrino-Aranciata">Sanpellegrino Aranciata</a>
+                <a class="dropdown-content__link-brend rocs" href="#rocs">R.O.C.S.</a>
+              </div>
+            </div>
+            <div class="categoty price">
+              <div class="aside__category aside__category-price">
+                <p class="aside__category-text">Цена</p>
+                <div class="dropdown">
+                  <img class="dropbtn-style dropbtn-price" src="./assets/html_img/chevron.png" alt="chevron"></img>
+                </div>
+              </div>
+              <div class="dropdown-content dropdown-active-price">
+                <div class="price-input">
+                  <div class="field">
+                    <span>Min</span>
+                    <input type="number" class="input-min" value="0">
+                  </div>
+                  <div class="separator">-</div>
+                  <div class="field">
+                    <span>Max</span>
+                    <input type="number" class="input-max" value="500">
+                  </div>
+                </div>
+                <div class="slider">
+                  <div class="progress"></div>
+                </div>
+                <div class="range-input">
+                  <input type="range" class="range-min" min="0" max="500" value="0" step="10">
+                  <input type="range" class="range-max" min="0" max="500" value="500" step="10">
+                </div>
+              </div>
+            </div>
+          </aside>
 
-          <div class="products-filter">
+          <div class="section-products__box">
 
-            <div class="products-filter__inner">
+            <div class="products-filter">
 
-              <button class="products-filter__btn" type="button">Фильтрация</button>
+              <div class="products-filter__inner">
 
-              <ul class="products-filter__menu menu-filter">
-                <li class="menu-filter__item" data-raiting-min>Рейтинг мин.</li>
-                <li class="menu-filter__item" data-raiting-max>Рейтинг мак.</li>
-                <li class="menu-filter__item" data-price-min>Цена мин</li>
-                <li class="menu-filter__item" data-price-max>Цена мaк</li>
-                <li class="menu-filter__item" data-availability>В наличие</li>
+                <button class="products-filter__btn" type="button">Фильтрация</button>
+
+                <ul class="products-filter__menu menu-filter">
+                  <li class="menu-filter__item" data-raiting-min>Рейтинг мин.</li>
+                  <li class="menu-filter__item" data-raiting-max>Рейтинг мак.</li>
+                  <li class="menu-filter__item" data-price-min>Цена мин</li>
+                  <li class="menu-filter__item" data-price-max>Цена мaк</li>
+                  <li class="menu-filter__item" data-availability>В наличие</li>
+                </ul>
+
+              </div>
+
+              <ul class="products-filter__box box-filter">
+                <li class="box-filter__item">
+                  <button class="box-filter__btn box-filter__btn--pos-one active" type="button"></button>
+                </li>
+
+                <li class="box-filter__item">
+                  <button class="box-filter__btn box-filter__btn--pos-two" type="button"></button>
+                </li>
               </ul>
 
             </div>
 
-            <ul class="products-filter__box box-filter">
-              <li class="box-filter__item">
-                <button class="box-filter__btn box-filter__btn--pos-one active" type="button"></button>
-              </li>
-
-              <li class="box-filter__item">
-                <button class="box-filter__btn box-filter__btn--pos-two" type="button"></button>
-              </li>
-            </ul>
-
+            <div class="products"></div>
           </div>
-
-          <div class="products"></div>
         </div>
       </section>
 

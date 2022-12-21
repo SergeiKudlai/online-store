@@ -65,7 +65,7 @@ export class Product {
     </article
       `;
 
-      this.box ? this.box.insertAdjacentHTML('beforeend', ELEMENTS) : console.error('Отсутствует элемент');
+      this.box && this.box.insertAdjacentHTML('beforeend', ELEMENTS);
     });
   }
 }

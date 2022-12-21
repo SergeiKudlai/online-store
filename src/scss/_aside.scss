@@ -23,7 +23,11 @@
   padding: 0 2rem 0 2rem;
   font-weight: 400;
   cursor: pointer;
-  
+  transition: opacity 0.5s ease-in-out;
+
+  &:hover {
+    opacity: 0.5;
+  }
 }
 
 .main-tittle {
@@ -33,38 +37,59 @@
 .dropbtn-style {
   font-size: 16px;
   cursor: pointer;
+  transition: transform 0.5s ease-in-out;
+  transform: rotate(180deg);
 }
 
 .dropdown-content {
-  display: block;
   width: 30rem;
-  overflow: auto;
+  overflow: hidden;
   border: 1px solid #c1c1c1;
   border-radius: 0 0 6px 6px;
-  transition:  0.5s ease-in-out;
-  opacity: 1;
-}
 
-.dropdown-content a {
-  padding: 12px 16px;
-  display: block;
+  &__link,
+  &__link-brend {
+    display: block;
+    transition: height 0.5s ease-in;
+    transition: padding 0.5s ease-in;
+    padding: 12px 16px;
+    height: 100%;
+
+    &.show {
+      transition: height 0.5s ease-in;
+      transition: padding 0.5s ease-in;
+      height: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+  }
 }
 
 .dropdown-content a:hover {
   background-color: #f1eeee;
 }
 
-.show {
-  opacity: 0;
-  display: none;
-}
-
 // price style
 .dropdown-active-price {
   height: 100%;
   padding: 1rem;
+  transition: height 0.5s ease-in-out;
+
+  &.show {
+    transition: padding 0.5s ease-in-out;
+    padding: 0;
+
+    .price-input {
+      transition: height 0.5s ease-in-out;
+      transition: margin 0.5s ease-in-out;
+      height: 0;
+      margin: 0;
+    }
+  }
 }
 .price-input {
+  transition: height 0.5s ease-in-out;
+  transition: margin 0.5s ease-in-out;
   width: 100%;
   display: flex;
   margin: 30px 0 35px;

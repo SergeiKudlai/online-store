@@ -31,7 +31,12 @@ module.exports = ({ develop }) => ({
   plugins: [
     new CleanWebpackPlugin(),
     new HTMLWebpack({
-      template: './index.html'
+      template: './index.html',
+      filename: './index.html'
+    }),
+    new HTMLWebpack({
+      template: './cart.html',
+      filename: './cart.html'
     }),
     new CopyPlugin({
       patterns: [
