@@ -185,15 +185,17 @@ export function clickedFilters(): void {
     }
   }
 
-  BOX_FILTER_BTN[1].addEventListener('click', function (): void {
-    BOX_FILTER_BTN[0].classList.remove('active');
-    BOX_FILTER_BTN[1].classList.add('active');
-    BOX_PRODUCT?.classList.add('products--active');
-  });
+  if (BOX_FILTER_BTN.length !== 0) {
+    BOX_FILTER_BTN[1].addEventListener('click', function (): void {
+      BOX_FILTER_BTN[0].classList.remove('active');
+      BOX_FILTER_BTN[1].classList.add('active');
+      BOX_PRODUCT?.classList.add('products--active');
+    });
 
-  BOX_FILTER_BTN[0].addEventListener('click', function (): void {
-    BOX_FILTER_BTN[1].classList.remove('active');
-    BOX_FILTER_BTN[0].classList.add('active');
-    BOX_PRODUCT?.classList.remove('products--active');
-  });
+    BOX_FILTER_BTN[0].addEventListener('click', function (): void {
+      BOX_FILTER_BTN[1].classList.remove('active');
+      BOX_FILTER_BTN[0].classList.add('active');
+      BOX_PRODUCT?.classList.remove('products--active');
+    });
+  }
 }

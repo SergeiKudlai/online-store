@@ -6,6 +6,14 @@
     width: 100%;
     background-color: var(--green);
     margin-bottom: 2rem;
+
+    &__title {
+        flex: 1 1 auto;
+        text-align: center;
+        font-weight: 700;
+        font-size: 3rem;
+        color: var(--white);
+    }
 }
 .container-block {
     width: 123rem;
@@ -14,6 +22,7 @@
     align-items: center;
 }
 .container_logo {
+    display: block;
     cursor: pointer;
 }
 .search_wrapper {
