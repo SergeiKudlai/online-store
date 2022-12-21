@@ -1,4 +1,5 @@
 import { IDATA } from './interface';
+import { Cart } from './cart';
 
 export function getClickCounter() {
   document.addEventListener('click', (e: Event): void => {
@@ -8,6 +9,7 @@ export function getClickCounter() {
       ELEM.hasAttribute('data-minus') && setMinusCounter(ELEM);
       ELEM.hasAttribute('data-plus') && setPlusCounter(ELEM);
       ELEM.hasAttribute('data-card') && createObjectCard(ELEM);
+      ELEM.hasAttribute('data-remove') && setRemoveCart();
     }
   });
 
@@ -31,6 +33,7 @@ export function getClickCounter() {
         }
       }
     }
+    setSumCart();
   }
 
   /* count- */
@@ -43,6 +46,7 @@ export function getClickCounter() {
       if (CURRENT_NUMBER) {
         if (CURRENT_NUMBER.textContent === '1') {
           getValidCart(CURRENT_NUMBER);
+          setSumCart();
           return;
         }
 
@@ -57,6 +61,25 @@ export function getClickCounter() {
           getTotalPrice(dataNum, BOX_ELEMENT);
         }
       }
+    }
+    setSumCart();
+  }
+
+  function setSumCart() {
+    const DATA_LOCAL_STORAGE = localStorage.getItem('card');
+
+    if (DATA_LOCAL_STORAGE) {
+      const RESPONSE_DATA = JSON.parse(DATA_LOCAL_STORAGE);
+      const CART = new Cart(RESPONSE_DATA);
+
+      const RESULT_SUM = RESPONSE_DATA.reduce((acc: number, value: IDATA) => Number(value.amount) + acc, 0);
+
+      const RESULT_PRICE = RESPONSE_DATA.map((value: IDATA) => Number(value.amount) * value.price).reduce(
+        (acc: number, value: number) => acc + value,
+        0
+      );
+
+      CART.addCartIngo(RESULT_SUM, RESULT_PRICE);
     }
   }
 
@@ -158,6 +181,16 @@ export function getClickCounter() {
       });
 
       localStorage.setItem('card', JSON.stringify(result));
+    }
+  }
+
+  function setRemoveCart() {
+    localStorage.removeItem('card');
+    const BOX_PRODUCT = document.querySelector('.cart__product');
+    const BOX_INFO = document.querySelector('.info');
+    if (BOX_PRODUCT && BOX_INFO) {
+      BOX_PRODUCT.innerHTML = '';
+      BOX_INFO.innerHTML = 'Корзина пуста';
     }
   }
 }
