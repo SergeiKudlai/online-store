@@ -79,6 +79,8 @@ export function clickedFilters(): void {
 
     if (PRODUCT.box) PRODUCT.box.innerHTML = '';
     PRODUCT.render();
+    rangeMi('.range-min')
+    rangeMa('.range-max')
   });
 
   magagaskar?.addEventListener('click', (): void => {
@@ -87,6 +89,8 @@ export function clickedFilters(): void {
 
     if (PRODUCT.box) PRODUCT.box.innerHTML = '';
     PRODUCT.render();
+    rangeMi('.range-min')
+    rangeMa('.range-max')
   });
 
   CaffeSalomoni?.addEventListener('click', (): void => {
@@ -95,6 +99,8 @@ export function clickedFilters(): void {
 
     if (PRODUCT.box) PRODUCT.box.innerHTML = '';
     PRODUCT.render();
+    rangeMi('.range-min')
+    rangeMa('.range-max')
   });
 
   candy?.addEventListener('click', (): void => {
@@ -103,6 +109,8 @@ export function clickedFilters(): void {
 
     if (PRODUCT.box) PRODUCT.box.innerHTML = '';
     PRODUCT.render();
+    rangeMi('.range-min')
+    rangeMa('.range-max')
   });
 
   pepsiCola?.addEventListener('click', (): void => {
@@ -111,6 +119,8 @@ export function clickedFilters(): void {
 
     if (PRODUCT.box) PRODUCT.box.innerHTML = '';
     PRODUCT.render();
+    rangeMi('.range-min')
+    rangeMa('.range-max')
   });
   bonaqua?.addEventListener('click', (): void => {
     const RESULT = DATA.filter((value) => value.brand === 'Bonaqua');
@@ -126,6 +136,8 @@ export function clickedFilters(): void {
 
     if (PRODUCT.box) PRODUCT.box.innerHTML = '';
     PRODUCT.render();
+    rangeMi('.range-min')
+    rangeMa('.range-max')
   });
 
   rocs?.addEventListener('click', (): void => {
@@ -134,6 +146,8 @@ export function clickedFilters(): void {
 
     if (PRODUCT.box) PRODUCT.box.innerHTML = '';
     PRODUCT.render();
+    rangeMi('.range-min')
+    rangeMa('.range-max')
   });
 
   //btn
@@ -142,6 +156,8 @@ export function clickedFilters(): void {
   BTN_PRICE_MAX?.addEventListener('click', (): void => setSortMax('.products__price'));
   BTN_RAITING_MAX?.addEventListener('click', (): void => setSortMax('.raiting__num'));
   BTN_RAITING_MIN?.addEventListener('click', (): void => setSortMin('.raiting__num'));
+  RANGEMIN?.addEventListener('input', (): void => rangeMi('.range-min'));
+  RANGEMAX?.addEventListener('input', (): void => rangeMa('.range-max'));
 
   function setAvailability(): void {
     if (BOX_PRODUCT) {
@@ -202,28 +218,37 @@ export function clickedFilters(): void {
     });
   }
 
-  RANGEMIN?.addEventListener('input', () => {
-    const INPUTMIN = document.querySelector('.input-min') as HTMLInputElement
-    const INPUTMAX = document.querySelector('.input-max') as HTMLInputElement
-     // INPUTMIN.value выводит мин
-     // INPUTMAX.value выводит макс
-    
-    const RESULT = DATA.filter((value) => Number(value.price) <= Number(INPUTMAX.value) && Number(value.price) >= Number(INPUTMIN.value));
-    const PRODUCT = new Product(RESULT);
+  function rangeMi(value: string): void {
+    if (BOX_PRODUCT) {
+      for (let i = 0; i < BOX_PRODUCT.children.length; i++) {
+        const INPUTMIN = document.querySelector('.input-min') as HTMLInputElement
+        const INPUTMAX = document.querySelector('.input-max') as HTMLInputElement
+        let n = Number(BOX_PRODUCT.children[i].querySelector('.products__price')?.textContent)
+        
+        if (n <= Number(INPUTMAX.value) && n >= Number(INPUTMIN.value)) {
+          (BOX_PRODUCT.children[i] as HTMLElement).style.display = "block" 
+        } else {
+          (BOX_PRODUCT.children[i] as HTMLElement).style.display = "none" 
+        }
+      }
+    }
+  }
 
-    if (PRODUCT.box) PRODUCT.box.innerHTML = '';
-    PRODUCT.render();
-  })
-  RANGEMAX?.addEventListener('input', () => {
-    const INPUTMIN = document.querySelector('.input-min') as HTMLInputElement
-    const INPUTMAX = document.querySelector('.input-max') as HTMLInputElement
-     // INPUTMIN.value выводит мин
-     // INPUTMAX.value выводит макс
-    
-    const RESULT = DATA.filter((value) => Number(value.price) <= Number(INPUTMAX.value) && Number(value.price) >= Number(INPUTMIN.value));
-    const PRODUCT = new Product(RESULT);
+  function rangeMa(value: string): void {
+    if (BOX_PRODUCT) {
+      for (let i = 0; i < BOX_PRODUCT.children.length; i++) {
+        const INPUTMIN = document.querySelector('.input-min') as HTMLInputElement
+        const INPUTMAX = document.querySelector('.input-max') as HTMLInputElement
+        let n = Number(BOX_PRODUCT.children[i].querySelector('.products__price')?.textContent)
+        
+        if (n <= Number(INPUTMAX.value) && n >= Number(INPUTMIN.value)) {
+          (BOX_PRODUCT.children[i] as HTMLElement).style.display = "block" 
+        } else {
+          (BOX_PRODUCT.children[i] as HTMLElement).style.display = "none" 
+        }
+      }
+    }
+  }
 
-    if (PRODUCT.box) PRODUCT.box.innerHTML = '';
-    PRODUCT.render();
-  })
+  
 }

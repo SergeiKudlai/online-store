@@ -222,7 +222,7 @@ export const DATA: IDATA[] = [
     brand: 'Бабушкина грядка',
     raiting: 4.3,
   },
-  { id: 2, name: 'Ананас, 1кг', img: pineapple, price: 560, availability: true, brand: 'Мадагаскар', raiting: 4.0 },
+  { id: 2, name: 'Ананас, 1кг', img: pineapple, price: 450 , availability: true, brand: 'Мадагаскар', raiting: 4.0 },
   {
     id: 1,
     name: 'Напиток LIFELINE Intellectual со вкусом арбуза и яблока Фонте Аква 0.5 л',
