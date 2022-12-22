@@ -86,3 +86,10 @@ body {
 		}
 	}
 }
+
+.pagination {
+	padding: 0 2rem;
+	display: flex;
+	justify-content: space-between;
+	border: 1px solid var(--border-card);
+}

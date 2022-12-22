@@ -3,10 +3,12 @@ import { IDATA } from './interface';
 
 export class Cart extends Product {
   public info: HTMLElement | null;
+  public boxProduct: HTMLElement | null;
 
-  constructor(data: IDATA[], value = '.cart__product') {
+  constructor(data: IDATA[], value = '.product') {
     super(data, value);
     this.info = document.querySelector('.info');
+    this.boxProduct = document.querySelector('.cart__product');
   }
 
   addCartIngo(value: number, price: number) {
@@ -49,6 +51,17 @@ export class Cart extends Product {
   }
 
   render(): void {
+    const PAGINATION = `
+      <div class="pagination">
+        <label for="control">
+          Количество:
+          <input class="pagination__control" type="text" id="control" value="3">
+        </label>
+
+        <ul class="pagination__list"></ul>
+      </div>
+    `;
+
     this.data.forEach((value): void => {
       const { img, name, price, id, raiting, amount } = value;
 
@@ -101,8 +114,8 @@ export class Cart extends Product {
           </div>
         </article
           `;
-
       this.box && this.box.insertAdjacentHTML('beforeend', ELEMENTS);
     });
+    this.boxProduct?.insertAdjacentHTML('beforeend', PAGINATION);
   }
 }

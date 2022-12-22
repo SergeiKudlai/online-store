@@ -5,6 +5,7 @@ import { Product } from './cards_product';
 import { getClickCounter } from './click_page';
 import { clickedFilters } from './click_filter';
 import { Cart } from './cart';
+import { setPaginationCart } from './pagination_cart';
 
 getClickCounter();
 clickAside();
@@ -34,3 +35,5 @@ window.addEventListener('load', (): void => {
   const CARD_INDEX = document.querySelector('.basket-set');
   if (DATA_LOCAL_STORAGE && CARD_INDEX) CARD_INDEX.textContent = String(JSON.parse(DATA_LOCAL_STORAGE).length);
 });
+
+setPaginationCart();
