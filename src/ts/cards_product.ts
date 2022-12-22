@@ -3,9 +3,9 @@ export class Product {
   public data: IDATA[];
   public box: HTMLElement | null;
 
-  constructor(data: IDATA[]) {
+  constructor(data: IDATA[], box = '.products') {
     this.data = data;
-    this.box = document.querySelector('.products');
+    this.box = document.querySelector(box);
   }
 
   render(): void {
