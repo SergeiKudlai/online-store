@@ -1,5 +1,6 @@
 import { IDATA } from './interface';
 import { Cart } from './cart';
+import { setPaginationCart } from './pagination_cart';
 
 export function getClickCounter() {
   document.addEventListener('click', (e: Event): void => {
@@ -47,6 +48,7 @@ export function getClickCounter() {
         if (CURRENT_NUMBER.textContent === '1') {
           getValidCart(CURRENT_NUMBER);
           setSumCart();
+          setPaginationCart();
           return;
         }
 

@@ -3,15 +3,17 @@ import { IDATA } from './interface';
 
 export class Cart extends Product {
   public info: HTMLElement | null;
-  public boxProduct: HTMLElement | null;
+  public controlBox: HTMLElement | null;
+  public pagination_list: HTMLElement | null;
 
   constructor(data: IDATA[], value = '.product') {
     super(data, value);
     this.info = document.querySelector('.info');
-    this.boxProduct = document.querySelector('.cart__product');
+    this.controlBox = document.querySelector('.pagination');
+    this.pagination_list = document.querySelector('.pagination__list');
   }
 
-  addCartIngo(value: number, price: number) {
+  addCartIngo(value: number, price: number): void {
     if (this.info) this.info.innerHTML = '';
 
     const TITLE = document.createElement('h3');
@@ -50,17 +52,29 @@ export class Cart extends Product {
     this.info?.append(BTN_REMOVE);
   }
 
-  render(): void {
-    const PAGINATION = `
-      <div class="pagination">
-        <label for="control">
-          Количество:
-          <input class="pagination__control" type="text" id="control" value="3">
-        </label>
+  addInputCart(): void {
+    const EL_LABEL = document.createElement('label');
+    EL_LABEL.setAttribute('for', 'amount');
+    EL_LABEL.className = 'pagination__name';
+    EL_LABEL.textContent = 'Введите количетсво строк:';
 
-        <ul class="pagination__list"></ul>
-      </div>
-    `;
+    const EL_IN = document.createElement('input');
+    EL_IN.className = 'pagination__control';
+    EL_IN.setAttribute('type', 'text');
+    EL_IN.setAttribute('value', '3');
+    EL_IN.setAttribute('id', 'amount');
+
+    this.controlBox?.append(EL_LABEL);
+    this.controlBox?.append(EL_IN);
+  }
+
+  addPaginationBtn(elem: HTMLElement): void {
+    if (this.pagination_list) this.pagination_list.remove();
+    this.controlBox?.append(elem);
+  }
+
+  render(): void {
+    if (this.box) this.box.innerHTML = '';
 
     this.data.forEach((value): void => {
       const { img, name, price, id, raiting, amount } = value;
@@ -116,6 +130,5 @@ export class Cart extends Product {
           `;
       this.box && this.box.insertAdjacentHTML('beforeend', ELEMENTS);
     });
-    this.boxProduct?.insertAdjacentHTML('beforeend', PAGINATION);
   }
 }

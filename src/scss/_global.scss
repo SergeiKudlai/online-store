@@ -88,8 +88,34 @@ body {
 }
 
 .pagination {
-	padding: 0 2rem;
 	display: flex;
 	justify-content: space-between;
-	border: 1px solid var(--border-card);
+	align-items: center;
+
+	&__name {
+		margin-right: 1rem;
+	}
+
+	&__control {
+		border: 1px solid black;
+		margin-right: auto;
+		max-width: 30px;
+		text-align: center;
+		border-radius: 5px;
+	}
+
+	&__list {
+		display: flex;
+	}
+
+	&__item {
+		border: 1px solid var(--border-card);
+		padding: 1rem;
+		cursor: pointer;
+		transition: transform 0.5s ease-in-out;
+
+		&:hover {
+			transform: scale(0.9);
+		}
+	}
 }

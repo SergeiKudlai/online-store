@@ -27,13 +27,13 @@ if (DATA_LOCAL_STORAGE) {
     0
   );
 
-  CART.render();
+  CART.addInputCart();
   CART.addCartIngo(RESULT_SUM, RESULT_PRICE);
 }
+
+setPaginationCart();
 
 window.addEventListener('load', (): void => {
   const CARD_INDEX = document.querySelector('.basket-set');
   if (DATA_LOCAL_STORAGE && CARD_INDEX) CARD_INDEX.textContent = String(JSON.parse(DATA_LOCAL_STORAGE).length);
 });
-
-setPaginationCart();
