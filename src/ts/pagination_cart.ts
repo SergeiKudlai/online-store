@@ -51,12 +51,42 @@ export function setPaginationCart() {
   displayPagination(DATA_PARSE, rows);
 
   const INPUT = document.querySelector('.pagination__control');
+  let position = 0;
 
   if (INPUT) {
     INPUT.addEventListener('change', (): void => {
       rows = Number((INPUT as HTMLInputElement).value);
       setDisplayList(DATA_PARSE, rows, currentPage);
       displayPagination(DATA_PARSE, rows);
+      position = 0;
     });
+  }
+
+  document.addEventListener('click', (e) => {
+    (e.target as HTMLElement).classList.contains('pagination__btn-prev') && calcWidthElement(false);
+    (e.target as HTMLElement).classList.contains('pagination__btn-next') && calcWidthElement(true);
+  });
+
+  function calcWidthElement(valid: boolean) {
+    const PAG_ELEM = document.querySelectorAll('.pagination__item');
+    const WIDTH_ELEM = (PAG_ELEM[0] as HTMLElement).offsetWidth;
+    const VALID_ARRAY = PAG_ELEM.length * WIDTH_ELEM - WIDTH_ELEM;
+
+    if (valid) {
+      if (position >= VALID_ARRAY) return;
+      position += WIDTH_ELEM;
+      setPositionElem();
+    }
+
+    if (!valid) {
+      if (position <= 0) return;
+      position -= WIDTH_ELEM;
+      setPositionElem();
+    }
+  }
+
+  function setPositionElem() {
+    const PAG_ELEM = document.querySelectorAll('.pagination__item');
+    PAG_ELEM.forEach((value) => ((value as HTMLElement).style.left = -position + 'px'));
   }
 }

@@ -4,13 +4,13 @@ import { IDATA } from './interface';
 export class Cart extends Product {
   public info: HTMLElement | null;
   public controlBox: HTMLElement | null;
-  public pagination_list: HTMLElement | null;
+  public pagination_inner: HTMLElement | null;
 
   constructor(data: IDATA[], value = '.product') {
     super(data, value);
     this.info = document.querySelector('.info');
     this.controlBox = document.querySelector('.pagination');
-    this.pagination_list = document.querySelector('.pagination__list');
+    this.pagination_inner = document.querySelector('.pagination__inner');
   }
 
   addCartIngo(value: number, price: number): void {
@@ -64,13 +64,25 @@ export class Cart extends Product {
     EL_IN.setAttribute('value', '3');
     EL_IN.setAttribute('id', 'amount');
 
-    this.controlBox?.append(EL_LABEL);
     this.controlBox?.append(EL_IN);
+    this.controlBox?.append(EL_LABEL);
   }
 
   addPaginationBtn(elem: HTMLElement): void {
-    if (this.pagination_list) this.pagination_list.remove();
-    this.controlBox?.append(elem);
+    if (this.pagination_inner) this.pagination_inner.innerHTML = '';
+    const BTN_NEXT = document.createElement('button');
+    BTN_NEXT.classList.add('pagination__btn');
+    BTN_NEXT.classList.add('pagination__btn-next');
+    BTN_NEXT.setAttribute('type', 'button');
+
+    const BTN_PREV = document.createElement('button');
+    BTN_PREV.classList.add('pagination__btn');
+    BTN_PREV.classList.add('pagination__btn-prev');
+    BTN_PREV.setAttribute('type', 'button');
+
+    this.pagination_inner?.append(BTN_PREV);
+    this.pagination_inner?.append(elem);
+    this.pagination_inner?.append(BTN_NEXT);
   }
 
   render(): void {
