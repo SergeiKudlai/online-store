@@ -29,6 +29,9 @@ export function clickedFilters(): void {
   const RANGEMIN = document.querySelector('.range-min');
   const RANGEMAX = document.querySelector('.range-max');
 
+  const INPUTMIN = document.querySelector('.input-min') as HTMLInputElement
+  const INPUTMAX = document.querySelector('.input-max') as HTMLInputElement
+
   START_FILTER?.addEventListener('click', (): void => {
     const PRODUCT = new Product(DATA);
     if (PRODUCT.box) PRODUCT.box.innerHTML = '';
@@ -158,6 +161,9 @@ export function clickedFilters(): void {
   BTN_RAITING_MIN?.addEventListener('click', (): void => setSortMin('.raiting__num'));
   RANGEMIN?.addEventListener('input', (): void => rangeMi('.range-min'));
   RANGEMAX?.addEventListener('input', (): void => rangeMa('.range-max'));
+  INPUTMIN?.addEventListener('input', (): void => rangeMi('.range-min'));
+  INPUTMAX?.addEventListener('input', (): void => rangeMa('.range-max'));
+
 
   function setAvailability(): void {
     if (BOX_PRODUCT) {
@@ -221,12 +227,10 @@ export function clickedFilters(): void {
   function rangeMi(value: string): void {
     if (BOX_PRODUCT) {
       for (let i = 0; i < BOX_PRODUCT.children.length; i++) {
-        const INPUTMIN = document.querySelector('.input-min') as HTMLInputElement
-        const INPUTMAX = document.querySelector('.input-max') as HTMLInputElement
         let n = Number(BOX_PRODUCT.children[i].querySelector('.products__price')?.textContent)
         
         if (n <= Number(INPUTMAX.value) && n >= Number(INPUTMIN.value)) {
-          (BOX_PRODUCT.children[i] as HTMLElement).style.display = "block" 
+          (BOX_PRODUCT.children[i] as HTMLElement).style.display = "" 
         } else {
           (BOX_PRODUCT.children[i] as HTMLElement).style.display = "none" 
         }
@@ -237,12 +241,9 @@ export function clickedFilters(): void {
   function rangeMa(value: string): void {
     if (BOX_PRODUCT) {
       for (let i = 0; i < BOX_PRODUCT.children.length; i++) {
-        const INPUTMIN = document.querySelector('.input-min') as HTMLInputElement
-        const INPUTMAX = document.querySelector('.input-max') as HTMLInputElement
         let n = Number(BOX_PRODUCT.children[i].querySelector('.products__price')?.textContent)
-        
         if (n <= Number(INPUTMAX.value) && n >= Number(INPUTMIN.value)) {
-          (BOX_PRODUCT.children[i] as HTMLElement).style.display = "block" 
+          (BOX_PRODUCT.children[i] as HTMLElement).style.display = "" 
         } else {
           (BOX_PRODUCT.children[i] as HTMLElement).style.display = "none" 
         }
