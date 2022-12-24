@@ -52,6 +52,7 @@
   padding-top: 1rem;
   padding-bottom: 1rem;
   border: 1px solid var(--border-card);
+  margin-bottom: 1rem;
 
   &__title {
     font-weight: 700;
@@ -80,5 +81,24 @@
       background-color: transparent;
       border: 1px solid var(--green-100);
     }
+  }
+}
+
+.promo {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  border: 1px solid var(--border-card);
+  padding: 1rem;
+
+  &__text {
+    margin-bottom: 1rem;
+  }
+
+  &__input {
+    align-self: center;
+    border: 1px solid var(--border-card);
+    border-radius: 5px;
+    padding: 0 1rem;
   }
 }

@@ -27,11 +27,23 @@ if (DATA_LOCAL_STORAGE) {
     0
   );
 
+  localStorage.setItem('sum', JSON.stringify(RESULT_PRICE));
+
   CART.addInputCart();
   CART.addCartIngo(RESULT_SUM, RESULT_PRICE);
+  CART.addCartPromo();
+  getAddHeaderPrice();
 }
 
 setPaginationCart();
+
+function getAddHeaderPrice() {
+  const HEADER_TOTAL_PRICE = document.querySelector('.header__amount');
+  const ADD_LOCAL_PRIVE = localStorage.getItem('sum');
+  if (ADD_LOCAL_PRIVE && HEADER_TOTAL_PRICE) {
+    (HEADER_TOTAL_PRICE as HTMLElement).textContent = ADD_LOCAL_PRIVE;
+  }
+}
 
 window.addEventListener('load', (): void => {
   const CARD_INDEX = document.querySelector('.basket-set');

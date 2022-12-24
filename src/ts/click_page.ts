@@ -35,6 +35,7 @@ export function getClickCounter() {
       }
     }
     setSumCart();
+    getAddHeaderPrice();
   }
 
   /* count- */
@@ -65,6 +66,15 @@ export function getClickCounter() {
       }
     }
     setSumCart();
+    getAddHeaderPrice();
+  }
+
+  function getAddHeaderPrice() {
+    const HEADER_TOTAL_PRICE = document.querySelector('.header__amount');
+    const ADD_LOCAL_PRIVE = localStorage.getItem('sum');
+    if (ADD_LOCAL_PRIVE && HEADER_TOTAL_PRICE) {
+      (HEADER_TOTAL_PRICE as HTMLElement).textContent = ADD_LOCAL_PRIVE;
+    }
   }
 
   function setSumCart() {
@@ -81,32 +91,40 @@ export function getClickCounter() {
         0
       );
 
-      CART.addCartIngo(RESULT_SUM, RESULT_PRICE);
+      localStorage.setItem('sum', JSON.stringify(RESULT_PRICE));
+
+      const SUM_LOCAL = localStorage.getItem('sum');
+
+      if (SUM_LOCAL) CART.addCartIngo(RESULT_SUM, +SUM_LOCAL);
+      getAddHeaderPrice();
     }
   }
 
   /* create cart element */
-  function createObjectCard(data: HTMLButtonElement): void {
-    const BOX_ELEMENT = data.closest('.products__box');
+  function createObjectCard(data?: HTMLButtonElement): void {
+    if (data) {
+      const BOX_ELEMENT = data.closest('.products__box');
 
-    if (BOX_ELEMENT) {
-      const NAME = BOX_ELEMENT.querySelector('.products__title-link')?.textContent;
-      const ID = Number((BOX_ELEMENT as HTMLElement).dataset.id);
-      const IMG = BOX_ELEMENT.querySelector('.products__img')?.getAttribute('src');
-      const PRICE = Number(BOX_ELEMENT.querySelector('.products__price')?.textContent);
-      const AMOUNT = BOX_ELEMENT.querySelector('[data-num]')?.textContent;
-      const RATING = Number(BOX_ELEMENT.querySelector('.raiting__num')?.textContent);
+      if (BOX_ELEMENT) {
+        const NAME = BOX_ELEMENT.querySelector('.products__title-link')?.textContent;
+        const ID = Number((BOX_ELEMENT as HTMLElement).dataset.id);
+        const IMG = BOX_ELEMENT.querySelector('.products__img')?.getAttribute('src');
+        const PRICE = Number(BOX_ELEMENT.querySelector('.products__price')?.textContent);
+        const AMOUNT = BOX_ELEMENT.querySelector('[data-num]')?.textContent;
+        const RATING = Number(BOX_ELEMENT.querySelector('.raiting__num')?.textContent);
 
-      if (NAME && ID && IMG && PRICE && AMOUNT && RATING) {
-        const CARD: IDATA = {
-          id: ID,
-          name: NAME,
-          img: IMG,
-          price: PRICE,
-          amount: AMOUNT,
-          raiting: RATING,
-        };
-        setAddCardLocalStorage(CARD);
+        if (NAME && ID && IMG && PRICE && AMOUNT && RATING) {
+          const CARD: IDATA = {
+            id: ID,
+            name: NAME,
+            img: IMG,
+            price: PRICE,
+            amount: AMOUNT,
+            raiting: RATING,
+          };
+          setAddCardLocalStorage(CARD);
+          setSumCart();
+        }
       }
     }
   }
@@ -188,10 +206,13 @@ export function getClickCounter() {
 
   function setRemoveCart() {
     localStorage.removeItem('card');
+    localStorage.removeItem('sum');
     const BOX_PRODUCT = document.querySelector('.cart__product');
     const BOX_INFO = document.querySelector('.info');
-    if (BOX_PRODUCT && BOX_INFO) {
+    const BOX_PROMO = document.querySelector('.promo');
+    if (BOX_PRODUCT && BOX_INFO && BOX_PROMO) {
       BOX_PRODUCT.innerHTML = '';
+      BOX_PROMO.innerHTML = '';
       BOX_INFO.innerHTML = 'Корзина пуста';
     }
   }

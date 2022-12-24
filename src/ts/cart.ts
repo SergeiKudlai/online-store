@@ -5,12 +5,31 @@ export class Cart extends Product {
   public info: HTMLElement | null;
   public controlBox: HTMLElement | null;
   public pagination_inner: HTMLElement | null;
+  public box_promo: HTMLElement | null;
 
   constructor(data: IDATA[], value = '.product') {
     super(data, value);
     this.info = document.querySelector('.info');
     this.controlBox = document.querySelector('.pagination');
     this.pagination_inner = document.querySelector('.pagination__inner');
+    this.box_promo = document.querySelector('.promo');
+  }
+
+  addCartPromo() {
+    const LAB_EL = document.createElement('label');
+    LAB_EL.className = 'promo__text';
+    LAB_EL.textContent = 'Введите промо код';
+    LAB_EL.setAttribute('for', 'promo');
+
+    const IN_EL = document.createElement('input');
+    IN_EL.className = 'promo__input';
+    IN_EL.setAttribute('type', 'text');
+    IN_EL.setAttribute('id', 'promo');
+    IN_EL.setAttribute('name', 'promo');
+    IN_EL.setAttribute('placeholder', 'Введите промо');
+
+    this.box_promo?.append(LAB_EL);
+    this.box_promo?.append(IN_EL);
   }
 
   addCartIngo(value: number, price: number): void {
