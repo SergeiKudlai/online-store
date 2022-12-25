@@ -71,11 +71,20 @@
     padding-left: 1rem;
   }
 
-  &__btn-remove {
+  &__btn-remove,
+  &__btn-order {
+    max-width: 50%;
+    width: 100%;
     padding: 1rem;
+    display: block;
     background-color: var(--green-100);
     border: 1px solid transparent;
     transition: all 0.5s ease-in-out;
+    margin: 0 auto;
+
+    &:not(:last-child) {
+      margin-bottom: 1rem;
+    }
 
     &:hover {
       background-color: transparent;
@@ -90,15 +99,24 @@
   text-align: center;
   border: 1px solid var(--border-card);
   padding: 1rem;
-
-  &__text {
-    margin-bottom: 1rem;
-  }
+  row-gap: 1rem;
 
   &__input {
     align-self: center;
     border: 1px solid var(--border-card);
     border-radius: 5px;
     padding: 0 1rem;
+  }
+
+  &__btn {
+    padding: 1rem;
+    background-color: var(--green-100);
+    border: 1px solid transparent;
+    transition: all 0.5s ease-in-out;
+
+    &:hover {
+      background-color: transparent;
+      border: 1px solid var(--green-100);
+    }
   }
 }

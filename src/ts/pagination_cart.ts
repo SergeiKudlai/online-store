@@ -41,7 +41,12 @@ export function setPaginationCart() {
 
     LI_EL.addEventListener('click', (): void => {
       currentPage = page;
-      setDisplayList(DATA_PARSE, rows, currentPage);
+
+      const DATA_LOCAL_STORAGE = localStorage.getItem('card');
+      if (DATA_LOCAL_STORAGE) {
+        const DATA_PARSE = JSON.parse(DATA_LOCAL_STORAGE);
+        setDisplayList(DATA_PARSE, rows, currentPage);
+      }
     });
 
     return LI_EL;

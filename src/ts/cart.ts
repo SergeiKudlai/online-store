@@ -15,6 +15,21 @@ export class Cart extends Product {
     this.box_promo = document.querySelector('.promo');
   }
 
+  addSalePromo(value: string) {
+    const SPAN_EL = document.createElement('span');
+    SPAN_EL.className = 'promo__sale-text';
+    SPAN_EL.textContent = `Ваша Скидка ${value}%`;
+
+    const BTN_EL = document.createElement('button');
+    BTN_EL.className = 'promo__btn';
+    BTN_EL.textContent = 'Отменить скидку';
+    BTN_EL.setAttribute('type', 'button');
+    BTN_EL.setAttribute('data-sale', value);
+
+    this.box_promo?.append(SPAN_EL);
+    this.box_promo?.append(BTN_EL);
+  }
+
   addCartPromo() {
     const LAB_EL = document.createElement('label');
     LAB_EL.className = 'promo__text';
@@ -27,6 +42,7 @@ export class Cart extends Product {
     IN_EL.setAttribute('id', 'promo');
     IN_EL.setAttribute('name', 'promo');
     IN_EL.setAttribute('placeholder', 'Введите промо');
+    IN_EL.setAttribute('required', '');
 
     this.box_promo?.append(LAB_EL);
     this.box_promo?.append(IN_EL);
@@ -36,7 +52,7 @@ export class Cart extends Product {
     if (this.info) this.info.innerHTML = '';
 
     const TITLE = document.createElement('h3');
-    TITLE.textContent = 'Информация о товаре';
+    TITLE.textContent = 'Информация о корзине:';
     TITLE.className = 'info__title';
     this.info?.append(TITLE);
 
@@ -69,6 +85,14 @@ export class Cart extends Product {
     BTN_REMOVE.textContent = 'Очистить корзину';
 
     this.info?.append(BTN_REMOVE);
+
+    const BTN_ORDER = document.createElement('button');
+    BTN_ORDER.className = 'info__btn-order';
+    BTN_ORDER.setAttribute('type', 'button');
+    BTN_ORDER.setAttribute('data-order', '');
+    BTN_ORDER.textContent = 'Оформить заказ';
+
+    this.info?.append(BTN_ORDER);
   }
 
   addInputCart(): void {

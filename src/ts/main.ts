@@ -1,4 +1,5 @@
 import { IDATA } from './interface';
+import { validPromo } from './enum';
 import { DATA } from './data';
 import { clickAside } from './asidemenu';
 import { Product } from './cards_product';
@@ -22,17 +23,56 @@ if (DATA_LOCAL_STORAGE) {
 
   const RESULT_SUM = RESPONSE_DATA.reduce((acc: number, value: IDATA) => Number(value.amount) + acc, 0);
 
-  const RESULT_PRICE = RESPONSE_DATA.map((value: IDATA) => Number(value.amount) * value.price).reduce(
+  const RESULT_PRICE: number = RESPONSE_DATA.map((value: IDATA) => Number(value.amount) * value.price).reduce(
     (acc: number, value: number) => acc + value,
     0
   );
-
-  localStorage.setItem('sum', JSON.stringify(RESULT_PRICE));
 
   CART.addInputCart();
   CART.addCartIngo(RESULT_SUM, RESULT_PRICE);
   CART.addCartPromo();
   getAddHeaderPrice();
+
+  const VALID_PROMO_10 = localStorage.getItem('valid-10');
+
+  if (VALID_PROMO_10) {
+    const DATA_VALID = JSON.parse(VALID_PROMO_10);
+    DATA_VALID && CART.addSalePromo('10');
+  }
+
+  const VALID_PROMO_20 = localStorage.getItem('valid-20');
+
+  if (VALID_PROMO_20) {
+    const DATA_VALID = JSON.parse(VALID_PROMO_20);
+    DATA_VALID && CART.addSalePromo('20');
+  }
+
+  const PROMO_IN = document.querySelector('.promo__input');
+
+  if (PROMO_IN) {
+    PROMO_IN.addEventListener('change', () => {
+      const PROMO_VALUE = (PROMO_IN as HTMLInputElement).value;
+
+      const VALID_PROMO_10 = localStorage.getItem('valid-10');
+
+      if (PROMO_VALUE === validPromo.sale_10) {
+        if (!VALID_PROMO_10) {
+          localStorage.setItem('valid-10', JSON.stringify(true));
+          CART.addSalePromo('10');
+          CART.addCartIngo(RESULT_SUM, RESULT_PRICE);
+        }
+      }
+
+      const VALID_PROMO_20 = localStorage.getItem('valid-20');
+
+      if (PROMO_VALUE === validPromo.sale_20) {
+        if (!VALID_PROMO_20) {
+          localStorage.setItem('valid-20', JSON.stringify(true));
+          CART.addSalePromo('20');
+        }
+      }
+    });
+  }
 }
 
 setPaginationCart();

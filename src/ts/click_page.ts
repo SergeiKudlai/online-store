@@ -1,4 +1,5 @@
 import { IDATA } from './interface';
+import { validPromo } from './enum';
 import { Cart } from './cart';
 import { setPaginationCart } from './pagination_cart';
 
@@ -11,6 +12,7 @@ export function getClickCounter() {
       ELEM.hasAttribute('data-plus') && setPlusCounter(ELEM);
       ELEM.hasAttribute('data-card') && createObjectCard(ELEM);
       ELEM.hasAttribute('data-remove') && setRemoveCart();
+      ELEM.hasAttribute('data-sale') && setRemoveDiscount(ELEM);
     }
   });
 
@@ -50,6 +52,7 @@ export function getClickCounter() {
           getValidCart(CURRENT_NUMBER);
           setSumCart();
           setPaginationCart();
+          getRemovePageCartProduct();
           return;
         }
 
@@ -65,6 +68,7 @@ export function getClickCounter() {
         }
       }
     }
+
     setSumCart();
     getAddHeaderPrice();
   }
@@ -74,6 +78,8 @@ export function getClickCounter() {
     const ADD_LOCAL_PRIVE = localStorage.getItem('sum');
     if (ADD_LOCAL_PRIVE && HEADER_TOTAL_PRICE) {
       (HEADER_TOTAL_PRICE as HTMLElement).textContent = ADD_LOCAL_PRIVE;
+    } else {
+      (HEADER_TOTAL_PRICE as HTMLElement).textContent = '0';
     }
   }
 
@@ -96,6 +102,7 @@ export function getClickCounter() {
       const SUM_LOCAL = localStorage.getItem('sum');
 
       if (SUM_LOCAL) CART.addCartIngo(RESULT_SUM, +SUM_LOCAL);
+
       getAddHeaderPrice();
     }
   }
@@ -122,6 +129,7 @@ export function getClickCounter() {
             amount: AMOUNT,
             raiting: RATING,
           };
+
           setAddCardLocalStorage(CARD);
           setSumCart();
         }
@@ -204,16 +212,37 @@ export function getClickCounter() {
     }
   }
 
+  function getRemovePageCartProduct() {
+    const PRODUCT_BOX = document.querySelector('.product');
+
+    if (PRODUCT_BOX) {
+      PRODUCT_BOX.children.length === 0 && setRemoveCart();
+    }
+  }
+
   function setRemoveCart() {
     localStorage.removeItem('card');
     localStorage.removeItem('sum');
+
     const BOX_PRODUCT = document.querySelector('.cart__product');
     const BOX_INFO = document.querySelector('.info');
     const BOX_PROMO = document.querySelector('.promo');
+
     if (BOX_PRODUCT && BOX_INFO && BOX_PROMO) {
       BOX_PRODUCT.innerHTML = '';
       BOX_PROMO.innerHTML = '';
       BOX_INFO.innerHTML = 'Корзина пуста';
     }
+
+    getAddHeaderPrice();
+  }
+
+  function setRemoveDiscount(elem: HTMLButtonElement) {
+    const NUM_BTN = elem.dataset.sale;
+    const BOX_PROMO = elem.closest('.promo');
+    const TEXT = BOX_PROMO?.querySelector('.promo__sale-text');
+    TEXT?.remove();
+    elem.remove();
+    localStorage.removeItem(`valid-${NUM_BTN}`);
   }
 }
