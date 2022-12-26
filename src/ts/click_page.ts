@@ -1,7 +1,8 @@
 import { IDATA } from './interface';
-import { validPromo } from './enum';
 import { Cart } from './cart';
 import { setPaginationCart } from './pagination_cart';
+import { setAddPageDiscount } from './discount';
+import { getDataRetrieval, getSumDiscount, getSumTotalDiscount, getValidDiscount } from './data_retrieval';
 
 export function getClickCounter() {
   document.addEventListener('click', (e: Event): void => {
@@ -36,8 +37,10 @@ export function getClickCounter() {
         }
       }
     }
+
     setSumCart();
     getAddHeaderPrice();
+    setAddPageDiscount(getDataRetrieval());
   }
 
   /* count- */
@@ -71,6 +74,7 @@ export function getClickCounter() {
 
     setSumCart();
     getAddHeaderPrice();
+    setAddPageDiscount(getDataRetrieval());
   }
 
   function getAddHeaderPrice() {
@@ -84,27 +88,21 @@ export function getClickCounter() {
   }
 
   function setSumCart() {
-    const DATA_LOCAL_STORAGE = localStorage.getItem('card');
+    const CART = new Cart(getDataRetrieval());
 
-    if (DATA_LOCAL_STORAGE) {
-      const RESPONSE_DATA = JSON.parse(DATA_LOCAL_STORAGE);
-      const CART = new Cart(RESPONSE_DATA);
+    const RESULT_SUM = getDataRetrieval().reduce((acc: number, value: IDATA) => Number(value.amount) + acc, 0);
 
-      const RESULT_SUM = RESPONSE_DATA.reduce((acc: number, value: IDATA) => Number(value.amount) + acc, 0);
+    const RESULT_PRICE = getDataRetrieval()
+      .map((value: IDATA) => Number(value.amount) * value.price)
+      .reduce((acc: number, value: number) => acc + value, 0);
 
-      const RESULT_PRICE = RESPONSE_DATA.map((value: IDATA) => Number(value.amount) * value.price).reduce(
-        (acc: number, value: number) => acc + value,
-        0
-      );
+    localStorage.setItem('sum', JSON.stringify(RESULT_PRICE));
 
-      localStorage.setItem('sum', JSON.stringify(RESULT_PRICE));
+    const SUM_LOCAL = localStorage.getItem('sum');
 
-      const SUM_LOCAL = localStorage.getItem('sum');
+    if (SUM_LOCAL) CART.addCartIngo(RESULT_SUM, +SUM_LOCAL);
 
-      if (SUM_LOCAL) CART.addCartIngo(RESULT_SUM, +SUM_LOCAL);
-
-      getAddHeaderPrice();
-    }
+    getAddHeaderPrice();
   }
 
   /* create cart element */
@@ -214,23 +212,21 @@ export function getClickCounter() {
 
   function getRemovePageCartProduct() {
     const PRODUCT_BOX = document.querySelector('.product');
-
-    if (PRODUCT_BOX) {
-      PRODUCT_BOX.children.length === 0 && setRemoveCart();
-    }
+    if (PRODUCT_BOX) PRODUCT_BOX.children.length === 0 && setRemoveCart();
   }
 
   function setRemoveCart() {
-    localStorage.removeItem('card');
-    localStorage.removeItem('sum');
+    localStorage.clear();
 
     const BOX_PRODUCT = document.querySelector('.cart__product');
     const BOX_INFO = document.querySelector('.info');
     const BOX_PROMO = document.querySelector('.promo');
+    const BOX_DISCOUNT = document.querySelector('.discount');
 
-    if (BOX_PRODUCT && BOX_INFO && BOX_PROMO) {
+    if (BOX_PRODUCT && BOX_INFO && BOX_PROMO && BOX_DISCOUNT) {
       BOX_PRODUCT.innerHTML = '';
       BOX_PROMO.innerHTML = '';
+      BOX_DISCOUNT.innerHTML = '';
       BOX_INFO.innerHTML = 'Корзина пуста';
     }
 
@@ -240,9 +236,22 @@ export function getClickCounter() {
   function setRemoveDiscount(elem: HTMLButtonElement) {
     const NUM_BTN = elem.dataset.sale;
     const BOX_PROMO = elem.closest('.promo');
-    const TEXT = BOX_PROMO?.querySelector('.promo__sale-text');
+    const TEXT = BOX_PROMO?.querySelector(`[data-discount="${NUM_BTN}"]`);
+    const VALID_STORAGE = localStorage.getItem('discount');
+
     TEXT?.remove();
     elem.remove();
+
     localStorage.removeItem(`valid-${NUM_BTN}`);
+
+    if (VALID_STORAGE && NUM_BTN) {
+      const ARR_DATA_DISCOUNT = JSON.parse(VALID_STORAGE);
+      const RESULT_ARR = ARR_DATA_DISCOUNT.filter((value: number) => value !== +NUM_BTN);
+
+      localStorage.setItem('discount', JSON.stringify(RESULT_ARR));
+
+      const CART = new Cart(getDataRetrieval());
+      CART.addDiscount(getSumDiscount(), getSumTotalDiscount(), getValidDiscount());
+    }
   }
 }

@@ -6,6 +6,7 @@ export class Cart extends Product {
   public controlBox: HTMLElement | null;
   public pagination_inner: HTMLElement | null;
   public box_promo: HTMLElement | null;
+  public box_discount: HTMLElement | null;
 
   constructor(data: IDATA[], value = '.product') {
     super(data, value);
@@ -13,12 +14,14 @@ export class Cart extends Product {
     this.controlBox = document.querySelector('.pagination');
     this.pagination_inner = document.querySelector('.pagination__inner');
     this.box_promo = document.querySelector('.promo');
+    this.box_discount = document.querySelector('.discount');
   }
 
   addSalePromo(value: string) {
     const SPAN_EL = document.createElement('span');
     SPAN_EL.className = 'promo__sale-text';
-    SPAN_EL.textContent = `Ваша Скидка ${value}%`;
+    SPAN_EL.setAttribute('data-discount', `${value}`);
+    SPAN_EL.textContent = `Скидка ${value}%`;
 
     const BTN_EL = document.createElement('button');
     BTN_EL.className = 'promo__btn';
@@ -30,10 +33,29 @@ export class Cart extends Product {
     this.box_promo?.append(BTN_EL);
   }
 
+  addDiscount(value = 0, total_sum: number, valid: boolean) {
+    if (this.box_discount) this.box_discount.innerHTML = '';
+
+    const P_EL = document.createElement('p');
+    P_EL.className = 'discount__text';
+    P_EL.textContent = `Ваша скидка: ${value}%`;
+
+    this.box_discount?.append(P_EL);
+
+    const SPAN_EL = document.createElement('span');
+    SPAN_EL.className = 'discount__info';
+
+    valid
+      ? (SPAN_EL.textContent = `Введите промокод`)
+      : (SPAN_EL.textContent = `Общая сумма со скидкой: ${total_sum}$`);
+
+    this.box_discount?.append(SPAN_EL);
+  }
+
   addCartPromo() {
     const LAB_EL = document.createElement('label');
     LAB_EL.className = 'promo__text';
-    LAB_EL.textContent = 'Введите промо код';
+    LAB_EL.textContent = 'Введите промокод для скидки';
     LAB_EL.setAttribute('for', 'promo');
 
     const IN_EL = document.createElement('input');
@@ -41,11 +63,16 @@ export class Cart extends Product {
     IN_EL.setAttribute('type', 'text');
     IN_EL.setAttribute('id', 'promo');
     IN_EL.setAttribute('name', 'promo');
-    IN_EL.setAttribute('placeholder', 'Введите промо');
+    IN_EL.setAttribute('placeholder', 'Введите промокод');
     IN_EL.setAttribute('required', '');
+
+    const SPAN_EL = document.createElement('span');
+    SPAN_EL.className = 'promo__description';
+    SPAN_EL.textContent = 'sale-10 sale-20';
 
     this.box_promo?.append(LAB_EL);
     this.box_promo?.append(IN_EL);
+    this.box_promo?.append(SPAN_EL);
   }
 
   addCartIngo(value: number, price: number): void {
@@ -69,7 +96,7 @@ export class Cart extends Product {
 
     const PRODUCT_TOTAL = document.createElement('p');
     PRODUCT_TOTAL.className = 'info__total';
-    PRODUCT_TOTAL.textContent = 'Общая цена:';
+    PRODUCT_TOTAL.textContent = 'Общая сумма без скидки:';
 
     const PRODUCT_TOTAL_SUM = document.createElement('span');
     PRODUCT_TOTAL_SUM.className = 'info__total-sum';
@@ -78,14 +105,6 @@ export class Cart extends Product {
     PRODUCT_TOTAL.append(PRODUCT_TOTAL_SUM);
     this.info?.append(PRODUCT_TOTAL);
 
-    const BTN_REMOVE = document.createElement('button');
-    BTN_REMOVE.className = 'info__btn-remove';
-    BTN_REMOVE.setAttribute('type', 'button');
-    BTN_REMOVE.setAttribute('data-remove', '');
-    BTN_REMOVE.textContent = 'Очистить корзину';
-
-    this.info?.append(BTN_REMOVE);
-
     const BTN_ORDER = document.createElement('button');
     BTN_ORDER.className = 'info__btn-order';
     BTN_ORDER.setAttribute('type', 'button');
@@ -93,6 +112,14 @@ export class Cart extends Product {
     BTN_ORDER.textContent = 'Оформить заказ';
 
     this.info?.append(BTN_ORDER);
+
+    const BTN_REMOVE = document.createElement('button');
+    BTN_REMOVE.className = 'info__btn-remove';
+    BTN_REMOVE.setAttribute('type', 'button');
+    BTN_REMOVE.setAttribute('data-remove', '');
+    BTN_REMOVE.textContent = 'Очистить корзину';
+
+    this.info?.append(BTN_REMOVE);
   }
 
   addInputCart(): void {
