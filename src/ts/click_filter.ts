@@ -29,9 +29,8 @@ export function clickedFilters(): void {
   const RANGEMIN = document.querySelector('.range-min');
   const RANGEMAX = document.querySelector('.range-max');
 
-  const INPUTMIN = document.querySelector('.input-min') as HTMLInputElement
-  const INPUTMAX = document.querySelector('.input-max') as HTMLInputElement
-
+  const INPUTMIN = document.querySelector('.input-min') as HTMLInputElement;
+  const INPUTMAX = document.querySelector('.input-max') as HTMLInputElement;
 
   START_FILTER?.addEventListener('click', (): void => {
     const PRODUCT = new Product(DATA);
@@ -83,8 +82,8 @@ export function clickedFilters(): void {
 
     if (PRODUCT.box) PRODUCT.box.innerHTML = '';
     PRODUCT.render();
-    rangeMi('.range-min')
-    rangeMa('.range-max')
+    rangeMi('.range-min');
+    rangeMa('.range-max');
   });
 
   magagaskar?.addEventListener('click', (): void => {
@@ -93,8 +92,8 @@ export function clickedFilters(): void {
 
     if (PRODUCT.box) PRODUCT.box.innerHTML = '';
     PRODUCT.render();
-    rangeMi('.range-min')
-    rangeMa('.range-max')
+    rangeMi('.range-min');
+    rangeMa('.range-max');
   });
 
   CaffeSalomoni?.addEventListener('click', (): void => {
@@ -103,8 +102,8 @@ export function clickedFilters(): void {
 
     if (PRODUCT.box) PRODUCT.box.innerHTML = '';
     PRODUCT.render();
-    rangeMi('.range-min')
-    rangeMa('.range-max')
+    rangeMi('.range-min');
+    rangeMa('.range-max');
   });
 
   candy?.addEventListener('click', (): void => {
@@ -113,8 +112,8 @@ export function clickedFilters(): void {
 
     if (PRODUCT.box) PRODUCT.box.innerHTML = '';
     PRODUCT.render();
-    rangeMi('.range-min')
-    rangeMa('.range-max')
+    rangeMi('.range-min');
+    rangeMa('.range-max');
   });
 
   pepsiCola?.addEventListener('click', (): void => {
@@ -123,8 +122,8 @@ export function clickedFilters(): void {
 
     if (PRODUCT.box) PRODUCT.box.innerHTML = '';
     PRODUCT.render();
-    rangeMi('.range-min')
-    rangeMa('.range-max')
+    rangeMi('.range-min');
+    rangeMa('.range-max');
   });
   bonaqua?.addEventListener('click', (): void => {
     const RESULT = DATA.filter((value) => value.brand === 'Bonaqua');
@@ -140,8 +139,8 @@ export function clickedFilters(): void {
 
     if (PRODUCT.box) PRODUCT.box.innerHTML = '';
     PRODUCT.render();
-    rangeMi('.range-min')
-    rangeMa('.range-max')
+    rangeMi('.range-min');
+    rangeMa('.range-max');
   });
 
   rocs?.addEventListener('click', (): void => {
@@ -150,8 +149,8 @@ export function clickedFilters(): void {
 
     if (PRODUCT.box) PRODUCT.box.innerHTML = '';
     PRODUCT.render();
-    rangeMi('.range-min')
-    rangeMa('.range-max')
+    rangeMi('.range-min');
+    rangeMa('.range-max');
   });
 
   //btn
@@ -164,7 +163,6 @@ export function clickedFilters(): void {
   RANGEMAX?.addEventListener('input', (): void => rangeMa('.range-max'));
   INPUTMIN?.addEventListener('input', (): void => rangeMi('.range-min'));
   INPUTMAX?.addEventListener('input', (): void => rangeMa('.range-max'));
-
 
   function setAvailability(): void {
     if (BOX_PRODUCT) {
@@ -228,12 +226,12 @@ export function clickedFilters(): void {
   function rangeMi(value: string): void {
     if (BOX_PRODUCT) {
       for (let i = 0; i < BOX_PRODUCT.children.length; i++) {
-        let n = Number(BOX_PRODUCT.children[i].querySelector('.products__price')?.textContent)
-        
+        const n = Number(BOX_PRODUCT.children[i].querySelector('.products__price')?.textContent);
+
         if (n <= Number(INPUTMAX.value) && n >= Number(INPUTMIN.value)) {
-          (BOX_PRODUCT.children[i] as HTMLElement).style.display = "" 
+          (BOX_PRODUCT.children[i] as HTMLElement).style.display = '';
         } else {
-          (BOX_PRODUCT.children[i] as HTMLElement).style.display = "none" 
+          (BOX_PRODUCT.children[i] as HTMLElement).style.display = 'none';
         }
       }
     }
@@ -242,16 +240,13 @@ export function clickedFilters(): void {
   function rangeMa(value: string): void {
     if (BOX_PRODUCT) {
       for (let i = 0; i < BOX_PRODUCT.children.length; i++) {
-        let n = Number(BOX_PRODUCT.children[i].querySelector('.products__price')?.textContent)
+        const n = Number(BOX_PRODUCT.children[i].querySelector('.products__price')?.textContent);
         if (n <= Number(INPUTMAX.value) && n >= Number(INPUTMIN.value)) {
-          (BOX_PRODUCT.children[i] as HTMLElement).style.display = "" 
+          (BOX_PRODUCT.children[i] as HTMLElement).style.display = '';
         } else {
-          (BOX_PRODUCT.children[i] as HTMLElement).style.display = "none" 
+          (BOX_PRODUCT.children[i] as HTMLElement).style.display = 'none';
         }
       }
     }
   }
-
- 
-  
 }
