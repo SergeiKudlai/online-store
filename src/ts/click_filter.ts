@@ -32,8 +32,6 @@ export function clickedFilters(): void {
   const INPUTMIN = document.querySelector('.input-min') as HTMLInputElement
   const INPUTMAX = document.querySelector('.input-max') as HTMLInputElement
 
-  //search
-  const INPUTSEARCH = document.querySelector('.input-search') as HTMLInputElement
 
   START_FILTER?.addEventListener('click', (): void => {
     const PRODUCT = new Product(DATA);
@@ -254,20 +252,6 @@ export function clickedFilters(): void {
     }
   }
 
-  //SEARCH
-  INPUTSEARCH.oninput  = function() {
-    let val = INPUTSEARCH.value.trim()
-    if (BOX_PRODUCT) {
-      for (let i = 0; i < BOX_PRODUCT.children.length; i++) {
-        let n = BOX_PRODUCT.children[i].querySelector('.products__title-link')?.textContent
-        
-        if (n?.toLowerCase().search(val.toLowerCase()) == -1) {
-          (BOX_PRODUCT.children[i] as HTMLElement).style.display = "none" 
-        } else {
-          (BOX_PRODUCT.children[i] as HTMLElement).style.display = "" 
-        }
-      }
-    }
-  }
+ 
   
 }
