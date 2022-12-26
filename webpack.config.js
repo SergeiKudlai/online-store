@@ -38,6 +38,10 @@ module.exports = ({ develop }) => ({
       template: './cart.html',
       filename: './cart.html'
     }),
+    new HTMLWebpack({
+      template: './notfound.html',
+      filename: './notfound.html'
+    }),
     new CopyPlugin({
       patterns: [
         {

@@ -32,6 +32,7 @@ export function clickedFilters(): void {
   const INPUTMIN = document.querySelector('.input-min') as HTMLInputElement
   const INPUTMAX = document.querySelector('.input-max') as HTMLInputElement
 
+
   START_FILTER?.addEventListener('click', (): void => {
     const PRODUCT = new Product(DATA);
     if (PRODUCT.box) PRODUCT.box.innerHTML = '';
@@ -251,5 +252,6 @@ export function clickedFilters(): void {
     }
   }
 
+ 
   
 }
