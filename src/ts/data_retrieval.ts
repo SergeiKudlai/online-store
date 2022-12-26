@@ -28,7 +28,7 @@ function getSumTotalDiscount() {
 function getValidDiscount() {
   const VALID_LENGTH = localStorage.getItem('discount');
   if (VALID_LENGTH) return VALID_LENGTH.length <= 2 ? true : false;
-  return false;
+  return true;
 }
 
 function getValidPromo() {

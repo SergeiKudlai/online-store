@@ -36,7 +36,6 @@ if (getDataRetrieval()) {
   CART.addCartPromo();
   CART.addDiscount(getSumDiscount(), getSumTotalDiscount(), getValidDiscount());
   getValidPromo() && CART.addSalePromo(getValidPromo());
-
   getAddHeaderPrice();
   getPromo();
 }
