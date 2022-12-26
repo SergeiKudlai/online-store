@@ -3,17 +3,83 @@ import { IDATA } from './interface';
 
 export class Cart extends Product {
   public info: HTMLElement | null;
+  public controlBox: HTMLElement | null;
+  public pagination_inner: HTMLElement | null;
+  public box_promo: HTMLElement | null;
+  public box_discount: HTMLElement | null;
 
-  constructor(data: IDATA[], value = '.cart__product') {
+  constructor(data: IDATA[], value = '.product') {
     super(data, value);
     this.info = document.querySelector('.info');
+    this.controlBox = document.querySelector('.pagination');
+    this.pagination_inner = document.querySelector('.pagination__inner');
+    this.box_promo = document.querySelector('.promo');
+    this.box_discount = document.querySelector('.discount');
   }
 
-  addCartIngo(value: number, price: number) {
+  addSalePromo(value: string) {
+    const SPAN_EL = document.createElement('span');
+    SPAN_EL.className = 'promo__sale-text';
+    SPAN_EL.setAttribute('data-discount', `${value}`);
+    SPAN_EL.textContent = `Скидка ${value}%`;
+
+    const BTN_EL = document.createElement('button');
+    BTN_EL.className = 'promo__btn';
+    BTN_EL.textContent = 'Отменить скидку';
+    BTN_EL.setAttribute('type', 'button');
+    BTN_EL.setAttribute('data-sale', value);
+
+    this.box_promo?.append(SPAN_EL);
+    this.box_promo?.append(BTN_EL);
+  }
+
+  addDiscount(value = 0, total_sum: number, valid: boolean) {
+    if (this.box_discount) this.box_discount.innerHTML = '';
+
+    const P_EL = document.createElement('p');
+    P_EL.className = 'discount__text';
+    P_EL.textContent = `Ваша скидка: ${value}%`;
+
+    this.box_discount?.append(P_EL);
+
+    const SPAN_EL = document.createElement('span');
+    SPAN_EL.className = 'discount__info';
+
+    valid
+      ? (SPAN_EL.textContent = `Введите промокод`)
+      : (SPAN_EL.textContent = `Общая сумма со скидкой: ${total_sum}$`);
+
+    this.box_discount?.append(SPAN_EL);
+  }
+
+  addCartPromo() {
+    const LAB_EL = document.createElement('label');
+    LAB_EL.className = 'promo__text';
+    LAB_EL.textContent = 'Введите промокод для скидки';
+    LAB_EL.setAttribute('for', 'promo');
+
+    const IN_EL = document.createElement('input');
+    IN_EL.className = 'promo__input';
+    IN_EL.setAttribute('type', 'text');
+    IN_EL.setAttribute('id', 'promo');
+    IN_EL.setAttribute('name', 'promo');
+    IN_EL.setAttribute('placeholder', 'Введите промокод');
+    IN_EL.setAttribute('required', '');
+
+    const SPAN_EL = document.createElement('span');
+    SPAN_EL.className = 'promo__description';
+    SPAN_EL.textContent = 'sale-10 sale-20';
+
+    this.box_promo?.append(LAB_EL);
+    this.box_promo?.append(IN_EL);
+    this.box_promo?.append(SPAN_EL);
+  }
+
+  addCartIngo(value: number, price: number): void {
     if (this.info) this.info.innerHTML = '';
 
     const TITLE = document.createElement('h3');
-    TITLE.textContent = 'Информация о товаре';
+    TITLE.textContent = 'Информация о корзине:';
     TITLE.className = 'info__title';
     this.info?.append(TITLE);
 
@@ -30,7 +96,7 @@ export class Cart extends Product {
 
     const PRODUCT_TOTAL = document.createElement('p');
     PRODUCT_TOTAL.className = 'info__total';
-    PRODUCT_TOTAL.textContent = 'Общая цена:';
+    PRODUCT_TOTAL.textContent = 'Общая сумма без скидки:';
 
     const PRODUCT_TOTAL_SUM = document.createElement('span');
     PRODUCT_TOTAL_SUM.className = 'info__total-sum';
@@ -38,6 +104,14 @@ export class Cart extends Product {
 
     PRODUCT_TOTAL.append(PRODUCT_TOTAL_SUM);
     this.info?.append(PRODUCT_TOTAL);
+
+    const BTN_ORDER = document.createElement('button');
+    BTN_ORDER.className = 'info__btn-order';
+    BTN_ORDER.setAttribute('type', 'button');
+    BTN_ORDER.setAttribute('data-order', '');
+    BTN_ORDER.textContent = 'Оформить заказ';
+
+    this.info?.append(BTN_ORDER);
 
     const BTN_REMOVE = document.createElement('button');
     BTN_REMOVE.className = 'info__btn-remove';
@@ -48,7 +122,42 @@ export class Cart extends Product {
     this.info?.append(BTN_REMOVE);
   }
 
+  addInputCart(): void {
+    const EL_LABEL = document.createElement('label');
+    EL_LABEL.setAttribute('for', 'amount');
+    EL_LABEL.className = 'pagination__name';
+    EL_LABEL.textContent = 'Введите количетсво строк:';
+
+    const EL_IN = document.createElement('input');
+    EL_IN.className = 'pagination__control';
+    EL_IN.setAttribute('type', 'text');
+    EL_IN.setAttribute('value', '3');
+    EL_IN.setAttribute('id', 'amount');
+
+    this.controlBox?.append(EL_IN);
+    this.controlBox?.append(EL_LABEL);
+  }
+
+  addPaginationBtn(elem: HTMLElement): void {
+    if (this.pagination_inner) this.pagination_inner.innerHTML = '';
+    const BTN_NEXT = document.createElement('button');
+    BTN_NEXT.classList.add('pagination__btn');
+    BTN_NEXT.classList.add('pagination__btn-next');
+    BTN_NEXT.setAttribute('type', 'button');
+
+    const BTN_PREV = document.createElement('button');
+    BTN_PREV.classList.add('pagination__btn');
+    BTN_PREV.classList.add('pagination__btn-prev');
+    BTN_PREV.setAttribute('type', 'button');
+
+    this.pagination_inner?.append(BTN_PREV);
+    this.pagination_inner?.append(elem);
+    this.pagination_inner?.append(BTN_NEXT);
+  }
+
   render(): void {
+    if (this.box) this.box.innerHTML = '';
+
     this.data.forEach((value): void => {
       const { img, name, price, id, raiting, amount } = value;
 
@@ -101,7 +210,6 @@ export class Cart extends Product {
           </div>
         </article
           `;
-
       this.box && this.box.insertAdjacentHTML('beforeend', ELEMENTS);
     });
   }

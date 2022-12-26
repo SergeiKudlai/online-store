@@ -15,9 +15,13 @@
         <a class="container_logo" href="./index.html">
           <img src="./assets/html_img/logo.png" alt="Логотип" width="150" height="50">
         </a>
- 
-        <h1 class="header__title">ФРЕШОК</h1>
 
+        <h1 class="header__title">ФРЕШОК</h1>
+        <span class="header__total">
+          Общая цена
+          <span class="header__amount">0</span>
+          $
+        </span>
       </div>
     </header>
 
@@ -36,11 +40,20 @@
         <h2 class="sr-only">Корзина</h2>
 
         <div class="cart__inner">
-          <div class="cart__product"></div>
-          <div class="cart__info info">Корзина пуста</div>
+          <div class="cart__product">
+            <div class="cart__product-pagination pagination">
+              <div class="pagination__inner"></div>
+            </div>
+            <div class="product"></div>
+          </div>
+          <div class="cart__info">
+            <div class="info">Корзина пуста</div>
+            <div class="promo"></div>
+            <div class="discount"></div>
+          </div>
         </div>
 
-        
+
       </section>
 
     </main>
@@ -78,6 +91,7 @@
       </div>
 
     </footer>
+  </div>
 </body>
 
 </html>
