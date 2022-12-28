@@ -50,22 +50,25 @@ function getAddHeaderPrice() {
   }
 }
 
-const BOX_PRODUCT = document.querySelector('.products');
 const INPUTSEARCH = document.querySelector('.input-search') as HTMLInputElement;
-INPUTSEARCH.oninput = function () {
-  const val = INPUTSEARCH.value.trim();
-  if (BOX_PRODUCT) {
-    for (let i = 0; i < BOX_PRODUCT.children.length; i++) {
-      const n = BOX_PRODUCT.children[i].querySelector('.products__title-link')?.textContent;
 
-      if (n?.toLowerCase().search(val.toLowerCase()) == -1) {
-        (BOX_PRODUCT.children[i] as HTMLElement).style.display = 'none';
-      } else {
-        (BOX_PRODUCT.children[i] as HTMLElement).style.display = '';
+if (INPUTSEARCH) {
+  INPUTSEARCH.addEventListener('input', () => {
+    const val = INPUTSEARCH.value.trim();
+    const BOX_PRODUCT = document.querySelector('.products');
+
+    if (BOX_PRODUCT) {
+      for (let i = 0; i < BOX_PRODUCT.children.length; i++) {
+        const n = BOX_PRODUCT.children[i].querySelector('.products__title')?.textContent;
+        if (n?.toLowerCase().search(val.toLowerCase()) == -1) {
+          (BOX_PRODUCT.children[i] as HTMLElement).style.display = 'none';
+        } else {
+          (BOX_PRODUCT.children[i] as HTMLElement).style.display = '';
+        }
       }
     }
-  }
-};
+  });
+}
 
 if (getDataRetrieval()) {
   window.addEventListener('load', (): void => {

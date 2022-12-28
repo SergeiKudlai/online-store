@@ -46,4 +46,13 @@ function getValidPromo() {
   return '';
 }
 
-export { getDataRetrieval, getSumDiscount, getSumTotalDiscount, getValidDiscount, getValidPromo };
+function getCategoryProducts(id: string | undefined): string {
+  if (id === '1') return 'напитки';
+  if (id === '2') return 'фрукты';
+  if (id === '3') return 'овощи';
+  if (id === '4') return 'ягода';
+  if (id === '5') return 'разное';
+  return 'Категория не найдена';
+}
+
+export { getDataRetrieval, getSumDiscount, getSumTotalDiscount, getValidDiscount, getValidPromo, getCategoryProducts };

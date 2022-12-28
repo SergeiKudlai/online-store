@@ -3,6 +3,7 @@ import { Cart } from './cart';
 import { setPaginationCart } from './pagination_cart';
 import { setAddPageDiscount } from './discount';
 import { getDataRetrieval, getSumDiscount, getSumTotalDiscount, getValidDiscount } from './data_retrieval';
+import { getDescription } from './description_click';
 
 export function getClickCounter() {
   document.addEventListener('click', (e: Event): void => {
@@ -14,6 +15,9 @@ export function getClickCounter() {
       ELEM.hasAttribute('data-card') && createObjectCard(ELEM);
       ELEM.hasAttribute('data-remove') && setRemoveCart();
       ELEM.hasAttribute('data-sale') && setRemoveDiscount(ELEM);
+      if (ELEM.hasAttribute('data-img') || ELEM.className === 'products__title') {
+        getDescription(ELEM as HTMLElement);
+      }
     }
   });
 
@@ -111,7 +115,7 @@ export function getClickCounter() {
       const BOX_ELEMENT = data.closest('.products__box');
 
       if (BOX_ELEMENT) {
-        const NAME = BOX_ELEMENT.querySelector('.products__title-link')?.textContent;
+        const NAME = BOX_ELEMENT.querySelector('.products__title')?.textContent;
         const ID = Number((BOX_ELEMENT as HTMLElement).dataset.id);
         const IMG = BOX_ELEMENT.querySelector('.products__img')?.getAttribute('src');
         const PRICE = Number(BOX_ELEMENT.querySelector('.products__price')?.textContent);
@@ -180,7 +184,7 @@ export function getClickCounter() {
   /* localStorage */
   function setAmountLocalStorage(elem: Element, amount: number): void {
     const BOX_CARD = elem.closest('.products__box');
-    const NAME_PRODUCT = BOX_CARD?.querySelector('.products__title-link')?.textContent;
+    const NAME_PRODUCT = BOX_CARD?.querySelector('.products__title')?.textContent;
 
     let result: IDATA[];
 
@@ -197,7 +201,7 @@ export function getClickCounter() {
 
   function setRemoveElementLocalStorage(elem: Element): void {
     const STORAGE = localStorage.getItem('card');
-    const NAME_PRODUCT = elem?.querySelector('.products__title-link')?.textContent;
+    const NAME_PRODUCT = elem?.querySelector('.products__title')?.textContent;
 
     if (STORAGE) {
       const result = JSON.parse(STORAGE);
