@@ -82,8 +82,8 @@ export function clickedFilters(): void {
 
     if (PRODUCT.box) PRODUCT.box.innerHTML = '';
     PRODUCT.render();
-    rangeMi('.range-min');
-    rangeMa('.range-max');
+    rangeMi();
+    rangeMa();
   });
 
   magagaskar?.addEventListener('click', (): void => {
@@ -92,8 +92,8 @@ export function clickedFilters(): void {
 
     if (PRODUCT.box) PRODUCT.box.innerHTML = '';
     PRODUCT.render();
-    rangeMi('.range-min');
-    rangeMa('.range-max');
+    rangeMi();
+    rangeMa();
   });
 
   CaffeSalomoni?.addEventListener('click', (): void => {
@@ -102,8 +102,8 @@ export function clickedFilters(): void {
 
     if (PRODUCT.box) PRODUCT.box.innerHTML = '';
     PRODUCT.render();
-    rangeMi('.range-min');
-    rangeMa('.range-max');
+    rangeMi();
+    rangeMa();
   });
 
   candy?.addEventListener('click', (): void => {
@@ -112,8 +112,8 @@ export function clickedFilters(): void {
 
     if (PRODUCT.box) PRODUCT.box.innerHTML = '';
     PRODUCT.render();
-    rangeMi('.range-min');
-    rangeMa('.range-max');
+    rangeMi();
+    rangeMa();
   });
 
   pepsiCola?.addEventListener('click', (): void => {
@@ -122,8 +122,8 @@ export function clickedFilters(): void {
 
     if (PRODUCT.box) PRODUCT.box.innerHTML = '';
     PRODUCT.render();
-    rangeMi('.range-min');
-    rangeMa('.range-max');
+    rangeMi();
+    rangeMa();
   });
   bonaqua?.addEventListener('click', (): void => {
     const RESULT = DATA.filter((value) => value.brand === 'Bonaqua');
@@ -139,8 +139,8 @@ export function clickedFilters(): void {
 
     if (PRODUCT.box) PRODUCT.box.innerHTML = '';
     PRODUCT.render();
-    rangeMi('.range-min');
-    rangeMa('.range-max');
+    rangeMi();
+    rangeMa();
   });
 
   rocs?.addEventListener('click', (): void => {
@@ -149,8 +149,8 @@ export function clickedFilters(): void {
 
     if (PRODUCT.box) PRODUCT.box.innerHTML = '';
     PRODUCT.render();
-    rangeMi('.range-min');
-    rangeMa('.range-max');
+    rangeMi();
+    rangeMa();
   });
 
   //btn
@@ -159,10 +159,10 @@ export function clickedFilters(): void {
   BTN_PRICE_MAX?.addEventListener('click', (): void => setSortMax('.products__price'));
   BTN_RAITING_MAX?.addEventListener('click', (): void => setSortMax('.raiting__num'));
   BTN_RAITING_MIN?.addEventListener('click', (): void => setSortMin('.raiting__num'));
-  RANGEMIN?.addEventListener('input', (): void => rangeMi('.range-min'));
-  RANGEMAX?.addEventListener('input', (): void => rangeMa('.range-max'));
-  INPUTMIN?.addEventListener('input', (): void => rangeMi('.range-min'));
-  INPUTMAX?.addEventListener('input', (): void => rangeMa('.range-max'));
+  RANGEMIN?.addEventListener('input', (): void => rangeMi());
+  RANGEMAX?.addEventListener('input', (): void => rangeMa());
+  INPUTMIN?.addEventListener('input', (): void => rangeMi());
+  INPUTMAX?.addEventListener('input', (): void => rangeMa());
 
   function setAvailability(): void {
     if (BOX_PRODUCT) {
@@ -223,7 +223,7 @@ export function clickedFilters(): void {
     });
   }
 
-  function rangeMi(value: string): void {
+  function rangeMi(): void {
     if (BOX_PRODUCT) {
       for (let i = 0; i < BOX_PRODUCT.children.length; i++) {
         const n = Number(BOX_PRODUCT.children[i].querySelector('.products__price')?.textContent);
@@ -237,7 +237,7 @@ export function clickedFilters(): void {
     }
   }
 
-  function rangeMa(value: string): void {
+  function rangeMa(): void {
     if (BOX_PRODUCT) {
       for (let i = 0; i < BOX_PRODUCT.children.length; i++) {
         const n = Number(BOX_PRODUCT.children[i].querySelector('.products__price')?.textContent);

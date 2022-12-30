@@ -3,7 +3,8 @@ import { Cart } from './cart';
 import { setPaginationCart } from './pagination_cart';
 import { setAddPageDiscount } from './discount';
 import { getDataRetrieval, getSumDiscount, getSumTotalDiscount, getValidDiscount } from './data_retrieval';
-import { getDescription } from './description_click';
+import { setLocationResolve } from './locationResolve';
+import { resolveUrl } from './enum';
 
 export function getClickCounter() {
   document.addEventListener('click', (e: Event): void => {
@@ -15,8 +16,8 @@ export function getClickCounter() {
       ELEM.hasAttribute('data-card') && createObjectCard(ELEM);
       ELEM.hasAttribute('data-remove') && setRemoveCart();
       ELEM.hasAttribute('data-sale') && setRemoveDiscount(ELEM);
-      if (ELEM.hasAttribute('data-img') || ELEM.className === 'products__title') {
-        getDescription(ELEM as HTMLElement);
+      if (ELEM.matches('[data-img]') || ELEM.matches('.products__title')) {
+        setLocationResolve(resolveUrl.description, ELEM);
       }
     }
   });

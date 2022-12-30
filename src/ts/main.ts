@@ -14,6 +14,7 @@ import {
   getValidDiscount,
   getValidPromo,
 } from './data_retrieval';
+import { setLocationResolve } from './locationResolve';
 
 getClickCounter();
 clickAside();
@@ -76,3 +77,12 @@ if (getDataRetrieval()) {
     if (CARD_INDEX) CARD_INDEX.textContent = String(getDataRetrieval().length);
   });
 }
+
+window.addEventListener('hashchange', (e) => {
+  const { newURL } = e;
+  setLocationResolve(newURL.split('#')[1].split('-')[1]);
+});
+
+window.addEventListener('load', () => {
+  window.history.pushState(null, '', window.location.pathname);
+});

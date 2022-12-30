@@ -10,12 +10,12 @@ export class Product {
 
   render(): void {
     this.data.forEach((value): void => {
-      const { img, name, price, id, availability, raiting, brand } = value;
+      const { img, name, price, id, availability, raiting, brand, index } = value;
 
       const CHECKED: string = availability ? 'в наличии' : 'нет в наличии';
 
       const ELEMENTS = `
-      <article class="products__box" data-id="${id}">
+      <article class="products__box" data-id="${id}" data-index="${index}">
 
       <span class="sr-only" data-brand>${brand}</span>
 
