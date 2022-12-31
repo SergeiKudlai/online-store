@@ -159,10 +159,10 @@ export class Cart extends Product {
     if (this.box) this.box.innerHTML = '';
 
     this.data.forEach((value): void => {
-      const { img, name, price, id, raiting, amount } = value;
+      const { img, name, price, raiting, amount, index } = value;
 
       const ELEMENTS = `
-          <article class="products__box" data-id="${id}" data-cart>
+          <article class="products__box" data-index="${index}" data-cart>
     
           <div class="products__img-box" data-img>
             <img class="products__img" src="${img}" alt="${name}">

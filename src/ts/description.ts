@@ -34,7 +34,11 @@ export class DescriptionProduct {
 
   setSectionRemove() {
     const PRODUCT_SECTION = this.box?.querySelector('#section-products') as HTMLElement;
-    if (PRODUCT_SECTION) PRODUCT_SECTION.classList.add('active');
+    const CARD = this.box?.querySelector('#cart') as HTMLElement;
+    const SEARCH_BOX = document.querySelector('.search_wrapper') as HTMLElement;
+    if (PRODUCT_SECTION) PRODUCT_SECTION.remove();
+    if (CARD) CARD.remove();
+    if (SEARCH_BOX) SEARCH_BOX.remove();
   }
 
   render() {

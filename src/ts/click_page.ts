@@ -113,11 +113,12 @@ export function getClickCounter() {
   /* create cart element */
   function createObjectCard(data?: HTMLButtonElement): void {
     if (data) {
-      const BOX_ELEMENT = data.closest('.products__box');
+      const BOX_ELEMENT = data.closest('.products__box') as HTMLElement;
 
       if (BOX_ELEMENT) {
         const NAME = BOX_ELEMENT.querySelector('.products__title')?.textContent;
-        const ID = Number((BOX_ELEMENT as HTMLElement).dataset.id);
+        const ID = Number(BOX_ELEMENT.dataset.id);
+        const INDEX = Number(BOX_ELEMENT.dataset.index);
         const IMG = BOX_ELEMENT.querySelector('.products__img')?.getAttribute('src');
         const PRICE = Number(BOX_ELEMENT.querySelector('.products__price')?.textContent);
         const AMOUNT = BOX_ELEMENT.querySelector('[data-num]')?.textContent;
@@ -131,6 +132,7 @@ export function getClickCounter() {
             price: PRICE,
             amount: AMOUNT,
             raiting: RATING,
+            index: INDEX,
           };
 
           setAddCardLocalStorage(CARD);

@@ -6,7 +6,7 @@ export function setLocationResolve(value: string, elem?: HTMLElement) {
     const ELEM_BOX = elem.closest('.products__box') as HTMLElement;
     window.location.hash = `${value}-${ELEM_BOX.dataset.index}`;
   } else {
-    if (value === '0' || !value || DATA.length - 1 < +value) {
+    if (value === '0' || !value || DATA.length - 1 < +value || !/^[0-9]+$/g.test(value)) {
       window.location.replace('./notfound.html');
       return;
     } else {
