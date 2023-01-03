@@ -5,6 +5,7 @@ import { setAddPageDiscount } from './discount';
 import { getDataRetrieval, getSumDiscount, getSumTotalDiscount, getValidDiscount } from './data_retrieval';
 import { setLocationResolve } from './locationResolve';
 import { resolveUrl } from './enum';
+import { getClickBtnCartDescription } from './description_click';
 
 export function getClickCounter() {
   document.addEventListener('click', (e: Event): void => {
@@ -19,6 +20,7 @@ export function getClickCounter() {
       if (ELEM.matches('[data-img]') || ELEM.matches('.products__title')) {
         setLocationResolve(resolveUrl.description, ELEM);
       }
+      ELEM.matches('[data-btn-description]') && getClickBtnCartDescription(ELEM, true);
     }
   });
 
@@ -95,19 +97,21 @@ export function getClickCounter() {
   function setSumCart() {
     const CART = new Cart(getDataRetrieval());
 
-    const RESULT_SUM = getDataRetrieval().reduce((acc: number, value: IDATA) => Number(value.amount) + acc, 0);
+    if (getDataRetrieval()) {
+      const RESULT_SUM = getDataRetrieval().reduce((acc: number, value: IDATA) => Number(value.amount) + acc, 0);
 
-    const RESULT_PRICE = getDataRetrieval()
-      .map((value: IDATA) => Number(value.amount) * value.price)
-      .reduce((acc: number, value: number) => acc + value, 0);
+      const RESULT_PRICE = getDataRetrieval()
+        .map((value: IDATA) => Number(value.amount) * value.price)
+        .reduce((acc: number, value: number) => acc + value, 0);
 
-    localStorage.setItem('sum', JSON.stringify(RESULT_PRICE));
+      localStorage.setItem('sum', JSON.stringify(RESULT_PRICE));
 
-    const SUM_LOCAL = localStorage.getItem('sum');
+      const SUM_LOCAL = localStorage.getItem('sum');
 
-    if (SUM_LOCAL) CART.addCartIngo(RESULT_SUM, +SUM_LOCAL);
+      if (SUM_LOCAL) CART.addCartIngo(RESULT_SUM, +SUM_LOCAL);
 
-    getAddHeaderPrice();
+      getAddHeaderPrice();
+    }
   }
 
   /* create cart element */
@@ -259,6 +263,17 @@ export function getClickCounter() {
 
       const CART = new Cart(getDataRetrieval());
       CART.addDiscount(getSumDiscount(), getSumTotalDiscount(), getValidDiscount());
+    }
+
+    const VALID_DISCOUNT = localStorage.getItem('discount');
+
+    if (VALID_DISCOUNT) {
+      if (VALID_DISCOUNT.length <= 2) {
+        const CURRENT_SUM = document.querySelector('.info');
+        const CURRENT_SUM_INFO = document.querySelector('.info__total-sum');
+        CURRENT_SUM?.classList.remove('active');
+        CURRENT_SUM_INFO?.classList.remove('active');
+      }
     }
   }
 }

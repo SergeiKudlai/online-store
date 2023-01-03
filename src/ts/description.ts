@@ -1,5 +1,6 @@
 import { getCategoryProducts } from './data_retrieval';
 import { IDATA } from './interface';
+import { getClickBtnCartDescription } from './description_click';
 
 export class DescriptionProduct {
   private elem: IDATA;
@@ -51,7 +52,7 @@ export class DescriptionProduct {
     const VALID_AVAILABILITY = availability ? 'есть в наличии' : 'нет в наличии';
 
     const ASIDE_ELEM = `
-      <article class="description container" data-index=${index}>
+      <article class="description container" data-id=${id} data-index=${index}>
 
         <div class="description__wrapper">
 
@@ -108,7 +109,7 @@ export class DescriptionProduct {
 
           <ul class="description__buttons btn-des">
             <li class="btn-des__item">  
-              <button class="btn-des__button" type="button">В корзину</button>
+              <button class="btn-des__button" type="button" data-btn-description data-index=${index}>В корзину</button>
             </li>
 
             <li class="btn-des__item">  
@@ -120,5 +121,6 @@ export class DescriptionProduct {
     `;
 
     this.box?.insertAdjacentHTML('beforeend', ASIDE_ELEM);
+    if (this.box) getClickBtnCartDescription(this.box, false);
   }
 }

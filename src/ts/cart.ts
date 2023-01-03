@@ -99,7 +99,12 @@ export class Cart extends Product {
     PRODUCT_TOTAL.textContent = 'Общая сумма без скидки:';
 
     const PRODUCT_TOTAL_SUM = document.createElement('span');
-    PRODUCT_TOTAL_SUM.className = 'info__total-sum';
+    PRODUCT_TOTAL_SUM.classList.add('info__total-sum');
+
+    this.info?.classList.contains('active')
+      ? PRODUCT_TOTAL_SUM.classList.add('active')
+      : PRODUCT_TOTAL_SUM.classList.remove('active');
+
     PRODUCT_TOTAL_SUM.textContent = `${String(price)} $`;
 
     PRODUCT_TOTAL.append(PRODUCT_TOTAL_SUM);

@@ -85,4 +85,15 @@ window.addEventListener('hashchange', (e) => {
 
 window.addEventListener('load', () => {
   window.history.pushState(null, '', window.location.pathname);
+
+  const VALID_DISCOUNT = localStorage.getItem('discount');
+
+  if (VALID_DISCOUNT) {
+    if (VALID_DISCOUNT.length > 2) {
+      const CURRENT_SUM = document.querySelector('.info');
+      const CURRENT_SUM_INFO = document.querySelector('.info__total-sum');
+      CURRENT_SUM?.classList.add('active');
+      CURRENT_SUM_INFO?.classList.add('active');
+    }
+  }
 });

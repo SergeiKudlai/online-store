@@ -10,9 +10,14 @@ export function getPromo() {
   if (PROMO_IN) {
     PROMO_IN.addEventListener('change', () => {
       const PROMO_VALUE = (PROMO_IN as HTMLInputElement).value;
+      const CURRENT_SUM = document.querySelector('.info');
+      const CURRENT_SUM_INFO = document.querySelector('.info__total-sum');
 
       if (PROMO_VALUE === validPromo.discount_10) {
         (PROMO_IN as HTMLInputElement).value = '';
+
+        CURRENT_SUM?.classList.add('active');
+        CURRENT_SUM_INFO?.classList.add('active');
 
         if (!localStorage.getItem('valid-10')) {
           localStorage.setItem('valid-10', JSON.stringify(true));
@@ -23,6 +28,9 @@ export function getPromo() {
         }
       } else if (PROMO_VALUE === validPromo.discount_20) {
         (PROMO_IN as HTMLInputElement).value = '';
+
+        CURRENT_SUM?.classList.add('active');
+        CURRENT_SUM_INFO?.classList.add('active');
 
         if (!localStorage.getItem('valid-20')) {
           localStorage.setItem('valid-20', JSON.stringify(true));

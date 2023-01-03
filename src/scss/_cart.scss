@@ -71,6 +71,31 @@
     padding-left: 1rem;
   }
 
+  &__total-sum {
+    &.active {
+      position: relative;
+
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background-color: red;
+      }
+
+      &::before {
+        transform: rotate(30deg);
+      }
+
+      &::after {
+        transform: rotate(-30deg);
+      }
+    }
+  }
+
   &__btn-remove,
   &__btn-order {
     max-width: 50%;

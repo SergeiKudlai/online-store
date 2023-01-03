@@ -11,7 +11,9 @@ export function setLocationResolve(value: string, elem?: HTMLElement) {
       return;
     } else {
       for (const ELEM of DATA) {
-        if (ELEM.index === +value) getDescription(ELEM);
+        if (ELEM.index === +value) {
+          getDescription(ELEM);
+        }
       }
     }
   }
