@@ -111,7 +111,7 @@ export class Cart extends Product {
     this.info?.append(PRODUCT_TOTAL);
 
     const BTN_ORDER = document.createElement('button');
-    BTN_ORDER.className = 'info__btn-order';
+    BTN_ORDER.className = 'info__btn-order popup-order';
     BTN_ORDER.setAttribute('type', 'button');
     BTN_ORDER.setAttribute('data-order', '');
     BTN_ORDER.textContent = 'Оформить заказ';
@@ -217,3 +217,4 @@ export class Cart extends Product {
     });
   }
 }
+
