@@ -14,6 +14,7 @@ export function getClickCounter() {
       ELEM.hasAttribute('data-card') && createObjectCard(ELEM);
       ELEM.hasAttribute('data-remove') && setRemoveCart();
       ELEM.hasAttribute('data-sale') && setRemoveDiscount(ELEM);
+      ELEM.matches('[data-order]') && popupOpen()
     }
   });
 
@@ -101,8 +102,7 @@ export function getClickCounter() {
     const SUM_LOCAL = localStorage.getItem('sum');
 
     if (SUM_LOCAL) CART.addCartIngo(RESULT_SUM, +SUM_LOCAL);
-
-    getAddHeaderPrice();
+    
   }
 
   /* create cart element */
@@ -115,6 +115,7 @@ export function getClickCounter() {
         const ID = Number((BOX_ELEMENT as HTMLElement).dataset.id);
         const IMG = BOX_ELEMENT.querySelector('.products__img')?.getAttribute('src');
         const PRICE = Number(BOX_ELEMENT.querySelector('.products__price')?.textContent);
+        
         const AMOUNT = BOX_ELEMENT.querySelector('[data-num]')?.textContent;
         const RATING = Number(BOX_ELEMENT.querySelector('.raiting__num')?.textContent);
 
@@ -165,6 +166,7 @@ export function getClickCounter() {
     const PRICE_CARD = Number(BOX_CARD?.querySelector('.products__price')?.textContent);
     const CARD_TOTAL_PRICE = BOX_CARD?.querySelector('.products__total-sum');
     if (CARD_TOTAL_PRICE) CARD_TOTAL_PRICE.textContent = (PRICE_CARD * amount).toString();
+    
   }
 
   /* remove element cart */
@@ -190,6 +192,7 @@ export function getClickCounter() {
 
     result.forEach((value: IDATA): void => {
       if (value.name === NAME_PRODUCT) value.amount = amount.toString();
+      
     });
 
     localStorage.setItem('card', JSON.stringify(result));
@@ -254,4 +257,35 @@ export function getClickCounter() {
       CART.addDiscount(getSumDiscount(), getSumTotalDiscount(), getValidDiscount());
     }
   }
+}
+
+//popup
+const popupbtn = document.querySelector('.popup-btn') as HTMLElement
+const popup = document.querySelector('.popup-cart-wrapper') as HTMLElement
+const popupClose = document.querySelector('.popup_close') as HTMLElement
+
+
+function closePopup() {
+  popup.style.display = 'none'
+
+  window.location.href = './index.html';
+}
+if(popupbtn) {
+  popupbtn.addEventListener('click', (): void => {
+  (document.querySelector('.endorder') as HTMLElement).innerHTML = 'Завершение заказа...'
+  setTimeout(closePopup, 2000)
+});
+}
+
+if(popupClose) {
+  popupClose.addEventListener('click', (): void => {
+    popup.style.display = 'none'
+    
+  });
+}
+
+function popupOpen() {
+  popup.style.display = 'flex'
+  const SUM_LOCAL = localStorage.getItem('sum');
+    (document.querySelector('.popup-price') as HTMLElement).innerHTML = String(SUM_LOCAL + ' $')
 }
