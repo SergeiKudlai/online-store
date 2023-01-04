@@ -99,7 +99,12 @@ export class Cart extends Product {
     PRODUCT_TOTAL.textContent = 'Общая сумма без скидки:';
 
     const PRODUCT_TOTAL_SUM = document.createElement('span');
-    PRODUCT_TOTAL_SUM.className = 'info__total-sum';
+    PRODUCT_TOTAL_SUM.classList.add('info__total-sum');
+
+    this.info?.classList.contains('active')
+      ? PRODUCT_TOTAL_SUM.classList.add('active')
+      : PRODUCT_TOTAL_SUM.classList.remove('active');
+
     PRODUCT_TOTAL_SUM.textContent = `${String(price)} $`;
 
     PRODUCT_TOTAL.append(PRODUCT_TOTAL_SUM);
@@ -159,14 +164,14 @@ export class Cart extends Product {
     if (this.box) this.box.innerHTML = '';
 
     this.data.forEach((value): void => {
-      const { img, name, price, id, raiting, amount } = value;
+      const { img, name, price, raiting, amount, index } = value;
 
       const ELEMENTS = `
-          <article class="products__box" data-id="${id}" data-cart>
+          <article class="products__box" data-index="${index}" data-cart>
     
-          <a class="products__img-box" href="#">
+          <div class="products__img-box" data-img>
             <img class="products__img" src="${img}" alt="${name}">
-          </a>
+          </div>
     
           <div class="products__box-text">
 
@@ -175,9 +180,7 @@ export class Cart extends Product {
               <span class="raiting__img"></span>
             </div>
   
-            <h3 class="products__title">
-              <a class="products__title-link" href="#">${name}</a>
-            </h3>
+            <h3 class="products__title">${name}</h3>
           </div>
       
           <div class="products__container">

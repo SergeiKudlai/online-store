@@ -14,6 +14,7 @@ import {
   getValidDiscount,
   getValidPromo,
 } from './data_retrieval';
+import { setLocationResolve } from './locationResolve';
 
 getClickCounter();
 clickAside();
@@ -50,15 +51,16 @@ function getAddHeaderPrice() {
   }
 }
 
-const BOX_PRODUCT = document.querySelector('.products');
 const INPUTSEARCH = document.querySelector('.input-search') as HTMLInputElement;
-if(oninput) {
-  INPUTSEARCH.oninput = function () {
+
+if (INPUTSEARCH) {
+  INPUTSEARCH.addEventListener('input', () => {
     const val = INPUTSEARCH.value.trim();
+    const BOX_PRODUCT = document.querySelector('.products');
+
     if (BOX_PRODUCT) {
       for (let i = 0; i < BOX_PRODUCT.children.length; i++) {
-        const n = BOX_PRODUCT.children[i].querySelector('.products__title-link')?.textContent;
-  
+        const n = BOX_PRODUCT.children[i].querySelector('.products__title')?.textContent;
         if (n?.toLowerCase().search(val.toLowerCase()) == -1) {
           (BOX_PRODUCT.children[i] as HTMLElement).style.display = 'none';
         } else {
@@ -66,9 +68,8 @@ if(oninput) {
         }
       }
     }
-  };
+  });
 }
-
 
 if (getDataRetrieval()) {
   window.addEventListener('load', (): void => {
@@ -76,3 +77,23 @@ if (getDataRetrieval()) {
     if (CARD_INDEX) CARD_INDEX.textContent = String(getDataRetrieval().length);
   });
 }
+
+window.addEventListener('hashchange', (e) => {
+  const { newURL } = e;
+  setLocationResolve(newURL.split('#')[1].split('-')[1]);
+});
+
+window.addEventListener('load', () => {
+  window.history.pushState(null, '', window.location.pathname);
+
+  const VALID_DISCOUNT = localStorage.getItem('discount');
+
+  if (VALID_DISCOUNT) {
+    if (VALID_DISCOUNT.length > 2) {
+      const CURRENT_SUM = document.querySelector('.info');
+      const CURRENT_SUM_INFO = document.querySelector('.info__total-sum');
+      CURRENT_SUM?.classList.add('active');
+      CURRENT_SUM_INFO?.classList.add('active');
+    }
+  }
+});

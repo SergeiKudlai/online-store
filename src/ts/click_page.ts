@@ -3,6 +3,9 @@ import { Cart } from './cart';
 import { setPaginationCart } from './pagination_cart';
 import { setAddPageDiscount } from './discount';
 import { getDataRetrieval, getSumDiscount, getSumTotalDiscount, getValidDiscount } from './data_retrieval';
+import { setLocationResolve } from './locationResolve';
+import { resolveUrl } from './enum';
+import { getClickBtnCartDescription } from './description_click';
 
 export function getClickCounter() {
   document.addEventListener('click', (e: Event): void => {
@@ -15,6 +18,10 @@ export function getClickCounter() {
       ELEM.hasAttribute('data-remove') && setRemoveCart();
       ELEM.hasAttribute('data-sale') && setRemoveDiscount(ELEM);
       ELEM.matches('[data-order]') && popupOpen()
+      if (ELEM.matches('[data-img]') || ELEM.matches('.products__title')) {
+        setLocationResolve(resolveUrl.description, ELEM);
+      }
+      ELEM.matches('[data-btn-description]') && getClickBtnCartDescription(ELEM, true);
     }
   });
 
@@ -91,31 +98,35 @@ export function getClickCounter() {
   function setSumCart() {
     const CART = new Cart(getDataRetrieval());
 
-    const RESULT_SUM = getDataRetrieval().reduce((acc: number, value: IDATA) => Number(value.amount) + acc, 0);
+    if (getDataRetrieval()) {
+      const RESULT_SUM = getDataRetrieval().reduce((acc: number, value: IDATA) => Number(value.amount) + acc, 0);
 
-    const RESULT_PRICE = getDataRetrieval()
-      .map((value: IDATA) => Number(value.amount) * value.price)
-      .reduce((acc: number, value: number) => acc + value, 0);
+      const RESULT_PRICE = getDataRetrieval()
+        .map((value: IDATA) => Number(value.amount) * value.price)
+        .reduce((acc: number, value: number) => acc + value, 0);
 
-    localStorage.setItem('sum', JSON.stringify(RESULT_PRICE));
+      localStorage.setItem('sum', JSON.stringify(RESULT_PRICE));
 
-    const SUM_LOCAL = localStorage.getItem('sum');
+      const SUM_LOCAL = localStorage.getItem('sum');
 
-    if (SUM_LOCAL) CART.addCartIngo(RESULT_SUM, +SUM_LOCAL);
-    
+      if (SUM_LOCAL) CART.addCartIngo(RESULT_SUM, +SUM_LOCAL);
+
+      getAddHeaderPrice();
+    }
   }
 
   /* create cart element */
   function createObjectCard(data?: HTMLButtonElement): void {
     if (data) {
-      const BOX_ELEMENT = data.closest('.products__box');
+      const BOX_ELEMENT = data.closest('.products__box') as HTMLElement;
 
       if (BOX_ELEMENT) {
-        const NAME = BOX_ELEMENT.querySelector('.products__title-link')?.textContent;
-        const ID = Number((BOX_ELEMENT as HTMLElement).dataset.id);
+        const NAME = BOX_ELEMENT.querySelector('.products__title')?.textContent;
+        const ID = Number(BOX_ELEMENT.dataset.id);
+        const INDEX = Number(BOX_ELEMENT.dataset.index);
         const IMG = BOX_ELEMENT.querySelector('.products__img')?.getAttribute('src');
         const PRICE = Number(BOX_ELEMENT.querySelector('.products__price')?.textContent);
-        
+
         const AMOUNT = BOX_ELEMENT.querySelector('[data-num]')?.textContent;
         const RATING = Number(BOX_ELEMENT.querySelector('.raiting__num')?.textContent);
 
@@ -127,6 +138,7 @@ export function getClickCounter() {
             price: PRICE,
             amount: AMOUNT,
             raiting: RATING,
+            index: INDEX,
           };
 
           setAddCardLocalStorage(CARD);
@@ -166,7 +178,7 @@ export function getClickCounter() {
     const PRICE_CARD = Number(BOX_CARD?.querySelector('.products__price')?.textContent);
     const CARD_TOTAL_PRICE = BOX_CARD?.querySelector('.products__total-sum');
     if (CARD_TOTAL_PRICE) CARD_TOTAL_PRICE.textContent = (PRICE_CARD * amount).toString();
-    
+
   }
 
   /* remove element cart */
@@ -182,7 +194,7 @@ export function getClickCounter() {
   /* localStorage */
   function setAmountLocalStorage(elem: Element, amount: number): void {
     const BOX_CARD = elem.closest('.products__box');
-    const NAME_PRODUCT = BOX_CARD?.querySelector('.products__title-link')?.textContent;
+    const NAME_PRODUCT = BOX_CARD?.querySelector('.products__title')?.textContent;
 
     let result: IDATA[];
 
@@ -192,7 +204,7 @@ export function getClickCounter() {
 
     result.forEach((value: IDATA): void => {
       if (value.name === NAME_PRODUCT) value.amount = amount.toString();
-      
+
     });
 
     localStorage.setItem('card', JSON.stringify(result));
@@ -200,7 +212,7 @@ export function getClickCounter() {
 
   function setRemoveElementLocalStorage(elem: Element): void {
     const STORAGE = localStorage.getItem('card');
-    const NAME_PRODUCT = elem?.querySelector('.products__title-link')?.textContent;
+    const NAME_PRODUCT = elem?.querySelector('.products__title')?.textContent;
 
     if (STORAGE) {
       const result = JSON.parse(STORAGE);
@@ -256,36 +268,44 @@ export function getClickCounter() {
       const CART = new Cart(getDataRetrieval());
       CART.addDiscount(getSumDiscount(), getSumTotalDiscount(), getValidDiscount());
     }
+
+    const VALID_DISCOUNT = localStorage.getItem('discount');
+
+    if (VALID_DISCOUNT) {
+      if (VALID_DISCOUNT.length <= 2) {
+        const CURRENT_SUM = document.querySelector('.info');
+        const CURRENT_SUM_INFO = document.querySelector('.info__total-sum');
+        CURRENT_SUM?.classList.remove('active');
+        CURRENT_SUM_INFO?.classList.remove('active');
+      }
+    }
   }
-}
 
-//popup
-const popupbtn = document.querySelector('.popup-btn') as HTMLElement
-const popup = document.querySelector('.popup-cart-wrapper') as HTMLElement
-const popupClose = document.querySelector('.popup_close') as HTMLElement
+  const popupbtn = document.querySelector('.popup-btn') as HTMLElement
+  const popup = document.querySelector('.popup-cart-wrapper') as HTMLElement
+  const popupClose = document.querySelector('.popup_close') as HTMLElement
 
-
-function closePopup() {
-  popup.style.display = 'none'
-
-  window.location.href = './index.html';
-}
-if(popupbtn) {
-  popupbtn.addEventListener('click', (): void => {
-  (document.querySelector('.endorder') as HTMLElement).innerHTML = 'Завершение заказа...'
-  setTimeout(closePopup, 2000)
-});
-}
-
-if(popupClose) {
-  popupClose.addEventListener('click', (): void => {
+  function closePopup() {
     popup.style.display = 'none'
-    
-  });
-}
+    window.location.href = './index.html';
+    setRemoveCart();
+  }
+  if (popupbtn) {
+    popupbtn.addEventListener('click', (): void => {
+      (document.querySelector('.endorder') as HTMLElement).innerHTML = 'Завершение заказа...'
+      setTimeout(closePopup, 2000)
+    });
+  }
 
-function popupOpen() {
-  popup.style.display = 'flex'
-  const SUM_LOCAL = localStorage.getItem('sum');
+  if (popupClose) {
+    popupClose.addEventListener('click', (): void => {
+      popup.style.display = 'none'
+    });
+  }
+
+  function popupOpen() {
+    popup.style.display = 'flex'
+    const SUM_LOCAL = localStorage.getItem('sum');
     (document.querySelector('.popup-price') as HTMLElement).innerHTML = String(SUM_LOCAL + ' $')
+  }
 }

@@ -8,4 +8,8 @@ enum discountValue {
   discount_2 = 20,
 }
 
-export { validPromo, discountValue };
+enum resolveUrl {
+  description = 'description',
+}
+
+export { validPromo, discountValue, resolveUrl };
