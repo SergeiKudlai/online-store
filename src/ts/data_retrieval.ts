@@ -1,3 +1,5 @@
+import { discountValue } from './enum';
+
 function getDataRetrieval() {
   const DATA_LOCAL_STORAGE = localStorage.getItem('card');
   if (DATA_LOCAL_STORAGE) return JSON.parse(DATA_LOCAL_STORAGE);
@@ -31,19 +33,19 @@ function getValidDiscount() {
   return true;
 }
 
-function getValidPromo() {
+function getValidPromo(): string | string[] {
   const VALID_PROMO_10 = localStorage.getItem('valid-10');
   const VALID_PROMO_20 = localStorage.getItem('valid-20');
 
-  if (VALID_PROMO_10) {
-    if (JSON.parse(VALID_PROMO_10)) return '10';
+  if (VALID_PROMO_10 && VALID_PROMO_20) {
+    return [discountValue.discount_1, discountValue.discount_2].map(String);
+  } else if (VALID_PROMO_10) {
+    return discountValue.discount_1.toString();
+  } else if (VALID_PROMO_20) {
+    return discountValue.discount_2.toString();
+  } else {
+    return '';
   }
-
-  if (VALID_PROMO_20) {
-    if (JSON.parse(VALID_PROMO_20)) return '20';
-  }
-
-  return '';
 }
 
 function getCategoryProducts(id: number | undefined): string {
