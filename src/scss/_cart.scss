@@ -134,3 +134,62 @@
   padding: 1rem;
   row-gap: 1rem;
 }
+
+//popup
+.popup-cart-wrapper {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  top: 0;
+  left: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+.popup-cart {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 2rem;
+  width: 60rem;
+  position: relative;
+}
+.popup_tittle {
+  font-size: 5rem;
+  margin-bottom: 3rem;
+}
+.name__input, .number__input, .adress__input, .email__input{
+  width: 30rem;
+  height: 3rem;
+  border: none;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+.popup-btn {
+  background-color: #63a60e;
+  background-color: var(--green-100);
+  color: #ffffff;
+  color: var(--white);
+  padding: 1.6rem;
+  border-radius: 5px;
+}
+.price {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+}
+.popup_close {
+position: absolute;
+width: 3rem;
+height: 3rem;
+right: -3rem;
+top: -3rem;
+border-radius: 100%;
+background-color: white;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 2rem;
+padding-bottom: 0.5rem;
+cursor: pointer;
+}
