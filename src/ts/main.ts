@@ -36,7 +36,17 @@ if (getDataRetrieval()) {
   CART.addCartIngo(RESULT_SUM, RESULT_PRICE);
   CART.addCartPromo();
   CART.addDiscount(getSumDiscount(), getSumTotalDiscount(), getValidDiscount());
-  getValidPromo() && CART.addSalePromo(getValidPromo());
+
+  if (getValidPromo()) {
+    if (Array.isArray(getValidPromo())) {
+      for (const NUM of getValidPromo()) {
+        CART.addSalePromo(NUM);
+      }
+    } else {
+      CART.addSalePromo(getValidPromo() as string);
+    }
+  }
+
   getAddHeaderPrice();
   getPromo();
 }

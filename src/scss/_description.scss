@@ -84,9 +84,26 @@
   }
 }
 
+.availability {
+  &__name {
+    &[true] {
+      color: var(--green-100);
+    }
+
+    &[false] {
+      color: red;
+    }
+  }
+}
+
 .btn-des {
   display: flex;
   column-gap: 1rem;
+
+  [false] {
+    background-color: red;
+    pointer-events: none;
+  }
 
   &__item {
     flex: 1 1 auto;

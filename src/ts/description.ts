@@ -101,7 +101,7 @@ export class DescriptionProduct {
 
               <li class="description__list-item availability">
                 <p class="availability__text">Наличие на складе</p>
-                <span class="availability__name">${VALID_AVAILABILITY}</span>
+                <span class="availability__name" ${availability}>${VALID_AVAILABILITY}</span>
               </li>
             </ul>
 
@@ -109,11 +109,15 @@ export class DescriptionProduct {
 
           <ul class="description__buttons btn-des">
             <li class="btn-des__item">  
-              <button class="btn-des__button" type="button" data-btn-description data-index=${index}>В корзину</button>
+              <button class="btn-des__button" type="button" data-btn-description data-index=${index} ${availability}>
+                В корзину
+              </button>
             </li>
 
             <li class="btn-des__item">  
-              <button class="btn-des__button" type="button">Быстрая покупка</button>
+              <button class="btn-des__button" type="button" ${availability}>
+                Быстрая покупка
+              </button>
             </li>        
           </ul>
         </div> 
