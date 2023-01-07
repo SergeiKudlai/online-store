@@ -95,10 +95,10 @@
       <div class="popup-cart">
         <div class="popup_close">x</div>
         <p class="popup_tittle">0формления заказа</p>
-        <input class="name__input" type="text" id="name" name="name" placeholder="Имя Фамилия" required="">
-        <input class="number__input" type="number" id="number" name="number" placeholder="номер телефона" required="">
-        <input class="adress__input" type="text" id="adress" adress="name" placeholder="Адрес доставки" required="">
-        <input class="email__input" type="email" id="email" name="email" placeholder="Email" required="">
+        <input class="name__input" type="text" id="name" name="name" placeholder="Имя Фамилия" required pattern="[a-zA-Z]{3,}\s[a-zA-Z]{3,}">
+        <input class="number__input" type="text" id="number"  name="number" placeholder="номер телефона" required pattern="\+\d{9,15}">
+        <input class="adress__input" type="text" id="adress" adress="name" placeholder="Адрес доставки" required pattern="[a-zA-Z]{5,}\s[a-zA-Z]{5,}\s[a-zA-Z]{5,}">
+        <input class="email__input" type="text" id="email" name="email" placeholder="Email" required="" pattern="^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$">
         <div class="price">Общая сумма: <i class="popup-price">0</з></div>
         <button class="popup-btn" type="button">Завершить заказ</button>
         <div class="endorder"></div>
