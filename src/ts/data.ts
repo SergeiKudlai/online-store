@@ -1,28 +1,98 @@
 import { IDATA } from './interface';
 
 import lemon from '../assets/images/product/lemon.jpg';
+import lemon2 from '../assets/images/product/lemon2.png';
+
 import coffee from '../assets/images/product/coffee.jpg';
+import coffee2 from '../assets/images/product/coffee2.jpg';
+import coffee3 from '../assets/images/product/coffee3.png';
+
 import carrot from '../assets/images/product/carrot.jpg';
+import carrot2 from '../assets/images/product/carrot2.jpg';
+import carrot3 from '../assets/images/product/carrot3.jpg';
+
 import dragonFruit from '../assets/images/product/dragon_fruit.jpg';
+import dragonFruit2 from '../assets/images/product/dragon_fruit2.jpg';
+import dragonFruit3 from '../assets/images/product/dragon_fruit3.jpg';
+
 import juice from '../assets/images/product/juice.jpg';
+import juice2 from '../assets/images/product/juice2.jpg';
+import juice3 from '../assets/images/product/juice3.jpg';
+
 import paste from '../assets/images/product/paste.png';
+import paste2 from '../assets/images/product/paste2.jpg';
+import paste3 from '../assets/images/product/paste3.jpg';
+
 import paprik from '../assets/images/product/paprik.jpg';
+import paprik2 from '../assets/images/product/paprik2.jpg';
+import paprik3 from '../assets/images/product/paprik3.jpg';
+
 import pineapple from '../assets/images/product/pineapple.jpg';
+import pineapple2 from '../assets/images/product/pineapple2.png';
+import pineapple3 from '../assets/images/product/pineapple3.png';
+
 import beverage from '../assets/images/product/beverage.jpg';
+import beverage2 from '../assets/images/product/beverage2.jpg';
+import beverage3 from '../assets/images/product/beverage3.jpg';
+
 import pepsi from '../assets/images/product/pepsi.png';
+import pepsi2 from '../assets/images/product/pepsi2.jpg';
+import pepsi3 from '../assets/images/product/pepsi2.jpg';
+
 import cola from '../assets/images/product/cola.png';
+import cola2 from '../assets/images/product/cola2.png';
+import cola3 from '../assets/images/product/cola3.jpg';
+
+
 import bonaqua2 from '../assets/images/product/bonaqua2.png';
+import bonaqua22 from '../assets/images/product/bonaqua2-2.jpg';
+import bonaqua23 from '../assets/images/product/bonaqua2-3.png';
+
 import bonaqua from '../assets/images/product/bonaqua.png';
+import bonaqua12 from '../assets/images/product/bonaqua12.jpg';
+import bonaqua13 from '../assets/images/product/bonaqua13.jpg';
+
 import orange from '../assets/images/product/orange.png';
+import orange2 from '../assets/images/product/orange2.png';
+import orange3 from '../assets/images/product/orange3.png';
+
 import banana from '../assets/images/product/banana.png';
+import banana2 from '../assets/images/product/banana2.jpg';
+import banana3 from '../assets/images/product/banana3.jpg';
+
 import granat from '../assets/images/product/granat.png';
+import granat2 from '../assets/images/product/granat2.jpg';
+import granat3 from '../assets/images/product/granat3.jpg';
+
+
 import pepper_red from '../assets/images/product/pepper-red.png';
+import pepper_red2 from '../assets/images/product/pepper-red2.jpg';
+import pepper_red3 from '../assets/images/product/pepper-red3.png';
+
+
 import cabbage from '../assets/images/product/cabbage.png';
+import cabbage2 from '../assets/images/product/cabbage2.jpg';
+import cabbage3 from '../assets/images/product/cabbage3.jpg';
+
 import strawberry from '../assets/images/product/strawberry.png';
+import strawberry2 from '../assets/images/product/strawberry2.png'
+import strawberry3 from '../assets/images/product/strawberry3.png'
+
 import сranberry from '../assets/images/product/сranberry.png';
+import сranberry2 from '../assets/images/product/сranberry2.png';
+import сranberry3 from '../assets/images/product/сranberry3.jpg';
+
 import сherry from '../assets/images/product/сherry.png';
+import сherry2 from '../assets/images/product/сherry2.jpg';
+import сherry3 from '../assets/images/product/сherry3.jpg';
+
 import star from '../assets/images/product/star.png';
+import star2 from '../assets/images/product/star2.png';
+import star3 from '../assets/images/product/star3.png';
+
 import candy from '../assets/images/product/candy.png';
+import candy2 from '../assets/images/product/candy2.jpg';
+import candy3 from '../assets/images/product/candy3.jpg';
 
 /*
 id : 1  -> напитки
