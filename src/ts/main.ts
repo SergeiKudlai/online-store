@@ -7,6 +7,7 @@ import { clickedFilters } from './click_filter';
 import { Cart } from './cart';
 import { setPaginationCart } from './pagination_cart';
 import { getPromo } from './promo';
+import { setLocationResolve } from './locationResolve';
 import {
   getDataRetrieval,
   getSumDiscount,
@@ -14,14 +15,20 @@ import {
   getValidDiscount,
   getValidPromo,
 } from './data_retrieval';
-import { setLocationResolve } from './locationResolve';
 
 getClickCounter();
 clickAside();
 clickedFilters();
 
-const product = new Product(DATA);
-product.render();
+const VALID_ARR_DATA = localStorage.getItem('arr');
+
+if (VALID_ARR_DATA) {
+  const product = new Product(JSON.parse(VALID_ARR_DATA));
+  product.render();
+} else {
+  const product = new Product(DATA);
+  product.render();
+}
 
 if (getDataRetrieval()) {
   const CART = new Cart(getDataRetrieval());

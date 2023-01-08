@@ -180,6 +180,11 @@
   width: 60rem;
   position: relative;
 
+  .price {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+  }
+
   input:valid {
     background-color: palegreen;
   }
@@ -207,10 +212,7 @@
   padding: 1.6rem;
   border-radius: 5px;
 }
-.price {
-  font-size: 3rem;
-  margin-bottom: 2rem;
-}
+
 .popup_close {
 position: absolute;
 width: 3rem;

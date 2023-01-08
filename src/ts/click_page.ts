@@ -5,7 +5,7 @@ import { setAddPageDiscount } from './discount';
 import { getDataRetrieval, getSumDiscount, getSumTotalDiscount, getValidDiscount } from './data_retrieval';
 import { setLocationResolve } from './locationResolve';
 import { resolveUrl } from './enum';
-import { getClickBtnCartDescription } from './description_click';
+import { getClickBtnCartDescription, setImagesDes } from './description_click';
 
 export function getClickCounter() {
   document.addEventListener('click', (e: Event): void => {
@@ -22,6 +22,7 @@ export function getClickCounter() {
         setLocationResolve(resolveUrl.description, ELEM);
       }
       ELEM.matches('[data-btn-description]') && getClickBtnCartDescription(ELEM, true);
+      ELEM.matches('.description__item-img') && setImagesDes(ELEM);
     }
   });
 

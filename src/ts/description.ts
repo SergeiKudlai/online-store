@@ -45,7 +45,12 @@ export class DescriptionProduct {
   render() {
     if (this.box?.querySelector('.description')) this.box?.querySelector('.description')?.remove();
 
-    const { img, id, brand, availability, index, name, price, raiting } = this.elem;
+    const { img, id, brand, availability, index, name, price, raiting, images } = this.elem;
+
+    let arr: string[] = [];
+
+    if (images) arr = images;
+
 
     if (brand) this.setBreadCrumbAdd(getCategoryProducts(id), brand);
 
@@ -66,16 +71,16 @@ export class DescriptionProduct {
               </li>
 
               <li class="description__images-item">
-                <img class="description__item-img" src="${img}">
+                <img class="description__item-img" src="${arr[0]}">
               </li>
 
               <li class="description__images-item">
-                <img class="description__item-img" src="${img}">
+                <img class="description__item-img" src="${arr[1]}">
               </li>
             </ul>
 
             <div class="description__box-img">
-              <img class="description__img" src="${img}" alt="" width="200" height="200 ">
+              <img class="description__img" src="${img}" alt="${name}" width="200" height="200">
             </div>
 
             <ul class="description__list">

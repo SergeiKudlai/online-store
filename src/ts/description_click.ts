@@ -113,3 +113,9 @@ function getAddHeaderPrice() {
     if (CARD_INDEX) CARD_INDEX.textContent = String(JSON.parse(RESULT).length);
   }
 }
+
+export function setImagesDes(elem: HTMLElement) {
+  const BOX_ELEM = elem.closest('.description');
+  const IMAGES = BOX_ELEM?.querySelector('.description__img') as HTMLElement;
+  IMAGES?.setAttribute('src', `${elem.getAttribute('src')}`);
+}

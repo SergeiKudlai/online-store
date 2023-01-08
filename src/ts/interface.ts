@@ -8,4 +8,5 @@ export interface IDATA {
   amount?: string;
   brand?: string;
   raiting?: number;
+  images?: string[];
 }
