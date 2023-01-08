@@ -1,5 +1,6 @@
 import { Product } from './cards_product';
 import { DATA } from './data';
+import { setElementsAddLocalStorage } from './data_retrieval';
 
 export function clickedFilters(): void {
   const BTN_FILTER = document.querySelector('[data-availability]');
@@ -36,46 +37,54 @@ export function clickedFilters(): void {
     const PRODUCT = new Product(DATA);
     if (PRODUCT.box) PRODUCT.box.innerHTML = '';
     PRODUCT.render();
+    localStorage.removeItem('arr');
   });
 
-  // filter: category
   DRINKS?.addEventListener('click', (): void => {
     const RESULT = DATA.filter((value) => value.id === 1);
     const PRODUCT = new Product(RESULT);
 
     if (PRODUCT.box) PRODUCT.box.innerHTML = '';
     PRODUCT.render();
+    setElementsAddLocalStorage(RESULT);
   });
+
   FRUITS?.addEventListener('click', (): void => {
     const RESULT = DATA.filter((value) => value.id === 2);
     const PRODUCT = new Product(RESULT);
 
     if (PRODUCT.box) PRODUCT.box.innerHTML = '';
     PRODUCT.render();
+    setElementsAddLocalStorage(RESULT);
   });
+
   VEGETABLES?.addEventListener('click', (): void => {
     const RESULT = DATA.filter((value) => value.id === 3);
     const PRODUCT = new Product(RESULT);
 
     if (PRODUCT.box) PRODUCT.box.innerHTML = '';
     PRODUCT.render();
+    setElementsAddLocalStorage(RESULT);
   });
+
   BERRY?.addEventListener('click', (): void => {
     const RESULT = DATA.filter((value) => value.id === 4);
     const PRODUCT = new Product(RESULT);
 
     if (PRODUCT.box) PRODUCT.box.innerHTML = '';
     PRODUCT.render();
+    setElementsAddLocalStorage(RESULT);
   });
+
   OTHER?.addEventListener('click', (): void => {
     const RESULT = DATA.filter((value) => value.id === 5);
     const PRODUCT = new Product(RESULT);
 
     if (PRODUCT.box) PRODUCT.box.innerHTML = '';
     PRODUCT.render();
+    setElementsAddLocalStorage(RESULT);
   });
 
-  //filter: brands
   babGryadka?.addEventListener('click', (): void => {
     const RESULT = DATA.filter((value) => value.brand === 'Бабушкина грядка');
     const PRODUCT = new Product(RESULT);
@@ -84,6 +93,7 @@ export function clickedFilters(): void {
     PRODUCT.render();
     rangeMi();
     rangeMa();
+    setElementsAddLocalStorage(RESULT);
   });
 
   magagaskar?.addEventListener('click', (): void => {
@@ -94,6 +104,7 @@ export function clickedFilters(): void {
     PRODUCT.render();
     rangeMi();
     rangeMa();
+    setElementsAddLocalStorage(RESULT);
   });
 
   CaffeSalomoni?.addEventListener('click', (): void => {
@@ -104,6 +115,7 @@ export function clickedFilters(): void {
     PRODUCT.render();
     rangeMi();
     rangeMa();
+    setElementsAddLocalStorage(RESULT);
   });
 
   candy?.addEventListener('click', (): void => {
@@ -114,6 +126,7 @@ export function clickedFilters(): void {
     PRODUCT.render();
     rangeMi();
     rangeMa();
+    setElementsAddLocalStorage(RESULT);
   });
 
   pepsiCola?.addEventListener('click', (): void => {
@@ -124,6 +137,7 @@ export function clickedFilters(): void {
     PRODUCT.render();
     rangeMi();
     rangeMa();
+    setElementsAddLocalStorage(RESULT);
   });
   bonaqua?.addEventListener('click', (): void => {
     const RESULT = DATA.filter((value) => value.brand === 'Bonaqua');
@@ -131,6 +145,7 @@ export function clickedFilters(): void {
 
     if (PRODUCT.box) PRODUCT.box.innerHTML = '';
     PRODUCT.render();
+    setElementsAddLocalStorage(RESULT);
   });
 
   sanpellegrinoAranciata?.addEventListener('click', (): void => {
@@ -141,6 +156,7 @@ export function clickedFilters(): void {
     PRODUCT.render();
     rangeMi();
     rangeMa();
+    setElementsAddLocalStorage(RESULT);
   });
 
   rocs?.addEventListener('click', (): void => {
@@ -151,14 +167,14 @@ export function clickedFilters(): void {
     PRODUCT.render();
     rangeMi();
     rangeMa();
+    setElementsAddLocalStorage(RESULT);
   });
 
-  //btn
   BTN_FILTER?.addEventListener('click', (): void => setAvailability());
-  BTN_PRICE_MIN?.addEventListener('click', (): void => setSortMin('.products__price'));
-  BTN_PRICE_MAX?.addEventListener('click', (): void => setSortMax('.products__price'));
-  BTN_RAITING_MAX?.addEventListener('click', (): void => setSortMax('.raiting__num'));
-  BTN_RAITING_MIN?.addEventListener('click', (): void => setSortMin('.raiting__num'));
+  BTN_PRICE_MIN?.addEventListener('click', (): void => setSort('.products__price', true));
+  BTN_PRICE_MAX?.addEventListener('click', (): void => setSort('.products__price', false));
+  BTN_RAITING_MIN?.addEventListener('click', (): void => setSort('.raiting__num', true));
+  BTN_RAITING_MAX?.addEventListener('click', (): void => setSort('.raiting__num', false));
   RANGEMIN?.addEventListener('input', (): void => rangeMi());
   RANGEMAX?.addEventListener('input', (): void => rangeMa());
   INPUTMIN?.addEventListener('input', (): void => rangeMi());
@@ -173,30 +189,22 @@ export function clickedFilters(): void {
     }
   }
 
-  function setSortMin(value: string): void {
+  function setSort(value: string, valid: boolean): void {
     if (BOX_PRODUCT) {
       for (let i = 0; i < BOX_PRODUCT.children.length; i++) {
         for (let j = i; j < BOX_PRODUCT.children.length; j++) {
           const PRICE = Number(BOX_PRODUCT.children[i].querySelector(value)?.textContent);
           const PRICE_2 = Number(BOX_PRODUCT.children[j].querySelector(value)?.textContent);
-          if (PRICE > PRICE_2) {
-            const REPLACE_NODE = BOX_PRODUCT.replaceChild(BOX_PRODUCT.children[j], BOX_PRODUCT.children[i]);
-            instertAfter(REPLACE_NODE, BOX_PRODUCT.children[i]);
-          }
-        }
-      }
-    }
-  }
-
-  function setSortMax(value: string): void {
-    if (BOX_PRODUCT) {
-      for (let i = 0; i < BOX_PRODUCT.children.length; i++) {
-        for (let j = i; j < BOX_PRODUCT.children.length; j++) {
-          const PRICE = Number(BOX_PRODUCT.children[i].querySelector(value)?.textContent);
-          const PRICE_2 = Number(BOX_PRODUCT.children[j].querySelector(value)?.textContent);
-          if (PRICE < PRICE_2) {
-            const REPLACE_NODE = BOX_PRODUCT.replaceChild(BOX_PRODUCT.children[j], BOX_PRODUCT.children[i]);
-            instertAfter(REPLACE_NODE, BOX_PRODUCT.children[i]);
+          if (valid) {
+            if (PRICE > PRICE_2) {
+              const REPLACE_NODE = BOX_PRODUCT.replaceChild(BOX_PRODUCT.children[j], BOX_PRODUCT.children[i]);
+              instertAfter(REPLACE_NODE, BOX_PRODUCT.children[i]);
+            }
+          } else {
+            if (PRICE < PRICE_2) {
+              const REPLACE_NODE = BOX_PRODUCT.replaceChild(BOX_PRODUCT.children[j], BOX_PRODUCT.children[i]);
+              instertAfter(REPLACE_NODE, BOX_PRODUCT.children[i]);
+            }
           }
         }
       }
@@ -241,6 +249,7 @@ export function clickedFilters(): void {
     if (BOX_PRODUCT) {
       for (let i = 0; i < BOX_PRODUCT.children.length; i++) {
         const n = Number(BOX_PRODUCT.children[i].querySelector('.products__price')?.textContent);
+
         if (n <= Number(INPUTMAX.value) && n >= Number(INPUTMIN.value)) {
           (BOX_PRODUCT.children[i] as HTMLElement).style.display = '';
         } else {

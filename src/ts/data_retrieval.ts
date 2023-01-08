@@ -1,4 +1,5 @@
 import { discountValue } from './enum';
+import { IDATA } from './interface';
 
 function getDataRetrieval() {
   const DATA_LOCAL_STORAGE = localStorage.getItem('card');
@@ -57,4 +58,16 @@ function getCategoryProducts(id: number | undefined): string {
   return 'Категория не найдена';
 }
 
-export { getDataRetrieval, getSumDiscount, getSumTotalDiscount, getValidDiscount, getValidPromo, getCategoryProducts };
+function setElementsAddLocalStorage(data: IDATA[]): void {
+  localStorage.setItem('arr', JSON.stringify(data));
+}
+
+export {
+  getDataRetrieval,
+  getSumDiscount,
+  getSumTotalDiscount,
+  getValidDiscount,
+  getValidPromo,
+  getCategoryProducts,
+  setElementsAddLocalStorage,
+};
