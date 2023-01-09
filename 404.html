@@ -206,8 +206,9 @@
     
     <div class="wrapper">
       <header class="header">
-        <div class="container container-block"><a class="container_logo" href="./index.html">
-          </a><h1 class="header__title">ФРЕШОК</h1>
+        <div class="container container-block">
+          <a class="container_logo" href="#"></a>
+          <h1 class="header__title">ФРЕШОК</h1>
         </div>
       </header>
       
@@ -215,7 +216,7 @@
         
         <ul class="breadcrumb container">
           <li class="breadcrumb__item">
-            <a class="breadcrumb__link breadcrumb__link" href="./index.html">Главная</a>
+            <a class="breadcrumb__link breadcrumb__link home" href="#">Главная</a>
           </li>
         </ul>
         
@@ -223,7 +224,7 @@
           <div class="notfound-404">404</div>
           <div class="main-tittle">Упс, страница не найдена</div>
           <div class="notfound-desc">Вернитесь 
-            <a class="notfound-green" href="./index.html">на главную</a> 
+            <a class="notfound-green home" href="#">на главную</a> 
             сраницу и попробуйте еще раз</div>
           </div>
         </section>
@@ -240,5 +241,16 @@
               </use></svg> </a><span class="footer__box-text">2022г.</span></div></div>
       </footer>
     </div>
+    
+      <script>
+    document.addEventListener('click', (e) => {
+      const { target } = e;
+      if (target.matches('.home')) {
+        target.setAttribute('href', `${location.origin}/index.html`);
+        console.log(target);
+      }
+
+    })
+  </script>
   </body>
 </html>
