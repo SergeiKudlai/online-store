@@ -17,16 +17,19 @@ export function getClickCounter() {
       ELEM.hasAttribute('data-card') && createObjectCard(ELEM);
       ELEM.hasAttribute('data-remove') && setRemoveCart();
       ELEM.hasAttribute('data-sale') && setRemoveDiscount(ELEM);
-      ELEM.matches('[data-order]') && popupOpen()
+      ELEM.matches('[data-order]') && popupOpen();
+      ELEM.matches('.description__item-img') && setImagesDes(ELEM);
+
       if (ELEM.matches('[data-img]') || ELEM.matches('.products__title')) {
         setLocationResolve(resolveUrl.description, ELEM);
       }
-      ELEM.matches('[data-btn-description]') && getClickBtnCartDescription(ELEM, true);
-      ELEM.matches('.description__item-img') && setImagesDes(ELEM);
+
+      if (ELEM.matches('[data-btn-description]') || ELEM.matches('[data-btn-buy]')) {
+        getClickBtnCartDescription(ELEM, true);
+      }
     }
   });
 
-  /* count+ */
   function setPlusCounter(data: HTMLButtonElement): void {
     const BOX_ELEMENT = data.closest('.amount');
 
@@ -52,7 +55,6 @@ export function getClickCounter() {
     setAddPageDiscount(getDataRetrieval());
   }
 
-  /* count- */
   function setMinusCounter(data: HTMLButtonElement): void {
     const BOX_ELEMENT = data.closest('.amount');
 
@@ -116,7 +118,6 @@ export function getClickCounter() {
     }
   }
 
-  /* create cart element */
   function createObjectCard(data?: HTMLButtonElement): void {
     if (data) {
       const BOX_ELEMENT = data.closest('.products__box') as HTMLElement;
@@ -173,16 +174,13 @@ export function getClickCounter() {
     }
   }
 
-  /* Cart set Total Price */
   function getTotalPrice(amount: number, elem: Element): void {
     const BOX_CARD = elem.closest('.products__box');
     const PRICE_CARD = Number(BOX_CARD?.querySelector('.products__price')?.textContent);
     const CARD_TOTAL_PRICE = BOX_CARD?.querySelector('.products__total-sum');
     if (CARD_TOTAL_PRICE) CARD_TOTAL_PRICE.textContent = (PRICE_CARD * amount).toString();
-
   }
 
-  /* remove element cart */
   function getValidCart(elem: Element): void {
     const BOX_CARD = elem.closest('.products__box');
 
@@ -192,7 +190,6 @@ export function getClickCounter() {
     }
   }
 
-  /* localStorage */
   function setAmountLocalStorage(elem: Element, amount: number): void {
     const BOX_CARD = elem.closest('.products__box');
     const NAME_PRODUCT = BOX_CARD?.querySelector('.products__title')?.textContent;
@@ -205,7 +202,6 @@ export function getClickCounter() {
 
     result.forEach((value: IDATA): void => {
       if (value.name === NAME_PRODUCT) value.amount = amount.toString();
-
     });
 
     localStorage.setItem('card', JSON.stringify(result));
@@ -282,31 +278,36 @@ export function getClickCounter() {
     }
   }
 
-  const popupbtn = document.querySelector('.popup-btn') as HTMLElement
-  const popup = document.querySelector('.popup-cart-wrapper') as HTMLElement
-  const popupClose = document.querySelector('.popup_close') as HTMLElement
+  const popupbtn = document.querySelector('.popup-btn') as HTMLElement;
+  const popup = document.querySelector('.popup-cart-wrapper') as HTMLElement;
+  const popupClose = document.querySelector('.popup_close') as HTMLElement;
 
   function closePopup() {
-    popup.style.display = 'none'
+    popup.style.display = 'none';
     window.location.href = './index.html';
     setRemoveCart();
   }
   if (popupbtn) {
     popupbtn.addEventListener('click', (): void => {
-      (document.querySelector('.endorder') as HTMLElement).innerHTML = 'Завершение заказа...'
-      setTimeout(closePopup, 2000)
+      (document.querySelector('.endorder') as HTMLElement).innerHTML = 'Завершение заказа...';
+      setTimeout(closePopup, 2000);
     });
   }
 
   if (popupClose) {
     popupClose.addEventListener('click', (): void => {
-      popup.style.display = 'none'
+      popup.style.display = 'none';
+      localStorage.removeItem('bye');
     });
   }
 
   function popupOpen() {
-    popup.style.display = 'flex'
+    popup.style.display = 'flex';
     const SUM_LOCAL = localStorage.getItem('sum');
-    (document.querySelector('.popup-price') as HTMLElement).innerHTML = String(SUM_LOCAL + ' $')
+    (document.querySelector('.popup-price') as HTMLElement).innerHTML = String(SUM_LOCAL + ' $');
+  }
+
+  if (localStorage.getItem('bye')) {
+    if (popup) popupOpen();
   }
 }

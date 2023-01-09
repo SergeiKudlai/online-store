@@ -35,6 +35,17 @@ export function getClickBtnCartDescription(elem: HTMLElement, valid: boolean) {
     });
 
     setSumCart();
+
+    getUrlCart(elem, true);
+  }
+}
+
+function getUrlCart(elem: HTMLElement, valid: boolean) {
+  if (elem.hasAttribute('data-btn-buy')) {
+    if (valid) {
+      localStorage.setItem('bye', 'true');
+      location.replace('./cart.html');
+    }
   }
 }
 

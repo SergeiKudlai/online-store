@@ -187,17 +187,30 @@
 
   input:valid {
     background-color: palegreen;
+
+    ~ .popup-btn {
+      background-color: var(--green-100);
+      pointer-events: all;
+    }
   }
-  
+
   input:invalid {
     background-color: lightpink;
+
+    ~ .popup-btn {
+      background-color: red;
+      pointer-events: none;
+    }
   }
 }
 .popup_tittle {
   font-size: 5rem;
   margin-bottom: 3rem;
 }
-.name__input, .number__input, .adress__input, .email__input{
+.name__input,
+.number__input,
+.adress__input,
+.email__input {
   width: 30rem;
   height: 3rem;
   border: none;
@@ -214,18 +227,17 @@
 }
 
 .popup_close {
-position: absolute;
-width: 3rem;
-height: 3rem;
-right: -3rem;
-top: -3rem;
-border-radius: 100%;
-background-color: white;
-display: flex;
-align-items: center;
-justify-content: center;
-font-size: 2rem;
-padding-bottom: 0.5rem;
-cursor: pointer;
+  position: absolute;
+  width: 3rem;
+  height: 3rem;
+  right: -3rem;
+  top: -3rem;
+  border-radius: 100%;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  padding-bottom: 0.5rem;
+  cursor: pointer;
 }
-
