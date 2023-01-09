@@ -51,7 +51,6 @@ export class DescriptionProduct {
 
     if (images) arr = images;
 
-
     if (brand) this.setBreadCrumbAdd(getCategoryProducts(id), brand);
 
     const VALID_AVAILABILITY = availability ? 'есть в наличии' : 'нет в наличии';
@@ -120,7 +119,7 @@ export class DescriptionProduct {
             </li>
 
             <li class="btn-des__item">  
-              <button class="btn-des__button" type="button" ${availability}>
+              <button class="btn-des__button" type="button" data-btn-buy data-index=${index} ${availability}>
                 Быстрая покупка
               </button>
             </li>        

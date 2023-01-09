@@ -2,6 +2,7 @@ import { IDATA } from './interface';
 
 import lemon from '../assets/images/product/lemon.jpg';
 import lemon2 from '../assets/images/product/lemon2.png';
+import lemon3 from '../assets/images/product/lemon3.jpg';
 
 import coffee from '../assets/images/product/coffee.jpg';
 import coffee2 from '../assets/images/product/coffee2.jpg';
@@ -37,12 +38,11 @@ import beverage3 from '../assets/images/product/beverage3.jpg';
 
 import pepsi from '../assets/images/product/pepsi.png';
 import pepsi2 from '../assets/images/product/pepsi2.jpg';
-import pepsi3 from '../assets/images/product/pepsi2.jpg';
+import pepsi3 from '../assets/images/product/pepsi3.jpg';
 
 import cola from '../assets/images/product/cola.png';
 import cola2 from '../assets/images/product/cola2.png';
 import cola3 from '../assets/images/product/cola3.jpg';
-
 
 import bonaqua2 from '../assets/images/product/bonaqua2.png';
 import bonaqua22 from '../assets/images/product/bonaqua2-2.jpg';
@@ -64,19 +64,17 @@ import granat from '../assets/images/product/granat.png';
 import granat2 from '../assets/images/product/granat2.jpg';
 import granat3 from '../assets/images/product/granat3.jpg';
 
-
 import pepper_red from '../assets/images/product/pepper-red.png';
 import pepper_red2 from '../assets/images/product/pepper-red2.jpg';
 import pepper_red3 from '../assets/images/product/pepper-red3.png';
-
 
 import cabbage from '../assets/images/product/cabbage.png';
 import cabbage2 from '../assets/images/product/cabbage2.jpg';
 import cabbage3 from '../assets/images/product/cabbage3.jpg';
 
 import strawberry from '../assets/images/product/strawberry.png';
-import strawberry2 from '../assets/images/product/strawberry2.png'
-import strawberry3 from '../assets/images/product/strawberry3.png'
+import strawberry2 from '../assets/images/product/strawberry2.png';
+import strawberry3 from '../assets/images/product/strawberry3.png';
 
 import сranberry from '../assets/images/product/сranberry.png';
 import сranberry2 from '../assets/images/product/сranberry2.png';
@@ -112,7 +110,7 @@ export const DATA: IDATA[] = [
     availability: true,
     brand: 'Бабушкина грядка',
     raiting: 4.0,
-    images: [strawberry2, strawberry3]
+    images: [strawberry2, strawberry3],
   },
   {
     index: 2,
@@ -123,7 +121,7 @@ export const DATA: IDATA[] = [
     availability: true,
     brand: 'Мадагаскар',
     raiting: 3.0,
-    images: [lemon2, lemon2]
+    images: [lemon2, lemon3],
   },
   {
     index: 3,
@@ -134,7 +132,7 @@ export const DATA: IDATA[] = [
     availability: true,
     brand: 'Caffe Salomoni',
     raiting: 4.5,
-    images: [coffee2, coffee3]
+    images: [coffee2, coffee3],
   },
   {
     index: 4,
@@ -145,7 +143,7 @@ export const DATA: IDATA[] = [
     availability: true,
     brand: 'Дед Мороз у камина',
     raiting: 3.0,
-    images: [candy2, candy3]
+    images: [candy2, candy3],
   },
   {
     index: 5,
@@ -156,7 +154,7 @@ export const DATA: IDATA[] = [
     availability: true,
     brand: 'Мадагаскар',
     raiting: 4.2,
-    images: [banana2, banana3]
+    images: [banana2, banana3],
   },
   {
     index: 6,
@@ -167,7 +165,7 @@ export const DATA: IDATA[] = [
     availability: true,
     brand: 'pepsi-cola',
     raiting: 3.1,
-    images: [pepsi2, pepsi3]
+    images: [pepsi2, pepsi3],
   },
   {
     index: 7,
@@ -178,7 +176,7 @@ export const DATA: IDATA[] = [
     availability: true,
     brand: 'Бабушкина грядка',
     raiting: 5.0,
-    images: [pepper_red2, pepper_red3]
+    images: [pepper_red2, pepper_red3],
   },
   {
     index: 8,
@@ -189,7 +187,7 @@ export const DATA: IDATA[] = [
     availability: true,
     brand: 'pepsi-cola',
     raiting: 3.3,
-    images: [cola2, cola3]
+    images: [cola2, cola3],
   },
   {
     index: 9,
@@ -200,7 +198,7 @@ export const DATA: IDATA[] = [
     availability: true,
     brand: 'Мадагаскар',
     raiting: 4.8,
-    images: [orange2, orange3]
+    images: [orange2, orange3],
   },
   {
     index: 10,
@@ -211,7 +209,7 @@ export const DATA: IDATA[] = [
     availability: true,
     brand: 'Bonaqua',
     raiting: 4.9,
-    images: [bonaqua22, bonaqua23]
+    images: [bonaqua22, bonaqua23],
   },
   {
     index: 11,
@@ -222,7 +220,7 @@ export const DATA: IDATA[] = [
     availability: true,
     brand: 'Свой огород',
     raiting: 2.1,
-    images: [сherry2, сherry3]
+    images: [сherry2, сherry3],
   },
   {
     index: 12,
@@ -233,7 +231,7 @@ export const DATA: IDATA[] = [
     availability: true,
     brand: 'Волшебная страна',
     raiting: 5.0,
-    images: [star2, star3]
+    images: [star2, star3],
   },
   {
     index: 13,
@@ -244,7 +242,7 @@ export const DATA: IDATA[] = [
     availability: true,
     brand: 'Свой огород',
     raiting: 3.4,
-    images: [cabbage2, cabbage3]
+    images: [cabbage2, cabbage3],
   },
   {
     index: 14,
@@ -255,7 +253,7 @@ export const DATA: IDATA[] = [
     availability: true,
     brand: 'Bonaqua',
     raiting: 4.7,
-    images: [bonaqua12, bonaqua13]
+    images: [bonaqua12, bonaqua13],
   },
   {
     index: 15,
@@ -266,7 +264,7 @@ export const DATA: IDATA[] = [
     availability: false,
     brand: 'Свой огород',
     raiting: 4.6,
-    images: [carrot2, carrot3]
+    images: [carrot2, carrot3],
   },
   {
     index: 16,
@@ -277,7 +275,7 @@ export const DATA: IDATA[] = [
     availability: true,
     brand: 'Жаркая страна',
     raiting: 3.9,
-    images: [dragonFruit2, dragonFruit3]
+    images: [dragonFruit2, dragonFruit3],
   },
   {
     index: 17,
@@ -288,7 +286,7 @@ export const DATA: IDATA[] = [
     availability: true,
     brand: 'Жаркая страна',
     raiting: 4.1,
-    images: [granat2, granat3]
+    images: [granat2, granat3],
   },
   {
     index: 18,
@@ -299,7 +297,7 @@ export const DATA: IDATA[] = [
     availability: false,
     brand: 'Sanpellegrino Aranciata',
     raiting: 4.8,
-    images: [juice2, juice3]
+    images: [juice2, juice3],
   },
   {
     index: 19,
@@ -310,7 +308,7 @@ export const DATA: IDATA[] = [
     availability: true,
     brand: 'Бабушкина грядка',
     raiting: 4.4,
-    images: [сranberry2, сranberry3]
+    images: [сranberry2, сranberry3],
   },
   {
     index: 20,
@@ -321,7 +319,7 @@ export const DATA: IDATA[] = [
     availability: true,
     brand: 'R.O.C.S.',
     raiting: 5.0,
-    images: [paste2, paste3]
+    images: [paste2, paste3],
   },
   {
     index: 21,
@@ -332,7 +330,7 @@ export const DATA: IDATA[] = [
     availability: true,
     brand: 'Бабушкина грядка',
     raiting: 4.3,
-    images: [paprik2, paprik3]
+    images: [paprik2, paprik3],
   },
   {
     index: 21,
@@ -343,7 +341,7 @@ export const DATA: IDATA[] = [
     availability: true,
     brand: 'Мадагаскар',
     raiting: 4.0,
-    images: [pineapple2, pineapple3]
+    images: [pineapple2, pineapple3],
   },
   {
     index: 22,
@@ -354,6 +352,6 @@ export const DATA: IDATA[] = [
     availability: false,
     brand: 'LIFELINE Intellectual',
     raiting: 2.5,
-    images: [beverage2, beverage3]
+    images: [beverage2, beverage3],
   },
 ];

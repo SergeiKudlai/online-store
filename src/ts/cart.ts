@@ -217,4 +217,3 @@ export class Cart extends Product {
     });
   }
 }
-
