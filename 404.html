@@ -1,1 +1,245 @@
-<!doctype html><html lang="ru"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Freshok</title><script defer="defer" src="main.aa1a2ca62de137f9cd00.js"></script><link href="main.046dd0d93122d0ef9926.css" rel="stylesheet"></head><body><div class="wrapper"><header class="header"><div class="container container-block"><a class="container_logo" href="./index.html"><img src="./assets/html_img/logo.png" alt="Логотип" width="150" height="50"></a><h1 class="header__title">ФРЕШОК</h1></div></header><main class="main"><ul class="breadcrumb container"><li class="breadcrumb__item"><a class="breadcrumb__link breadcrumb__link" href="./index.html">Главная</a></li></ul><section class="container"><div class="notfound"><div class="notfound-404">404</div><div class="main-tittle">Упс, страница не найдена</div><div class="notfound-desc">Вернитесь <a class="notfound-green" href="./index.html">на главную</a> сраницу и попробуйте еще раз</div></div></section></main><footer class="footer"><div class="footer__container container"><a class="footer__logo-link" href="./index.html"><img class="logo" src="./assets/html_img/logo.png" alt="Логотип" width="150" height="50"> </a><a class="footer__rs" href="https://rs.school/js/" target="_blank"><span class="sr-only">ссылка на rs-school</span> <svg class="footer__rs-svg"><use xlink:href="./assets/html_img/sprite.svg#res"></use></svg></a><div class="footer__box"><span class="sr-only">ссылка на github</span> <a class="footer__box-link" href="https://github.com/SergeiKudlai" target="_blank"><svg class="footer__git"><use xlink:href="./assets/html_img/sprite.svg#git"></use></svg> </a><a class="footer__box-link" href="https://github.com/thestrelchik" target="_blank"><span class="sr-only">ссылка на github</span> <svg class="footer__git"><use xlink:href="./assets/html_img/sprite.svg#git"></use></svg> </a><span class="footer__box-text">2022г.</span></div></div></footer></div></body></html>
+<!doctype html>
+<html lang="ru">
+  <head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Freshok</title><script defer="defer" src="main.aa1a2ca62de137f9cd00.js">
+    </script><link href="main.046dd0d93122d0ef9926.css" rel="stylesheet">
+  </head>
+  <body>
+    
+    
+    <style>
+   html {
+    height: 100%;
+    font-size: 62.5%;
+}
+      
+      *, *::after, *::before {
+    box-sizing: inherit;
+}
+      
+      :root {
+    --black: #000000;
+    --white: #ffffff;
+    --white-100: #f1f1f1;
+    --black-100: #31352b;
+    --aqua: #00ffff;
+    --red: #ff0000;
+    --border-card: rgba(17,17,17,0.2);
+    --green-100: #63a60e;
+    --green: #63a60f;
+    --button-dark: #31352b;
+    --button-dark-hover: #3c4136;
+    --set-basket: #cf3e3b;
+}
+      
+      .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+      
+      body {
+    height: 100%;
+    font-size: 1.6rem;
+    line-height: 1.4;
+    font-weight: 400;
+    font-family: "Open Sans",Verdana,sans-serif;
+    background-color: #ffffff;
+    background-color: var(--white);
+    color: #000000;
+    color: var(--black);
+}
+      a {
+    text-decoration: none;
+    color: inherit;
+}
+      
+      img {
+    max-width: 100%;
+    display: block;
+}
+      
+      p, li, h1, h2, h3, h4, h5, h6, label, blockquote, cite {
+    font: inherit;
+    margin: 0;
+    padding: 0;
+    letter-spacing: inherit;
+}
+      
+      ol, ul, figure, figcaption, blockquote {
+    margin: 0px;
+    padding: 0px;
+}
+      
+      ul {
+    list-style: none;
+}
+      
+      .container_logo {
+    display: block;
+    cursor: pointer;
+}
+      
+      .wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    overflow: hidden;
+    }
+      
+      .container {
+    max-width: 1230px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+      .container-block {
+    width: 1230px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+      
+      .header {
+    display: flex;
+    align-items: center;
+    height: 110px;
+    width: 100%;
+    background-color: #63a60f;
+    background-color: var(--green);
+    margin-bottom: 20px;
+}
+      
+      .header__title {
+    flex: 1 1 auto;
+    text-align: center;
+    font-weight: 700;
+    font-size: 3rem;
+    color: #ffffff;
+    color: var(--white);
+}
+      .main {
+    position: relative;
+    flex: 1 0 auto;
+}
+      
+      .breadcrumb {
+    display: flex;
+    align-items: center;
+}
+      
+      .breadcrumb__item {
+    color: #63a60e;
+    color: var(--green-100);
+}
+      
+      .notfound {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+      
+      .notfound-404 {
+    font-size: 20.2rem;
+    color: #63a60f;
+    color: var(--green);
+}
+      
+      .main-tittle {
+    font-weight: 700;
+    font-size: 4.2rem;
+}
+      
+      .notfound-desc {
+    font-size: 2rem;
+}
+      
+      .notfound-green {
+    color: #63a60f;
+    color: var(--green);
+}
+     .footer {
+    flex: 0 0 auto;
+} 
+      
+      .footer {
+    padding: 2rem 0;
+    background-color: #31352b;
+    background-color: var(--black-100);
+}
+      
+      .footer__container {
+    display: flex;
+    justify-content: space-between;
+}
+      
+      .footer__logo-link {
+    transition: opacity .5s ease-in-out;
+}
+      
+      .footer__rs-svg {
+    width: 10rem;
+}
+      
+      .footer__git, .footer__rs-svg {
+    width: 5rem;
+    height: 5rem;
+    transition: fill .5s ease-in-out;
+}
+      
+      .footer__box {
+    display: flex;
+    align-items: center;
+    -moz-column-gap: 1rem;
+    column-gap: 1rem;
+}
+      
+     </style> 
+    
+    <div class="wrapper">
+      <header class="header">
+        <div class="container container-block"><a class="container_logo" href="./index.html">
+          <img src="./assets/html_img/logo.png" alt="Логотип" width="150" height="50">
+          </a><h1 class="header__title">ФРЕШОК</h1>
+        </div>
+      </header>
+      
+      <main class="main">
+        
+        <ul class="breadcrumb container">
+          <li class="breadcrumb__item">
+            <a class="breadcrumb__link breadcrumb__link" href="./index.html">Главная</a>
+          </li>
+        </ul>
+        
+        <section class="container"><div class="notfound">
+          <div class="notfound-404">404</div>
+          <div class="main-tittle">Упс, страница не найдена</div>
+          <div class="notfound-desc">Вернитесь 
+            <a class="notfound-green" href="./index.html">на главную</a> 
+            сраницу и попробуйте еще раз</div>
+          </div>
+        </section>
+        
+      </main>
+      
+      <footer class="footer">
+        <div class="footer__container container">
+          <a class="footer__logo-link" href="./index.html">
+            <img class="logo" src="./assets/html_img/logo.png" alt="Логотип" width="150" height="50"> </a>
+          <a class="footer__rs" href="https://rs.school/js/" target="_blank"><span class="sr-only">ссылка на rs-school</span> <svg class="footer__rs-svg"><use xlink:href="./assets/html_img/sprite.svg#res"></use></svg></a>
+          <div class="footer__box"><span class="sr-only">ссылка на github</span> 
+            <a class="footer__box-link" href="https://github.com/SergeiKudlai" target="_blank"><svg class="footer__git"><use xlink:href="./assets/html_img/sprite.svg#git"></use></svg> </a>
+            <a class="footer__box-link" href="https://github.com/thestrelchik" target="_blank"><span class="sr-only">ссылка на github</span> <svg class="footer__git"><use xlink:href="./assets/html_img/sprite.svg#git">
+              </use></svg> </a><span class="footer__box-text">2022г.</span></div></div>
+      </footer>
+    </div>
+  </body>
+</html>
