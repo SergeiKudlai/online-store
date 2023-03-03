@@ -1,0 +1,261 @@
+import { Product } from './cards_product';
+import { DATA } from './data';
+import { setElementsAddLocalStorage } from './data_retrieval';
+
+export function clickedFilters(): void {
+  const BTN_FILTER = document.querySelector('[data-availability]');
+  const START_FILTER = document.querySelector('.products-filter__btn');
+  const BTN_PRICE_MAX = document.querySelector('[data-price-max]');
+  const BTN_RAITING_MAX = document.querySelector('[data-raiting-max]');
+  const BTN_RAITING_MIN = document.querySelector('[data-raiting-min]');
+  const BTN_PRICE_MIN = document.querySelector('[data-price-min]');
+  const BOX_FILTER_BTN = document.querySelectorAll('.box-filter__btn');
+  const BOX_PRODUCT = document.querySelector('.products');
+
+  const DRINKS = document.querySelector('.drinks');
+  const FRUITS = document.querySelector('.fruits');
+  const VEGETABLES = document.querySelector('.vegetables');
+  const BERRY = document.querySelector('.berry');
+  const OTHER = document.querySelector('.other');
+
+  const babGryadka = document.querySelector('.babGryadka');
+  const magagaskar = document.querySelector('.magagaskar');
+  const CaffeSalomoni = document.querySelector('.CaffeSalomoni');
+  const candy = document.querySelector('.candy');
+  const pepsiCola = document.querySelector('.pepsicola');
+  const bonaqua = document.querySelector('.bonaqua');
+  const sanpellegrinoAranciata = document.querySelector('.sanpellegrinoAranciata');
+  const rocs = document.querySelector('.rocs');
+
+  const RANGEMIN = document.querySelector('.range-min');
+  const RANGEMAX = document.querySelector('.range-max');
+
+  const INPUTMIN = document.querySelector('.input-min') as HTMLInputElement;
+  const INPUTMAX = document.querySelector('.input-max') as HTMLInputElement;
+
+  START_FILTER?.addEventListener('click', (): void => {
+    const PRODUCT = new Product(DATA);
+    if (PRODUCT.box) PRODUCT.box.innerHTML = '';
+    PRODUCT.render();
+    localStorage.removeItem('arr');
+  });
+
+  DRINKS?.addEventListener('click', (): void => {
+    const RESULT = DATA.filter((value) => value.id === 1);
+    const PRODUCT = new Product(RESULT);
+
+    if (PRODUCT.box) PRODUCT.box.innerHTML = '';
+    PRODUCT.render();
+    setElementsAddLocalStorage(RESULT);
+  });
+
+  FRUITS?.addEventListener('click', (): void => {
+    const RESULT = DATA.filter((value) => value.id === 2);
+    const PRODUCT = new Product(RESULT);
+
+    if (PRODUCT.box) PRODUCT.box.innerHTML = '';
+    PRODUCT.render();
+    setElementsAddLocalStorage(RESULT);
+  });
+
+  VEGETABLES?.addEventListener('click', (): void => {
+    const RESULT = DATA.filter((value) => value.id === 3);
+    const PRODUCT = new Product(RESULT);
+
+    if (PRODUCT.box) PRODUCT.box.innerHTML = '';
+    PRODUCT.render();
+    setElementsAddLocalStorage(RESULT);
+  });
+
+  BERRY?.addEventListener('click', (): void => {
+    const RESULT = DATA.filter((value) => value.id === 4);
+    const PRODUCT = new Product(RESULT);
+
+    if (PRODUCT.box) PRODUCT.box.innerHTML = '';
+    PRODUCT.render();
+    setElementsAddLocalStorage(RESULT);
+  });
+
+  OTHER?.addEventListener('click', (): void => {
+    const RESULT = DATA.filter((value) => value.id === 5);
+    const PRODUCT = new Product(RESULT);
+
+    if (PRODUCT.box) PRODUCT.box.innerHTML = '';
+    PRODUCT.render();
+    setElementsAddLocalStorage(RESULT);
+  });
+
+  babGryadka?.addEventListener('click', (): void => {
+    const RESULT = DATA.filter((value) => value.brand === 'Бабушкина грядка');
+    const PRODUCT = new Product(RESULT);
+
+    if (PRODUCT.box) PRODUCT.box.innerHTML = '';
+    PRODUCT.render();
+    rangeMi();
+    rangeMa();
+    setElementsAddLocalStorage(RESULT);
+  });
+
+  magagaskar?.addEventListener('click', (): void => {
+    const RESULT = DATA.filter((value) => value.brand === 'Мадагаскар');
+    const PRODUCT = new Product(RESULT);
+
+    if (PRODUCT.box) PRODUCT.box.innerHTML = '';
+    PRODUCT.render();
+    rangeMi();
+    rangeMa();
+    setElementsAddLocalStorage(RESULT);
+  });
+
+  CaffeSalomoni?.addEventListener('click', (): void => {
+    const RESULT = DATA.filter((value) => value.brand === 'Caffe Salomoni');
+    const PRODUCT = new Product(RESULT);
+
+    if (PRODUCT.box) PRODUCT.box.innerHTML = '';
+    PRODUCT.render();
+    rangeMi();
+    rangeMa();
+    setElementsAddLocalStorage(RESULT);
+  });
+
+  candy?.addEventListener('click', (): void => {
+    const RESULT = DATA.filter((value) => value.brand === 'Дед Мороз у камина');
+    const PRODUCT = new Product(RESULT);
+
+    if (PRODUCT.box) PRODUCT.box.innerHTML = '';
+    PRODUCT.render();
+    rangeMi();
+    rangeMa();
+    setElementsAddLocalStorage(RESULT);
+  });
+
+  pepsiCola?.addEventListener('click', (): void => {
+    const RESULT = DATA.filter((value) => value.brand === 'pepsi-cola');
+    const PRODUCT = new Product(RESULT);
+
+    if (PRODUCT.box) PRODUCT.box.innerHTML = '';
+    PRODUCT.render();
+    rangeMi();
+    rangeMa();
+    setElementsAddLocalStorage(RESULT);
+  });
+  bonaqua?.addEventListener('click', (): void => {
+    const RESULT = DATA.filter((value) => value.brand === 'Bonaqua');
+    const PRODUCT = new Product(RESULT);
+
+    if (PRODUCT.box) PRODUCT.box.innerHTML = '';
+    PRODUCT.render();
+    setElementsAddLocalStorage(RESULT);
+  });
+
+  sanpellegrinoAranciata?.addEventListener('click', (): void => {
+    const RESULT = DATA.filter((value) => value.brand === 'Sanpellegrino Aranciata');
+    const PRODUCT = new Product(RESULT);
+
+    if (PRODUCT.box) PRODUCT.box.innerHTML = '';
+    PRODUCT.render();
+    rangeMi();
+    rangeMa();
+    setElementsAddLocalStorage(RESULT);
+  });
+
+  rocs?.addEventListener('click', (): void => {
+    const RESULT = DATA.filter((value) => value.brand === 'R.O.C.S.');
+    const PRODUCT = new Product(RESULT);
+
+    if (PRODUCT.box) PRODUCT.box.innerHTML = '';
+    PRODUCT.render();
+    rangeMi();
+    rangeMa();
+    setElementsAddLocalStorage(RESULT);
+  });
+
+  BTN_FILTER?.addEventListener('click', (): void => setAvailability());
+  BTN_PRICE_MIN?.addEventListener('click', (): void => setSort('.products__price', true));
+  BTN_PRICE_MAX?.addEventListener('click', (): void => setSort('.products__price', false));
+  BTN_RAITING_MIN?.addEventListener('click', (): void => setSort('.raiting__num', true));
+  BTN_RAITING_MAX?.addEventListener('click', (): void => setSort('.raiting__num', false));
+  RANGEMIN?.addEventListener('input', (): void => rangeMi());
+  RANGEMAX?.addEventListener('input', (): void => rangeMa());
+  INPUTMIN?.addEventListener('input', (): void => rangeMi());
+  INPUTMAX?.addEventListener('input', (): void => rangeMa());
+
+  function setAvailability(): void {
+    if (BOX_PRODUCT) {
+      Array(...BOX_PRODUCT.children).forEach((value): void => {
+        const AVAILABILITY = (value.querySelector('.products__availability') as HTMLElement).dataset.availability;
+        AVAILABILITY === 'false' && value.remove();
+      });
+    }
+  }
+
+  function setSort(value: string, valid: boolean): void {
+    if (BOX_PRODUCT) {
+      for (let i = 0; i < BOX_PRODUCT.children.length; i++) {
+        for (let j = i; j < BOX_PRODUCT.children.length; j++) {
+          const PRICE = Number(BOX_PRODUCT.children[i].querySelector(value)?.textContent);
+          const PRICE_2 = Number(BOX_PRODUCT.children[j].querySelector(value)?.textContent);
+          if (valid) {
+            if (PRICE > PRICE_2) {
+              const REPLACE_NODE = BOX_PRODUCT.replaceChild(BOX_PRODUCT.children[j], BOX_PRODUCT.children[i]);
+              instertAfter(REPLACE_NODE, BOX_PRODUCT.children[i]);
+            }
+          } else {
+            if (PRICE < PRICE_2) {
+              const REPLACE_NODE = BOX_PRODUCT.replaceChild(BOX_PRODUCT.children[j], BOX_PRODUCT.children[i]);
+              instertAfter(REPLACE_NODE, BOX_PRODUCT.children[i]);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  function instertAfter(elem: Element, refElem: Element): Element | undefined {
+    if (refElem.parentNode) {
+      return refElem.parentNode.insertBefore(elem, refElem.nextSibling);
+    }
+  }
+
+  if (BOX_FILTER_BTN.length !== 0) {
+    BOX_FILTER_BTN[1].addEventListener('click', function (): void {
+      BOX_FILTER_BTN[0].classList.remove('active');
+      BOX_FILTER_BTN[1].classList.add('active');
+      BOX_PRODUCT?.classList.add('products--active');
+    });
+
+    BOX_FILTER_BTN[0].addEventListener('click', function (): void {
+      BOX_FILTER_BTN[1].classList.remove('active');
+      BOX_FILTER_BTN[0].classList.add('active');
+      BOX_PRODUCT?.classList.remove('products--active');
+    });
+  }
+
+  function rangeMi(): void {
+    if (BOX_PRODUCT) {
+      for (let i = 0; i < BOX_PRODUCT.children.length; i++) {
+        const n = Number(BOX_PRODUCT.children[i].querySelector('.products__price')?.textContent);
+
+        if (n <= Number(INPUTMAX.value) && n >= Number(INPUTMIN.value)) {
+          (BOX_PRODUCT.children[i] as HTMLElement).style.display = '';
+        } else {
+          (BOX_PRODUCT.children[i] as HTMLElement).style.display = 'none';
+        }
+      }
+    }
+  }
+
+  function rangeMa(): void {
+    if (BOX_PRODUCT) {
+      for (let i = 0; i < BOX_PRODUCT.children.length; i++) {
+        const n = Number(BOX_PRODUCT.children[i].querySelector('.products__price')?.textContent);
+
+        if (n <= Number(INPUTMAX.value) && n >= Number(INPUTMIN.value)) {
+          (BOX_PRODUCT.children[i] as HTMLElement).style.display = '';
+        } else {
+          (BOX_PRODUCT.children[i] as HTMLElement).style.display = 'none';
+        }
+      }
+    }
+  }
+}

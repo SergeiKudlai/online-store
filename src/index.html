@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Freshok</title>
+</head>
+
+<body>
+  <div class="wrapper">
+    <header class="header">
+      <div class="container container-block">
+        <a class="container_logo" href="./index.html" width="150" height="50">
+          <img src="./assets/html_img/logo.png" alt="logo">
+        </a>
+        <div class="search_wrapper">
+          <div class="cotainer_search">
+            <div class="search-svg"><img src="./assets/html_img/search.png" alt="search"></div>
+            <input class="input-search" type="text" placeholder="Найти в магазине ...">
+            <button class="cotainer_search__button">
+              <p>Поиск</p>
+            </button>
+          </div>
+        </div>
+        <span class="header__total">
+          Общая цена
+          <span class="header__amount">0</span>
+          $
+        </span>
+        <div class="container_basket">
+          <div class="basket-set">0</div>
+          <span class="basket">
+            <a class="basket__link" href="./cart.html">
+              <img class="basket__img" src="./assets/html_img/basket.png" alt="shop basket">
+            </a>
+          </span>
+        </div>
+      </div>
+    </header>
+
+    <main class="main">
+      <ul class="breadcrumb container">
+        <li class="breadcrumb__item">
+          <a class="breadcrumb__link" href="./index.html">Главная</a>
+        </li>
+      </ul>
+
+      <section class="container" id="section-products">
+
+        <div class="main-tittle">Каталог товаров</div>
+
+        <div class="section-products">
+
+          <aside class="aside">
+            <div class="categoty">
+              <div class="aside__category">
+                <p class="aside__category-text">Категории</p>
+                <div class="dropdown">
+                  <img class="dropbtn-style dropbtn-cat" src="./assets/html_img/chevron.png" alt="chevron"></img>
+                </div>
+              </div>
+              <div class="dropdown-content">
+                <button type="button" class="dropdown-content__link drinks">Напитки</button>
+                <button type="button" class="dropdown-content__link fruits">Фрукты</button>
+                <button type="button" class="dropdown-content__link vegetables">Овощи</button>
+                <button type="button" class="dropdown-content__link berry">Ягода</button>
+                <button type="button" class="dropdown-content__link other">Разное</button>
+              </div>
+            </div>
+
+            <div class="categoty recomend">
+              <div class="aside__category aside__category-show">
+                <p class="aside__category-text">Бренд</p>
+                <div class="dropdown">
+                  <img class="dropbtn-style dropbtn-recomend" src="./assets/html_img/chevron.png" alt="chevron"></img>
+                </div>
+              </div>
+              <div class="dropdown-content">
+                <button type="button" class="dropdown-content__link-brend babGryadka">Бабушкина грядка</button>
+                <button type="button" class="dropdown-content__link-brend magagaskar">Мадагаскар</button>
+                <button type="button" class="dropdown-content__link-brend CaffeSalomoni">Caffe Salomoni</button>
+                <button type="button" class="dropdown-content__link-brend candy">Дед Мороз у камина</button>
+                <button type="button" class="dropdown-content__link-brend pepsicola">Pepsi-cola</button>
+                <button type="button" class="dropdown-content__link-brend bonaqua">Bonaqua</button>
+                <button type="button" class="dropdown-content__link-brend sanpellegrinoAranciata">Sanpellegrino
+                  Aranciata</button>
+                <button type="button" class="dropdown-content__link-brend rocs">R.O.C.S.</button>
+              </div>
+            </div>
+            <div class="categoty price">
+              <div class="aside__category aside__category-price">
+                <p class="aside__category-text">Цена</p>
+                <div class="dropdown">
+                  <img class="dropbtn-style dropbtn-price" src="./assets/html_img/chevron.png" alt="chevron"></img>
+                </div>
+              </div>
+              <div class="dropdown-content dropdown-active-price">
+                <div class="price-input">
+                  <div class="field">
+                    <span>Min</span>
+                    <input type="number" class="input-min" value="0">
+                  </div>
+                  <div class="separator">-</div>
+                  <div class="field">
+                    <span>Max</span>
+                    <input type="number" class="input-max" value="500">
+                  </div>
+                </div>
+                <div class="slider">
+                  <div class="progress"></div>
+                </div>
+                <div class="range-input">
+                  <input type="range" class="range-min" min="0" max="500" value="0" step="10">
+                  <input type="range" class="range-max" min="0" max="500" value="500" step="10">
+                </div>
+              </div>
+            </div>
+          </aside>
+
+          <div class="section-products__box">
+
+            <div class="products-filter">
+
+              <div class="products-filter__inner">
+
+                <button class="products-filter__btn" type="button">Сброс<br>Фильтрация</button>
+
+                <ul class="products-filter__menu menu-filter">
+                  <li class="menu-filter__item" data-raiting-min>Рейтинг мин.</li>
+                  <li class="menu-filter__item" data-raiting-max>Рейтинг мак.</li>
+                  <li class="menu-filter__item" data-price-min>Цена мин</li>
+                  <li class="menu-filter__item" data-price-max>Цена мaк</li>
+                  <li class="menu-filter__item" data-availability>В наличие</li>
+                </ul>
+
+              </div>
+
+              <ul class="products-filter__box box-filter">
+                <li class="box-filter__item">
+                  <button class="box-filter__btn box-filter__btn--pos-one active" type="button"></button>
+                </li>
+
+                <li class="box-filter__item">
+                  <button class="box-filter__btn box-filter__btn--pos-two" type="button"></button>
+                </li>
+              </ul>
+
+            </div>
+
+            <div class="products"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer__container container">
+        <a class="footer__logo-link" href="#wrapper">
+          <img class="logo" src="./assets/html_img/logo.png" alt="Логотип" width="150" height="50">
+        </a>
+
+        <a class="footer__rs" href="https://rs.school/js/" target="_blank">
+          <span class="sr-only">ссылка на rs-school</span>
+          <svg class="footer__rs-svg">
+            <use xlink:href="./assets/html_img/sprite.svg#res"></use>
+          </svg>
+        </a>
+
+        <div class="footer__box">
+
+          <a class="footer__box-link" href="https://github.com/SergeiKudlai" target="_blank">
+            <span class="sr-only">ссылка на github</span>
+
+            <svg class="footer__git">
+              <use xlink:href="./assets/html_img/sprite.svg#git"></use>
+            </svg>
+          </a>
+
+          <span class="footer__box-text">2023г.</span>
+        </div>
+      </div>
+
+    </footer>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,16 @@
+.notfound {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.notfound-404 {
+    font-size: 20.2rem;
+    color: var(--green);
+}
+.notfound-desc {
+    font-size: 2rem;
+}
+.notfound-green {
+    color: var(--green);
+}
